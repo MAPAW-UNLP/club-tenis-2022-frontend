@@ -1,0 +1,187 @@
+#canchas-component{
+    background-color: var(--neutral-white);
+    height: 100vh;
+}
+#canchas-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    width: 35vw;
+    margin: auto;
+    margin-top: 10vh;
+    align-items: center;
+}
+#canchas-add-btn{
+    width: 100%;
+    height: 5rem;
+    background-color: var(--accent-green);
+    border-radius: 20px ;
+    border: none;
+    color: var(--neutral-white-text);
+    font-size: 200%;
+}
+
+#cancha-add-component{
+    background-color: var(--neutral-white);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    border-radius:20px; 
+    width: 40vw;
+    
+    z-index: 20;
+    box-shadow: 1px 0px 40px var(--neutral-black);
+}
+#cancha-add-component h2{
+    width: 100%;
+    
+    margin-top: 3vh;
+    background-color: var(--neutral-white);
+    color: var(--neutral-black);
+    font-size: 250%;
+    text-align: center;
+    font-family: var(--title-text);
+}
+
+#cancha-add-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: var(--neutral-white);
+   
+}
+
+.cancha-add-form-input{
+    font-family: var(--normal-text);
+    margin: auto;
+    margin-bottom: 15px;
+    width: 90%;
+    height: 2.2rem;
+    border-radius: 2px;
+    font-size: large;
+    background-color: var(--neutral-white);
+    border: none;
+    color: var(--neutral-black);
+    padding-left: 5px;
+    transition: all 0.5s ease;
+}
+
+.cancha-add-form-input:focus{
+    outline: 1.4px solid var(--accent-yellow);
+}
+
+#cancha-add-form-select:disabled{
+    background-color: var(--neutral-black);
+    color: var(--neutral-white-text);
+}
+
+
+
+#cancha-add-form-select{
+    font-family: var(--normal-text);
+    width: 90%;
+    height: 2.2rem;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    font-size: large;
+    background-color: var(--neutral-white);
+    border: none;
+    color: var(--neutral-black);
+    padding-left: 5px;
+    transition: all 0.5s ease;
+}
+
+#cancha-add-form-select:focus{
+    outline: 1.4px solid var(--accent-yellow);
+}
+
+
+#cancha-add-form-addBtn{
+    width: 100%;
+    background-color: var(--accent-green);
+    height: 5rem;
+    border: none;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#cancha-add-form-addBtn:disabled{
+    background-color: var(--neutral-black);
+}
+
+#canchas-add-form-btn{
+    width: 90%;
+    height: 3rem;
+    border-radius: 20px ;
+    border: none;
+    color: var(--neutral-white-text);
+    font-size: 180%;    
+}
+
+#canchas-list{
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#cancha-component{
+     background-color: var(--neutral-black);
+     border-radius: 20px;
+     margin-bottom: 1vh;
+     padding-left: 2vw;
+     height: 14vh;  
+     position: relative;  
+     z-index: 1;
+     font-family: var(--normal-text);
+     color: var(--neutral-white-text);
+     box-shadow: 0px 2px 10px var(--neutral-black) ;
+
+}
+
+#cancha-component h2{
+    margin-top: 2vh;
+    color: var(--accent-tennis-green);
+}
+
+#grafico{
+    position: absolute ;
+    right: 0%;
+    top: 0%;
+    height: 100%;
+    border-bottom-right-radius: 20px ;
+    border-top-right-radius: 20px ;
+    width: 30%;
+
+}
+
+#cancha-big-div{
+    border: 3px solid var(--neutral-white);
+    width: 50%;
+    height: 60%;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    transform: rotate(45deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#primeraMitad{
+    width: 100%;
+    height: 30%;
+    border-bottom: 3px solid var(--neutral-white);
+}
+#medio{
+    width: 50%;
+    height: 100%;
+    border-right: 3px solid var(--neutral-white);
+}
+#segundaMitad{
+    width: 100%;
+    height:30%;
+    border-top: 3px solid var(--neutral-white);
+}

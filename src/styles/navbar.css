@@ -1,0 +1,67 @@
+#navBar-component{
+    background-image: url('../Img/tennisImg.jpg');
+    background-size: cover;
+    
+    background-repeat: no-repeat;
+    background-position: 30%;
+    width: 100vw;
+    height: 30vh;
+    box-shadow: 1px 1px 50px var(--neutral-black) ;
+}
+
+#navBar-transparent{
+    background-color: var(--neutral-black);
+    opacity: .5;
+    height: 6vh;
+    position: absolute;
+    width: 100%;
+}
+#navBar{
+   
+}
+
+#navBar-list{
+    height: 6vh;
+    color: var(--neutral-white);
+    font-size: 120%;
+    font-family: var(--normal-text);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    justify-content: flex-start;   
+    position: relative;
+    font-weight: 300;
+    
+    
+    
+}
+#navBar-list  li{
+
+    margin-right: 3%;
+}
+#navBar-list li:first-child{
+    margin-left: 1%;
+}
+
+#navBar-list li:last-child{
+    position: absolute;
+    right: 0;
+    color: var(--accent-tennis-green);
+}
+
+/* #navBar-list:active{
+    font-weight: 600;
+    color: var(--accent-tennis-green);
+} */
+
+#navBar-component h1{
+    
+    text-align: center;
+    margin-top: 15vh;
+    
+
+    font-size: 400%;
+    font-family: var(--title-text);
+    color: var(--neutral-white-text);
+}
