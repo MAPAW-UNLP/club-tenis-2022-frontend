@@ -11,13 +11,13 @@ const SelectHoraFin = ({id, className, setHoraFin, horaInicio}) => {
     }
 
     const handleChangeHoraFin = (e) =>{
-      setHoraFin(e.target.value)
+      setHoraFin(e.target.value);
     }
     return (
     <>
-      <select name="" className={className} id={id} onChange={handleChangeHoraFin} >
-        {horas.map((el,i) => {if(i < posInicial()+1) {return ""} else return <option>{el}</option>})}
-      </select>
+          <select name="" className={className} id={id}  onChange={handleChangeHoraFin} >
+            {horas.map((el,i) => {if(i < posInicial()+1) {return ""} else return <option value={el}>{el}</option>})}
+          </select>
     </>
   )
 }

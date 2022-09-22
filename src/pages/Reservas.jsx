@@ -60,7 +60,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
 
   
   const handleAddReserva = () =>{
-    const newReserva = {'type': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
+    const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
     setReservas([...reservas, newReserva ])
     
     console.log(newReserva);
