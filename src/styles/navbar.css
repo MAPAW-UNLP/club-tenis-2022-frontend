@@ -65,3 +65,18 @@
     font-family: var(--title-text);
     color: var(--neutral-white-text);
 }
+
+.link{
+    text-decoration: none;
+    color: var(--neutral-black);
+}
+
+.link.active{
+    color: var(--accent-tennis-green);
+    font-weight: 500;
+}
+
+.linkCerrarSesion{
+    text-decoration: none;
+    color: var(--accent-tennis-green);
+}

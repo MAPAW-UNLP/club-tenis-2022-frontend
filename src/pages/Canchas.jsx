@@ -9,10 +9,10 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import CanchasAddForm from '../components/CanchasAddForm'
 import CanchasList from '../components/CanchasList'
 
-const Canchas = () => {
+const Canchas = ({canchas, setCanchas}) => {
 
   //>Ahora provisorio. Despues llamar a la api y cargar
-  const [canchas, setCanchas] = useState([]);
+  
   const [actived, setActived] = useState(false);
 
   const handleactivateForm = () =>{

@@ -1,4 +1,81 @@
 #home-component{
-    background-color: var(--primary-cyan);
+    background-color: var(--primary-green);
     height: 100vh;
+}
+
+#table-grid{
+    border-radius: 20px;
+    /* border-bottom-left-radius: 20px ;
+    border-bottom-right-radius: 20px ; */
+    margin: 5% 10%;
+    background-color: var(--neutral-white);
+ 
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    height: 50vh;
+    overflow-y: scroll;
+}
+#hora{
+    background-color: var(--neutral-white);
+    color: var(--neutral-black);
+    font-family: var(--normal-text);
+    font-size: 150%;
+    text-align: center;
+    padding: 4%;
+    border-right: 1px solid var(--accent-green) ;
+    border-bottom: 1px solid var(--accent-green) ;
+}
+.horas{
+    background-color: var(--neutral-black);
+    color: var(--neutral-white-text);
+    font-family: var(--normal-text);
+    font-size: 150%;
+    text-align: center;
+    padding: 4%;
+}
+
+.canchas{
+    background-color: var(--neutral-white);
+    color: var(--neutral-black);
+    font-family: var(--normal-text);
+    font-size: 150%;
+    text-align: center;
+    padding: 4%;
+    border-right: 1px solid var(--accent-green) ;
+    border-bottom: 1px solid var(--accent-green) ;  
+}
+
+.reservas{
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#reserva-info{
+    display: flex;
+    flex-direction: column;
+    padding-left: 2vw;
+    margin-top: 2vh;
+    align-items: flex-start;
+    text-align: center;
+    
+}
+
+#reserva-nombre{
+    color: var(--accent-yellow);
+    font-family: var(--normal-text);
+    font-size: 150%;
+}
+
+#reserva-rol{
+    color: var(--neutral-white-text);
+    font-size: 90%;
+    font-family: var(--normal-text);
+}
+#reserva-horario{
+    margin-top: 0.5vh;
+    color: var(--accent-yellow);
+    font-size: 100%;
+    font-family: var(--normal-text);
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import {Link} from 'react-router-dom'
 
 const LoginForm = () => {
 
@@ -10,16 +11,30 @@ const LoginForm = () => {
     const handleUserNameChange = (e) =>{
         setUser(e.target.value);
         const passInput = document.getElementById('input-pass');
-        e.target.value === "" ? passInput.disabled = true: passInput.disabled = false;  
+        if(e.target.value === ""){
+            passInput.disabled = true ;
+            setPass("");
+            const loginBtn = document.getElementById('login-btn');
+            e.target.value === "" ? loginBtn.disabled = true: loginBtn.disabled = false;
+            const link= document.getElementById('linkLogin');
+            link.className = 'disabledLink';
+            
+        }
+        else passInput.disabled = false;  
     }
 
     const handlePassChange = (e) =>{
         setPass(e.target.value);
         const loginBtn = document.getElementById('login-btn');
         e.target.value === "" ? loginBtn.disabled = true: loginBtn.disabled = false;
+
+        const link= document.getElementById('linkLogin');
+        link.className = 'linkLogin-active';
+
     }
 
     const habldeSubmit = () =>{
+        
         /* Aca en el onClick del submit hacer el post a la API para chequear que sea el admin. Sino devolver un msje de error*/
         
     }
@@ -31,7 +46,7 @@ const LoginForm = () => {
             <form action="" id='login-form'>
                 <input type="text" name="" id="input-name"  className='login-form-input' value={user} placeholder='Nombre de usuario' onChange={handleUserNameChange}/>
                 <input type="password" name="" id="input-pass" className='login-form-input' value={pass} placeholder='Contraseña' onChange={handlePassChange}disabled/>
-                <button type="submit" id='login-btn' className='login-form-btn' disabled onClick={habldeSubmit}>Iniciar Sesion</button>
+                <button type="submit" id='login-btn' className='login-form-btn' disabled onClick={habldeSubmit}><Link to="/inicio" id='linkLogin' className='disabledLink'> Iniciar Sesion </Link></button>
             </form>
         </div>
   )
