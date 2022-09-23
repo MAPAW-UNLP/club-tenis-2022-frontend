@@ -10,7 +10,7 @@ const SelectHoraInicio = ({id, className, setHoraInicio}) => {
     return (
     <>
       <select name="" className={className} id={id} onChange={handleChangeHoraInicio} >
-          <option value="" selected>Hora Inicio</option>
+          <option value="">Hora Inicio</option>
           {horas.map((hora, i) =>{if(i !== horas.length-1){return <option  value={hora}>{hora}</option>} else{return ""}})   }   
       </select>
 

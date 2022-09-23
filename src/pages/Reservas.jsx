@@ -55,7 +55,6 @@ const Reservas = ({canchas, reservas, setReservas}) => {
   const handleSubmitContinue = (e) =>{
     e.preventDefault();
     setAlquilerOp(true);
-    
   }
 
   
@@ -79,7 +78,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
                 </select>  
 
                 
-                <input type="date" name="" id="fecha" className='inputReserva'  placeholder="Fecha" disabled  onChange={handleDayChange}/>
+                <input type="date" name="" id="fecha" className='inputReserva'  placeholder="Fecha" disabled  onChange={handleDayChange}  />
                 
                 <SelectHoraInicio id={'horaInicio'} className={'inputReserva'} setHoraInicio={setHoraInicio}/>
                 <SelectHoraFin  id={'horaInicio'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>

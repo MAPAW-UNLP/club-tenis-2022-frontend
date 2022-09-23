@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
-const CanchasAddForm = ({actived, setActived, setCanchas}) => {
+const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
 
   
 
@@ -14,8 +14,18 @@ const CanchasAddForm = ({actived, setActived, setCanchas}) => {
 
   const handleCanchaNameChange = (e) =>{
     setNombreCancha(e.target.value);
-    const selectTipo = document.getElementById('cancha-add-form-select');
-    e.target.value === "" ? selectTipo.disabled = true: selectTipo.disabled = false;  
+    if (canchas.map((each) => each.nombre).indexOf(e.target.value) === -1){
+      //pregunta se no existe una cancha con el mismo nombre
+      const selectTipo = document.getElementById('cancha-add-form-select');
+      e.target.value === "" ? selectTipo.disabled = true: selectTipo.disabled = false; 
+    }
+    else{
+      //avisar mediante feedback que no puede haber una cancha repetida
+      const selectTipo = document.getElementById('cancha-add-form-select');
+      selectTipo.disabled = true;
+      const addBtn = document.getElementById('cancha-add-form-addBtn');
+      addBtn.disabled = true;
+    } 
   }
 
   const handleSelect = (e) =>{
@@ -25,6 +35,7 @@ const CanchasAddForm = ({actived, setActived, setCanchas}) => {
   }
 
   const handleClickaddCourt = (e) =>{
+    //Aca meter un feedback de que la cancha se agrego correctamente
     e.preventDefault(); 
     const nuevaCancha = {id:Math.random(99999) , nombre: nombreCancha, tipo: option}
     console.log(nuevaCancha)
@@ -34,12 +45,19 @@ const CanchasAddForm = ({actived, setActived, setCanchas}) => {
     setActived((actived) => false );
   }
 
+  const handleCloseForm = () =>{
+    setOption("");
+    setNombreCancha("");
+    setActived(false);
+  }
+
   /* Faltaria que el submit agregue la nueva cancha al sistema con un post (ahora provisorio) y que chequee que no exista otra chequear bien el formulario */
   return (
     <>
       {actived &&
         <div id='cancha-add-component'>
-          <h2>Nueva cancha</h2>
+          <div id='close-cancha-add-form' onClick={ handleCloseForm}>x</div>
+          <h2>Nueva cancha</h2>     
           <form action="" id='cancha-add-form' onSubmit={handleClickaddCourt}>
             <input type="text" name="" id="" placeholder='Nombre' className='cancha-add-form-input' onChange={handleCanchaNameChange} value={nombreCancha}/>
             <select name="" id='cancha-add-form-select' disabled onChange={handleSelect} value={option} >

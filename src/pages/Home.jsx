@@ -28,7 +28,7 @@ const horas = ["8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30
         <div id='table-component'>
           <div id='table-options'>
             <button id='addReservaBtn' ><FontAwesomeIcon icon={faPlusCircle}></FontAwesomeIcon></button>
-            <h2 id='diaDeHoy'>{new Date().getDate()} / {new Date().getMonth()}</h2>
+            <h2 id='diaDeHoy'>{new Date().getDate()} / {new Date().getMonth()+1}</h2>
             <input type="date" name="" id="" className='table-options-inputFecha'/>
           </div>
           <div id='table-grid' style={{display:'grid', gridTemplateColumns: `repeat(${canchas.length+1}, 1fr)`, gridTemplateRows: `repeat(${horas.length+1}, 1fr)` }}>
