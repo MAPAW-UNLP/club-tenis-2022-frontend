@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 //styles
 import '../styles/reservas.css'
 
@@ -21,13 +22,18 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const Reservas = ({canchas, reservas, setReservas}) => {
 
+  //navegacion
+  const navigate = useNavigate();
   const [alquilerOp, setAlquilerOp] = useState(false);
   //a futuro vamos a tener un tipo reserva por aca.
   const [reservaTipo, setReservaTipo] = useState("");
+  const [cancha, setCancha] = useState("");
+  //con estos campos verificar actualizar el select de cancha solo mostrando las posibles
   const [dia, setDia] = useState("");
   const [horaInicio, setHoraInicio] = useState("");
   const [horaFin, setHoraFin] = useState("");
-  const [cancha, setCancha] = useState("");
+  
+  const horas = ["8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"]
   
 
   //alquiler
@@ -41,14 +47,15 @@ const Reservas = ({canchas, reservas, setReservas}) => {
     }
     setReservaTipo(e.target.value);
     
-    const nextInput = document.getElementById('fecha');
-    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
+   /*  const nextInput = document.getElementById('fecha');
+    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;   */
   }
 
   const handleDayChange = (e) =>{
+    console.log(e.target.value)
     setDia(e.target.value);
-    const nextInput = document.getElementById('horainicio');
-    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
+/*     const nextInput = document.getElementById('horainicio');
+    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;   */
   }
 
 
@@ -57,11 +64,25 @@ const Reservas = ({canchas, reservas, setReservas}) => {
     setAlquilerOp(true);
   }
 
+  const canchasDisponibles = () =>{
+    //este algoritmo se por un lado se queda con los nombres de las canchas no disponibles y luego devuelve los nombres de las canchas que no aparecen en el primer arrreglo
+    const nombresCanchasNoDisponibles = reservas.map((reserva) => 
+    {
+      if((reserva.dia === dia)&&((horas.indexOf(horaFin) >= horas.indexOf(reserva.horaInicio))&&(horas.indexOf(horaInicio) <= horas.indexOf(reserva.horaFin)))){
+        return reserva.cancha
+      }
+    }).filter((el) => el !== undefined);
+
+    return canchas.filter((cancha) => nombresCanchasNoDisponibles.indexOf(cancha.nombre) === -1 ).map((el) => el.nombre)
+
+  }
+
   
   const handleAddReserva = () =>{
     const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
     setReservas([...reservas, newReserva ])
-    
+    //hacer el post y agregar el mensaje de confirmacion  
+    navigate('../inicio');
     console.log(newReserva);
   }
 
@@ -78,13 +99,13 @@ const Reservas = ({canchas, reservas, setReservas}) => {
                 </select>  
 
                 
-                <input type="date" name="" id="fecha" className='inputReserva'  placeholder="Fecha" disabled  onChange={handleDayChange}  />
+                <input type="date" name="" id="fecha" className='inputReserva'  placeholder="Fecha"  onChange={handleDayChange}  />
                 
-                <SelectHoraInicio id={'horaInicio'} className={'inputReserva'} setHoraInicio={setHoraInicio}/>
+                <SelectHoraInicio id={'horaInicio'}  className={'inputReserva'} setHoraInicio={setHoraInicio}/>
                 <SelectHoraFin  id={'horaInicio'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>
                 
                 {alquilerOp ? 
-                <AlquilerFormComponent active={alquilerOp} canchas={canchas}   setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
+                <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()}   setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
                 :
                 <button id='continue-btn'> <FontAwesomeIcon id='next-icon' icon={faChevronRight} /> </button>
                 }

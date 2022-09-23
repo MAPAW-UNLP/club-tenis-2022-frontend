@@ -35,7 +35,7 @@ const AlquilerFormComponent = ({active, canchas,setCancha,setActive, handleAddRe
             <hr />
             <select name="" id="" className='inputReserva' onChange={handleChangeSelect}>
                 <option value="">Nada</option>
-                {canchas.map((cancha) => <option value={cancha.nombre}>{cancha.nombre}</option>)}
+                {canchas.map((cancha) => <option key={cancha} value={cancha}>{cancha}</option>)}
             </select>
 
             <input type="text" name="" className='inputReserva' id="nameInput" placeholder='Nombre' disabled onChange={handleChangeName}/>

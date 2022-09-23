@@ -9,7 +9,7 @@ export default [
     "tipo": "Alquiler"},
     {
     "id": 1,
-    "dia": Date("25/9/2022"),
+    "dia": "25-09-2022",
     "horaInicio": "14:30",
     "horaFin": "16:00",
     "cancha": "canchaDev2",

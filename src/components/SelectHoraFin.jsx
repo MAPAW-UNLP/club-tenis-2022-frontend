@@ -16,7 +16,7 @@ const SelectHoraFin = ({id, className, setHoraFin, horaInicio}) => {
     return (
     <>
           <select name="" className={className} id={id}  onChange={handleChangeHoraFin} >
-            {horas.map((el,i) => {if(i < posInicial()+1) {return ""} else return <option value={el}>{el}</option>})}
+            {horas.map((el,i) => {if(i < posInicial()+1) {return ""} else return <option  value={el} key={el} >{el}</option>})}
           </select>
     </>
   )

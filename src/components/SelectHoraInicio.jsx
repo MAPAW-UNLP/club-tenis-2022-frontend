@@ -11,7 +11,7 @@ const SelectHoraInicio = ({id, className, setHoraInicio}) => {
     <>
       <select name="" className={className} id={id} onChange={handleChangeHoraInicio} >
           <option value="">Hora Inicio</option>
-          {horas.map((hora, i) =>{if(i !== horas.length-1){return <option  value={hora}>{hora}</option>} else{return ""}})   }   
+          {horas.map((hora, i) =>{if(i !== horas.length-1){return  <option key={hora}  value={hora}>{hora}</option> } else{return ""}})   }   
       </select>
 
     </>
