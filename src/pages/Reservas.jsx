@@ -10,6 +10,8 @@ import SelectHoraFin from '../components/SelectHoraFin'
 //components
 import NavBar from './NavBar'
 import AlquilerFormComponent from '../components/AlquilerFormComponent'
+import InputComponent from '../components/InputComponent'
+import SelectComponent from '../components/SelectComponent'
 
 //Fontawesome icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -47,11 +49,12 @@ const Reservas = ({canchas, reservas, setReservas}) => {
     }
     setReservaTipo(e.target.value);
     
-   /*  const nextInput = document.getElementById('fecha');
-    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;   */
+    const nextInput = document.getElementById('fecha');
+    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
   }
 
   const handleDayChange = (e) =>{
+    
     console.log(e.target.value)
     setDia(e.target.value);
 /*     const nextInput = document.getElementById('horainicio');
@@ -77,6 +80,16 @@ const Reservas = ({canchas, reservas, setReservas}) => {
 
   }
 
+  const handleSetHoraInicio = (e) =>{
+    setHoraInicio(e.target.value);
+  }
+
+  const handleSetHoraFin = (e) =>{
+    setHoraFin(e.target.value)
+  }
+
+ 
+
   
   const handleAddReserva = () =>{
     const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
@@ -92,28 +105,23 @@ const Reservas = ({canchas, reservas, setReservas}) => {
         <NavBar title={'Reservas'}/>
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
-            <form action="" id='reserva-form' onSubmit={handleSubmitContinue} >
-                <select name="" id="" className='inputReserva' onChange={handleTypeChange}>
-                   <option value="">Nada</option>
-                   <option value="Alquiler">Alquiler</option>
-                </select>  
-
+            <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
+                <SelectComponent className={'inputReserva'} id={''} onChange={handleTypeChange} options={['Alquiler']} deshabilitado={false} />
+                <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} />
                 
-                <input type="date" name="" id="fecha" className='inputReserva'  placeholder="Fecha"  onChange={handleDayChange}  />
                 
-                <SelectHoraInicio id={'horaInicio'}  className={'inputReserva'} setHoraInicio={setHoraInicio}/>
-                <SelectHoraFin  id={'horaInicio'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>
+                {/*  LA IDEA ES USAR LOS COMENTADOS
+                <SelectComponent className={'inputReserva'} id={'horaInicio'} onChange={handleSetHoraInicio} options={horas} deshabilitado={false}/>
+                <SelectComponent className={'inputReserva'} id={'horaInicio'} onChange={handleSetHoraFin} options={horas} deshabilitado={false}/> */}
                 
+                <SelectHoraInicio id={'horaInicio'}  className={'inputReserva'} setHoraInicio={setHoraInicio}  />
+                <SelectHoraFin  id={'horaInicio'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>         
                 {alquilerOp ? 
-                <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()}   setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
+                <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
                 :
-                <button id='continue-btn'> <FontAwesomeIcon id='next-icon' icon={faChevronRight} /> </button>
+                <button id='continue-btn'> <FontAwesomeIcon id='next-icon' icon={faChevronRight} disabled /> </button>
                 }
-                
-
-                
-                          
-            </form>
+           </form>
         </div>
     </div>
   )

@@ -20,7 +20,12 @@
     border: none;
     color: var(--neutral-white-text);
     font-size: 200%;
+
+
 }
+
+  
+
 
 #cancha-add-component{
     background-color: var(--neutral-white);
@@ -123,12 +128,26 @@
     border: none;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-
-    transition: all 0.5s ease;
+    
+ /*    width: 100%;
+    background-color: var(--neutral-black);
+    height: 5rem;
+    font-size: 200%;
+    border: 10px solid var(--accent-green);
+    
+    transition: all 0.5s ease; */
+}
+#cancha-add-form-addBtn:hover{
+    /* Preguntar si les gusta esto */
+   /*  background-color: var(--accent-green);
+    border: 0px solid var(--accent-green);
+    height: 6rem;
+    font-size: 300%; */
 }
 
 #cancha-add-form-addBtn:disabled{
     background-color: var(--neutral-black);
+    border: none;
 }
 
 #canchas-add-form-btn{

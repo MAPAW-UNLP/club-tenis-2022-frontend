@@ -4,11 +4,12 @@
 }
 
 #table-component{
-    margin: 5% 10%;
+    margin: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    width: 90vw;
     
 }
 
@@ -35,6 +36,10 @@
     color: var(--neutral-white-text);
 }
 
+
+
+
+
 #diaDeHoy{
     font-family: var(--title-text);
     color: var(--neutral-white-text);
@@ -57,7 +62,6 @@
 
     border-bottom-left-radius: 20px ;
     border-bottom-right-radius: 20px ;
-   
     background-color: var(--neutral-white);
  
     grid-column-gap: 1px;
@@ -65,9 +69,13 @@
     height: 50vh;
     overflow-y: scroll;
 
-    width: 80vw;
+    width: 90vw;
     overflow-x: scroll;
 }
+
+
+
+
 #hora{
     background-color: var(--neutral-white);
     color: var(--neutral-black);
@@ -115,7 +123,6 @@
     margin-top: 2vh;
     align-items: flex-start;
     text-align: center;
-    
 }
 
 #reserva-nombre{
@@ -134,4 +141,24 @@
     color: var(--accent-yellow);
     font-size: 100%;
     font-family: var(--normal-text);
+}
+
+#table-grid::-webkit-scrollbar {
+  width: 12px;/* width of the entire scrollbar */
+    
+}
+
+#table-grid::-webkit-scrollbar-track {
+    background-color:transparent;
+    border-bottom-left-radius:20px ;
+    border-bottom-right-radius:20px ;
+    opacity: .5;   
+    /* color of the tracking area */
+}
+
+#table-grid::-webkit-scrollbar-thumb {
+    
+  background-color: lightgray;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 2px solid var(--neutral-white);  /* creates padding around scroll thumb */
 }

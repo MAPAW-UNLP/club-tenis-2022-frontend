@@ -22,6 +22,7 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
     else{
       //avisar mediante feedback que no puede haber una cancha repetida
       const selectTipo = document.getElementById('cancha-add-form-select');
+      setOption("");
       selectTipo.disabled = true;
       const addBtn = document.getElementById('cancha-add-form-addBtn');
       addBtn.disabled = true;

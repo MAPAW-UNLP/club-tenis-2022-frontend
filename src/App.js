@@ -28,7 +28,7 @@ function App() {
         <div className="App">
           <header className="App-header"></header>
           <Routes>
-            <Route path='/' element={<Login />}></Route>
+            <Route path='/' element={<Login />} ></Route>
             <Route path='/inicio' element={<Home canchas={canchas} reservas={reservas}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setCanchas={setCanchas}/>}></Route>
             <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setReservas={setReservas}/>}></Route>
