@@ -12,10 +12,13 @@ const SelectHoraFin = ({id, className, setHoraFin, horaInicio}) => {
 
     const handleChangeHoraFin = (e) =>{
       setHoraFin(e.target.value);
+      const nextInput = document.getElementById('continue-btn');
+      e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false; 
+      
     }
     return (
     <>
-          <select name="" className={className} id={id}  onChange={handleChangeHoraFin} >
+          <select name="" className={className} id={id}  onChange={handleChangeHoraFin} disabled >
             {horas.map((el,i) => {if(i < posInicial()+1) {return ""} else return <option  value={el} key={el} >{el}</option>})}
           </select>
     </>

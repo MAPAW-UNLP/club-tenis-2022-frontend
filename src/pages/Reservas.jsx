@@ -42,6 +42,12 @@ const Reservas = ({canchas, reservas, setReservas}) => {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
 
+  //diaFormateadopara HTML
+  const mes = ("0" + (new Date().getMonth() + 1)).slice(-2)
+  const day = ("0" + new Date().getDate()).slice(-2)
+  const año = (new Date().getFullYear());
+
+  const today = `${año}-${mes}-${day}` 
 
   const handleTypeChange = (e) =>{
     if(e.target.value !== 'Alquiler'){
@@ -57,8 +63,8 @@ const Reservas = ({canchas, reservas, setReservas}) => {
     
     console.log(e.target.value)
     setDia(e.target.value);
-/*     const nextInput = document.getElementById('horainicio');
-    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;   */
+    const nextInput = document.getElementById('horaInicio');
+    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
   }
 
 
@@ -107,7 +113,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
                 <SelectComponent className={'inputReserva'} id={''} onChange={handleTypeChange} options={['Alquiler']} deshabilitado={false} />
-                <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} />
+                <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
                 
                 
                 {/*  LA IDEA ES USAR LOS COMENTADOS
@@ -115,11 +121,11 @@ const Reservas = ({canchas, reservas, setReservas}) => {
                 <SelectComponent className={'inputReserva'} id={'horaInicio'} onChange={handleSetHoraFin} options={horas} deshabilitado={false}/> */}
                 
                 <SelectHoraInicio id={'horaInicio'}  className={'inputReserva'} setHoraInicio={setHoraInicio}  />
-                <SelectHoraFin  id={'horaInicio'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>         
+                <SelectHoraFin  id={'horaFin'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>         
                 {alquilerOp ? 
                 <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
                 :
-                <button id='continue-btn'> <FontAwesomeIcon id='next-icon' icon={faChevronRight} disabled /> </button>
+                <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>
                 }
            </form>
         </div>

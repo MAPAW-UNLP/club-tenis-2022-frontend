@@ -6,7 +6,6 @@ import InputComponent from './InputComponent';
 import SelectComponent from './SelectComponent';
 
 //FontawesomeIcon
-
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -38,16 +37,9 @@ const AlquilerFormComponent = ({active, canchas,setCancha,setActive, handleAddRe
     {active &&
         <div id='alquilerFormComponent'>
             <hr />
-            <SelectComponent className={'inputReserva'} id={''} onChange={handleChangeSelect} options={canchas}  deshabilitado={true}/>
-          {/*   <select name="" id="" className='inputReserva' onChange={handleChangeSelect}>
-                <option value="">Nada</option>
-                {canchas.map((cancha) => <option key={cancha} value={cancha}>{cancha}</option>)}
-            </select> */}
+            <SelectComponent className={'inputReserva'} id={''} onChange={handleChangeSelect} options={canchas}  deshabilitado={false}/>
             <InputComponent type={'text'} id={'nameInput'} className={'inputReserva'} placeholder={'Nombre'} onChangeFuncion={handleChangeName} deshabilitado={true} />
             <InputComponent type={'number'} id={'telefonoInput'} className={'inputReserva'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/>
-
-           {/*  <input type="text" name="" className='inputReserva' id="nameInput" placeholder='Nombre' disabled onChange={handleChangeName}/> */}
-            {/* <input type="number" name="" className='inputReserva' id="telefonoInput" placeholder='Telefono' disabled onChange={handleChangePhone}/> */}
             <button id='submit-btn' onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
         </div>
     }

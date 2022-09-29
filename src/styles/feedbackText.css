@@ -1,0 +1,5 @@
+.feedback-text{
+    font-family: var(--normal-text);
+    padding: 2%;
+    font-size: 120%;
+}
