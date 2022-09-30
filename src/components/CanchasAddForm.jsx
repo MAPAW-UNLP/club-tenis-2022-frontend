@@ -87,7 +87,7 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
               <option value="azul">Asfalto</option>
             </select>
 
-            <FeedbackText text={feedBack.text} color={feedBack.color}/>
+            <FeedbackText text={feedBack.text} color={feedBack.color} backGroundColor={'red'} active={true}/>
 
             <button id='cancha-add-form-addBtn' type='sumbit' disabled ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}/></button>
           </form>

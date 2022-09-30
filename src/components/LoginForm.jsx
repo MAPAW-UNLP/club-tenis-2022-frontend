@@ -2,11 +2,23 @@ import React from 'react'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 
+//font awesme
+
+
+//components
+import FeedbackText from './FeedbackText'
+
 const LoginForm = () => {
 
+    const URL_BASE="http://localhost:80/api/";
+
+   
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
 
+
+    const [active, setActive] = useState(false);
+    const [activeLoader, setActiveLoader] = useState(false);
     const navigate = useNavigate();
 
    
@@ -17,11 +29,12 @@ const LoginForm = () => {
         const passInput = document.getElementById('input-pass');
         if(e.target.value === ""){
             passInput.disabled = true ;
+            setActive(false);
             setPass("");
             const loginBtn = document.getElementById('login-btn');
             e.target.value === "" ? loginBtn.disabled = true: loginBtn.disabled = false;
-            const link= document.getElementById('linkLogin');
-            link.className = 'disabledLink';
+/*             const link= document.getElementById('linkLogin');
+            link.className = 'disabledLink'; */
             
         }
         else passInput.disabled = false;  
@@ -29,20 +42,40 @@ const LoginForm = () => {
 
     const handlePassChange = (e) =>{
         setPass(e.target.value);
+        setActive(false);
         const loginBtn = document.getElementById('login-btn');
         e.target.value === "" ? loginBtn.disabled = true: loginBtn.disabled = false;
 
-        const link= document.getElementById('linkLogin');
-        link.className = 'linkLogin-active';
+      /*   const link= document.getElementById('linkLogin');
+        link.className = 'linkLogin active'; */
 
     }
 
     const habldeSubmit = (e) =>{
         e.preventDefault();
-        navigate('../inicio')
-        /* Aca en el onClick del submit hacer el post a la API para chequear que sea el admin. Sino devolver un msje de error*/
-        
-    }
+        setActiveLoader(true);
+        const requestOptions={
+            method: 'POST',
+            body: JSON.stringify({ user: user, password: pass})
+         } ;
+         fetch(`${URL_BASE}usuario`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                if(data.rta === 'ok'){
+
+                    
+                    //setear sesion  + poner algo que esta cargando D:
+                    setActiveLoader(false);
+                    navigate('../inicio')
+                }
+                else{
+                    setActive(true);
+                    const loginBtn = document.getElementById('login-btn');
+                    loginBtn.disabled = true;
+                    setActiveLoader(false);
+                }
+            })    
+        }
 
 
     return (
@@ -53,7 +86,12 @@ const LoginForm = () => {
                 <input type="password" name="" id="input-pass" className='login-form-input' value={pass} placeholder='Contraseña' onChange={handlePassChange}disabled/>
                 {/* <button type="submit" id='login-btn' className='login-form-btn' disabled onClick={habldeSubmit}><Link to="/inicio" id='linkLogin' className='disabledLink'> Iniciar Sesion </Link></button>
                  */}
-                 <button type="submit" id='login-btn' className='login-form-btn' disabled >Iniciar Sesion </button>
+                
+                <FeedbackText text={"El usuario o contraseña es invalido"} color={"#F4F4F4"} backGroundColor={"#CC3636"} active={active}  />
+                 
+                <button type="submit" id='login-btn' className='login-form-btn' disabled >Iniciar Sesion 
+                    {activeLoader? <div id='contenedor'><div className='loader' id='loader'></div></div>: ""} 
+                </button>
             </form>
         </div>
   )

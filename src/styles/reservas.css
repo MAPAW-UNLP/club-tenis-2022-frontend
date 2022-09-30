@@ -103,6 +103,5 @@ hr{
 }
 
 #submit-btn:disabled{
-    background-color: var(--neutral-black);
-    
+    background-color: var(--neutral-black);  
 }
