@@ -20,6 +20,7 @@ const Canchas = ({canchas, setCanchas}) => {
   }
 
   
+  
   return (
     <div id='canchas-component'>
       <NavBar title={'Canchas'} />
