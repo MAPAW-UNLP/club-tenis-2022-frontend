@@ -32,12 +32,10 @@
     justify-content: flex-start;   
     position: relative;
     font-weight: 300;
-    
-    
+
     
 }
 #navBar-list  li{
-
     margin-right: 3%;
 }
 #navBar-list li:first-child{
@@ -50,17 +48,11 @@
     color: var(--accent-tennis-green);
 }
 
-/* #navBar-list:active{
-    font-weight: 600;
-    color: var(--accent-tennis-green);
-} */
 
-#navBar-component h1{
-    
+
+#navBar-component h1{   
     text-align: center;
     margin-top: 15vh;
-    
-
     font-size: 400%;
     font-family: var(--title-text);
     color: var(--neutral-white-text);
@@ -69,11 +61,44 @@
 .link{
     text-decoration: none;
     color: var(--neutral-black);
+    padding: 3% 1rem;
+    border-top-right-radius: 20px;  
+    border-bottom-right-radius: 20px; 
+    border-left: 3px solid var(--accent-tennis-green);
+
+    transition: all 0.5s ease;
 }
 
-.link.active{
+.link:hover{
     color: var(--accent-tennis-green);
-    font-weight: 500;
+    border-right: 2px;
+    border-top-right-radius: 20px ;
+    border-bottom-right-radius: 20px ;
+}
+.link.active{
+    animation-duration: 1s ;
+    animation-iteration-count: 1;
+    animation-name: navActive;
+    animation-timing-function:ease;
+    animation-fill-mode: forwards;  
+}
+
+@keyframes navActive {
+    from{
+        text-decoration: none;
+        color: var(--neutral-black);
+        padding: 3% 1rem;
+        border-top-right-radius: 20px;
+    }
+    to{
+        color: var(--accent-tennis-green);
+        font-weight: 500;
+        font-size: 120%;
+        background-color: var(--neutral-black);
+        padding: 3% 3rem 3% 1rem;
+        border-top-right-radius: 20px;
+    }
+    
 }
 
 .linkCerrarSesion{

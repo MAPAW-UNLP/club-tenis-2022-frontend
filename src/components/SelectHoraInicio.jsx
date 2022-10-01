@@ -6,10 +6,13 @@ const SelectHoraInicio = ({id, className, setHoraInicio}) => {
     
     const handleChangeHoraInicio = (e) =>{
       setHoraInicio(e.target.value);
+
+      const nextInput = document.getElementById('horaFin');
+      e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
     }
     return (
     <>
-      <select name="" className={className} id={id} onChange={handleChangeHoraInicio} >
+      <select name="" className={className} id={id} onChange={handleChangeHoraInicio} disabled >
           <option value="">Hora Inicio</option>
           {horas.map((hora, i) =>{if(i !== horas.length-1){return  <option key={hora}  value={hora}>{hora}</option> } else{return ""}})   }   
       </select>

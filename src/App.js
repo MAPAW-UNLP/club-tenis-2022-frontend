@@ -1,4 +1,4 @@
-
+import { useEffect } from 'react'
 //Components
 import Login from './pages/Login'
 import Home from './pages/Home';
@@ -13,22 +13,32 @@ import './styles/App.css';
 import { Routes, Route} from 'react-router-dom'
 
 //canchasDev
-import canchasDev from './DevDocs/canchas'
+/* import canchasDev from './DevDocs/canchas' */
 import reservasDev from './DevDocs/reservas';
 
 function App() {
 
   //Todo esto podría ir a la store global:
-  const [canchas, setCanchas] = useState(canchasDev);
+  const [canchas, setCanchas] = useState([]);
   const [reservas, setReservas] = useState(reservasDev);
  
+
+  const URL_BASE = `http://localhost:80/api/`;
+  useEffect(() =>{
+    const requestOptions={
+      method: 'GET'
+      } ;
+   fetch(`${URL_BASE}canchas`, requestOptions)
+      .then(response => response.json())
+      .then(data =>  setCanchas(data.detail))
+    }, [canchas]);
  
   return (
     <>
         <div className="App">
           <header className="App-header"></header>
           <Routes>
-            <Route path='/' element={<Login />}></Route>
+            <Route path='/' element={<Login />} ></Route>
             <Route path='/inicio' element={<Home canchas={canchas} reservas={reservas}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setCanchas={setCanchas}/>}></Route>
             <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setReservas={setReservas}/>}></Route>

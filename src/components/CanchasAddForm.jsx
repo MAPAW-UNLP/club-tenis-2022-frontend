@@ -3,25 +3,39 @@ import { useState } from 'react'
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+//Components
+import FeedbackText from './FeedbackText'
 
 const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
 
   
-
+  const URL_BASE = `http://localhost:80/api/`;
   const [nombreCancha, setNombreCancha] = useState("");
   const [option, setOption] = useState("");
+
+  //para el feedback
+  const [feedBack, setFeedBack] = useState({'text': '', 'color':'', 'backGroundColor':'',  'active':false});
 
 
   const handleCanchaNameChange = (e) =>{
     setNombreCancha(e.target.value);
-    if (canchas.map((each) => each.nombre).indexOf(e.target.value) === -1){
+    if (canchas.map((each) => each.nombre.toUpperCase()).indexOf(e.target.value.toUpperCase()) === -1){
       //pregunta se no existe una cancha con el mismo nombre
       const selectTipo = document.getElementById('cancha-add-form-select');
-      e.target.value === "" ? selectTipo.disabled = true: selectTipo.disabled = false; 
+      if (e.target.value === ""){
+        setFeedBack({...feedBack, 'text': '','color': '', 'backGroundColor':'', 'active': false})
+        selectTipo.disabled = true; 
+      }
+      else{
+        setFeedBack({...feedBack, 'text': 'El nombre de la cancha es correcto','color': '#F4F4F4', 'backGroundColor':'#7CBD1E', 'active': true})        
+        selectTipo.disabled = false;
+      }
     }
     else{
       //avisar mediante feedback que no puede haber una cancha repetida
+      setFeedBack({...feedBack, 'text': 'El nombre de la cancha es igual a una existente','color': '#F4F4F4','backGroundColor': '#CC3636', 'active': true})
       const selectTipo = document.getElementById('cancha-add-form-select');
+      setOption("");
       selectTipo.disabled = true;
       const addBtn = document.getElementById('cancha-add-form-addBtn');
       addBtn.disabled = true;
@@ -37,18 +51,28 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
   const handleClickaddCourt = (e) =>{
     //Aca meter un feedback de que la cancha se agrego correctamente
     e.preventDefault(); 
-    const nuevaCancha = {id:Math.random(99999) , nombre: nombreCancha, tipo: option}
+    /* const nuevaCancha = {id:Math.random(99999) , nombre: nombreCancha, tipo: option}
     console.log(nuevaCancha)
-    setCanchas((canchas) => [...canchas, nuevaCancha]);
+    setCanchas((canchas) => [...canchas, nuevaCancha]); */
     setOption("");
     setNombreCancha("");
+    setFeedBack({...feedBack, 'text': '','color': '', 'backGroundColor':'', 'active': false})
     setActived((actived) => false );
+    const requestOptions={
+      method: 'POST',
+      body: JSON.stringify({ nombre: nombreCancha, tipo: option})
+   } ;
+   fetch(`${URL_BASE}cancha`, requestOptions)
+      .then(response => response.json())
+  
   }
 
   const handleCloseForm = () =>{
     setOption("");
     setNombreCancha("");
     setActived(false);
+    setFeedBack({...feedBack, 'text': '','color': ''})
+    
   }
 
   /* Faltaria que el submit agregue la nueva cancha al sistema con un post (ahora provisorio) y que chequee que no exista otra chequear bien el formulario */
@@ -67,6 +91,9 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
               <option value="verde">Hierba</option>
               <option value="azul">Asfalto</option>
             </select>
+
+            <FeedbackText text={feedBack.text} color={feedBack.color} backGroundColor={feedBack.backGroundColor} active={true}/>
+
             <button id='cancha-add-form-addBtn' type='sumbit' disabled ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}/></button>
           </form>
         </div>

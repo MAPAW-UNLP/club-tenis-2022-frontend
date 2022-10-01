@@ -9,27 +9,39 @@ import Home from './Home';
 import Canchas from './Canchas';
 import Reservas from './Reservas';
 import Login from './Login';
+import LinkItem from '../components/LinkItem';
 
 import '../styles/navbar.css'
+import { useState } from 'react';
 
 
 const NavBar = ({title}) => {
 
     
+    const [active, setActive] = useState('link');
     
-    
-    const linkSetActive = (e) =>{
-           console.log() 
-    }
+
+
+    useEffect(() =>{
+        //cambia la clase active del nav y se las saca a los que no lo tienen
+        var pathName = window.location.pathname.replace('/', '').split(" ").join(" ");
+        pathName = pathName.charAt(0).toUpperCase() + pathName.slice(1);
+        const links = Array.from(document.getElementsByClassName('link'));
+        links.map(el => {
+            if(el.innerHTML === pathName) el.className += ' active';
+            else{ el.className = 'link'}
+        })
+    }, [active])
+
   return (
       
       <div id='navBar-component'>
           <div id='navBar-transparent'></div>
           <nav id='navBar'>
-              <ul id='navBar-list' onClick={linkSetActive} >
-                  <li> <Link to="/inicio"  className='link' onClick={linkSetActive}>Inicio </Link> </li>
-                  <li> <Link to="/canchas" className='link' onClick={linkSetActive}> Canchas </Link> </li>
-                  <li> <Link to="/reservas" className='link' onClick={linkSetActive}> Reservas </Link></li>
+              <ul id='navBar-list'  >
+                  <LinkItem to={'/inicio'}  setActive={setActive} name={'Inicio'}/>
+                  <LinkItem to={'/canchas'}  setActive={setActive} name={'Canchas'}/>
+                  <LinkItem to={'/reservas'}  setActive={setActive} name={'Reservas'}/>
                   <li> <Link to="/" className='linkCerrarSesion'>Cerrar Sesión </Link></li>
               </ul>
           </nav>
