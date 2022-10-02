@@ -4,8 +4,6 @@ import {useNavigate} from 'react-router-dom'
 
 import NavBar from './NavBar'
 import Reserva from '../components/Reserva'
-/* ReservaBuf */
-import ReservaBUG from '../components/ReservaBUG'
 
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -68,10 +66,8 @@ const Home = ({canchas, reservas}) => {
             {horas.map((el, i) => <div className='horas' key={el} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
             {canchas.map((el, i) => <div className='canchas' key={el.nombre} style={{gridArea: `1/${i+2} / 2/${i+3}`}} > {el.nombre} </div>)}
           
-           {/*  { reservas.map((el) => <Reserva>  </Reserva>)} */}
-            {reservas.map((reserva) => <ReservaBUG fecha={reserva.fecha}> </ReservaBUG>)
-              
-            }
+            { reservas.map((el) => <Reserva>  </Reserva>)}
+            {/* {reservas.map((reserva) => <ReservaBUG fecha={reserva.fecha}> </ReservaBUG>) } */}
           
           </div>
         </div>
