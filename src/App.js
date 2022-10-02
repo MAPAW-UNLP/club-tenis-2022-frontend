@@ -14,13 +14,13 @@ import { Routes, Route} from 'react-router-dom'
 
 //canchasDev
 /* import canchasDev from './DevDocs/canchas' */
-import reservasDev from './DevDocs/reservas';
+/* import reservasDev from './DevDocs/reservas'; */
 
 function App() {
 
   //Todo esto podría ir a la store global:
   const [canchas, setCanchas] = useState([]);
-  const [reservas, setReservas] = useState(reservasDev);
+  const [reservas, setReservas] = useState([]);
  
 
   const URL_BASE = `http://localhost:80/api/`;
@@ -32,6 +32,16 @@ function App() {
       .then(response => response.json())
       .then(data =>  setCanchas(data.detail))
     }, [canchas]);
+
+
+  useEffect(() => {
+    const requestOptions={
+      method: 'GET'
+      } ;
+    fetch(`${URL_BASE}reservas`, requestOptions)
+      .then(response => response.json())
+      .then(data => setReservas(data.detail))
+  }, [reservas])
  
   return (
     <>

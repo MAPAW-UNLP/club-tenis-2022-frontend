@@ -75,8 +75,7 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
     
   }
 
-  /* Faltaria que el submit agregue la nueva cancha al sistema con un post (ahora provisorio) y que chequee que no exista otra chequear bien el formulario */
-  return (
+   return (
     <>
       {actived &&
         <div id='cancha-add-component'>

@@ -25,7 +25,6 @@ const Canchas = ({canchas, setCanchas}) => {
     <div id='canchas-component'>
       <NavBar title={'Canchas'} />
 
-
       <div id='canchas-info'>
         <button id='canchas-add-btn' onClick={handleactivateForm}> <FontAwesomeIcon icon={faPlusCircle}/></button>
         <CanchasAddForm actived={actived}   setActived={setActived} setCanchas={setCanchas} canchas={canchas}/>

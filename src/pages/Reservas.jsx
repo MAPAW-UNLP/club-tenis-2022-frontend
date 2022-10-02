@@ -99,6 +99,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
   
   const handleAddReserva = () =>{
     const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
+    console.log(newReserva);
     setReservas([...reservas, newReserva ])
     //hacer el post y agregar el mensaje de confirmacion  
     navigate('../inicio');
