@@ -19,6 +19,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 
 
+const URL_BASE = `http://localhost:80/api/`;
 
 
 
@@ -98,9 +99,33 @@ const Reservas = ({canchas, reservas, setReservas}) => {
 
   
   const handleAddReserva = () =>{
-    const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
-    setReservas([...reservas, newReserva ])
+    const newReserva = {
+      'tipo': reservaTipo,
+      'hora_ini': horaInicio,
+      'hora_fin': horaFin,
+      'nombre': nombre,
+      'telefono': telefono,
+      'fecha': dia.replaceAll('-',''),
+      // 'cancha': cancha
+      'cancha_id': 2
+    }
+    // setReservas([...reservas, newReserva ])
+
+    const formData = new FormData();
+    for ( var key in newReserva ) {
+      formData.append(key, newReserva[key]);
+    }
+   
     //hacer el post y agregar el mensaje de confirmacion  
+    const requestOptions={
+      method: 'POST',
+      body:  formData 
+   } ;
+   fetch(`${URL_BASE}reserva`, requestOptions)
+      .then(response => {
+        return response.json()
+      })
+
     navigate('../inicio');
     console.log(newReserva);
   }

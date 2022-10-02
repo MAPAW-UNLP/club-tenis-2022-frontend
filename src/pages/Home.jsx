@@ -66,7 +66,24 @@ const Home = ({canchas, reservas}) => {
             {horas.map((el, i) => <div className='horas' key={el} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
             {canchas.map((el, i) => <div className='canchas' key={el.nombre} style={{gridArea: `1/${i+2} / 2/${i+3}`}} > {el.nombre} </div>)}
           
-            {reservas.map((reserva) => <Reserva key={reserva.id} datos={reserva} canchas={canchas} today={today}/>)}
+            {reservas.map((reserva) => {
+              let data;
+              if (reserva.titular){
+                 data = {
+                  dia: reserva.fecha,
+                  horaInicio: reserva.horaIni,
+                  horaFin: reserva.horaFin,
+                  cancha: reserva.canchaNombre,
+                  nombre: `${reserva.titular.nombre} ${reserva.titular.apellido}`,
+                  tipo: reserva.tipo,
+                  telefono: reserva.titular.telefono,
+                };
+              } else {
+                 data = {...reserva}
+              }
+                
+            return <Reserva key={reserva.reservaId} datos={data} canchas={canchas} today={today} />
+          })}
           </div>
         </div>
 
