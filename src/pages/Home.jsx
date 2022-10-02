@@ -66,7 +66,7 @@ const Home = ({canchas, reservas}) => {
             {horas.map((el, i) => <div className='horas' key={el} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
             {canchas.map((el, i) => <div className='canchas' key={el.nombre} style={{gridArea: `1/${i+2} / 2/${i+3}`}} > {el.nombre} </div>)}
           
-            { reservas.map((el) => <Reserva>  </Reserva>)}
+            { reservas.map((el) => <Reserva key={el} datos={el} canchas={canchas} today={today} />  )}
             {/* {reservas.map((reserva) => <ReservaBUG fecha={reserva.fecha}> </ReservaBUG>) } */}
           
           </div>

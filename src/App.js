@@ -34,14 +34,14 @@ function App() {
     }, [canchas]);
 
 
-  useEffect(() => {
+/*   useEffect(() => {
     const requestOptions={
       method: 'GET'
       } ;
     fetch(`${URL_BASE}reservas`, requestOptions)
       .then(response => response.json())
       .then(data => setReservas(data.detail))
-  }, [reservas])
+  }, [reservas]) */
  
   return (
     <>
