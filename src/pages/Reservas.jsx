@@ -82,7 +82,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
       }
     }).filter((el) => el !== undefined);
 
-    return canchas.filter((cancha) => nombresCanchasNoDisponibles.indexOf(cancha.nombre) === -1 ).map((el) => el.nombre)
+    return canchas.filter((cancha) => nombresCanchasNoDisponibles.indexOf(cancha.nombre) === -1 ).map((el) => el)
 
   }
 
@@ -98,12 +98,28 @@ const Reservas = ({canchas, reservas, setReservas}) => {
 
   
   const handleAddReserva = () =>{
-    const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
+    const URL_BASE = `http://localhost:80/api/`
+ /*    const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
     console.log(newReserva);
-    setReservas([...reservas, newReserva ])
+    setReservas([...reservas, newReserva ]) */
     //hacer el post y agregar el mensaje de confirmacion  
+    const reserva = { nombre: nombre, telefono: telefono, "fecha": dia , cancha_id : cancha, hora_ini: horaInicio , hora_fin: horaFin}
+    const form_data = new FormData();
+
+    for (var r in reserva){
+      form_data.append(r, reserva[r]);
+    }
+    const requestOptions={
+      method: 'POST',
+      body: form_data
+    } ;
+   fetch(`${URL_BASE}reserva`, requestOptions)
+      .then(console.log(requestOptions))
+      .then(response => console.log(response))
+  
+
     navigate('../inicio');
-    console.log(newReserva);
+
   }
 
   

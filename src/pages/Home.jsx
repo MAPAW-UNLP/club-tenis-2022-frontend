@@ -30,7 +30,7 @@ const Home = ({canchas, reservas}) => {
   const año = (new Date().getFullYear());
   const DIA_EN_MILISEGUNDOS = 24*60*60*1000; //esto para devolver el ayer y el mañana
 
-  const DateToday = `${dia}-${mes}-${año}`
+  const DateToday = `${año}-${mes}-${dia}`
   const dateMuestra = `${dia}-${mes}`;
 
   const [today, setToday] = useState(DateToday);
@@ -40,7 +40,7 @@ const Home = ({canchas, reservas}) => {
   
   const handleChangeDate = (e) =>{
     setToday(e.target.value);
-    
+    console.log(today);
     const fecha = (e.target.value).split("-");
     setDiaVisible(`${fecha[2]}-${fecha[1]}`);
     setMesVisible(`${meses[fecha[1]-1]}`);
@@ -66,9 +66,7 @@ const Home = ({canchas, reservas}) => {
             {horas.map((el, i) => <div className='horas' key={el} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
             {canchas.map((el, i) => <div className='canchas' key={el.nombre} style={{gridArea: `1/${i+2} / 2/${i+3}`}} > {el.nombre} </div>)}
           
-            { reservas.map((el) => <Reserva key={el} datos={el} canchas={canchas} today={today} />  )}
-            {/* {reservas.map((reserva) => <ReservaBUG fecha={reserva.fecha}> </ReservaBUG>) } */}
-          
+            { reservas.map((el) => <Reserva key={el} datos={el} canchas={canchas} today={today} />  )}          
           </div>
         </div>
 

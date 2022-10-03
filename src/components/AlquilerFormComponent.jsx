@@ -38,7 +38,11 @@ const AlquilerFormComponent = ({active, canchas,setCancha,setActive, handleAddRe
     {active &&
         <div id='alquilerFormComponent'>
             <hr />
-            <SelectComponent className={'inputReserva'} id={''} onChange={handleChangeSelect} options={canchas}  deshabilitado={false}/>
+            <select name="" className='inputReserva' id="" onChange={handleChangeSelect} >
+              <option value="">Nada</option>
+              {canchas.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
+            </select>
+            
             <InputComponent type={'text'} id={'nameInput'} className={'inputReserva'} placeholder={'Nombre'} onChangeFuncion={handleChangeName} deshabilitado={true} />
             <InputComponent type={'number'} id={'telefonoInput'} className={'inputReserva'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/>
             <button id='submit-btn' onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   

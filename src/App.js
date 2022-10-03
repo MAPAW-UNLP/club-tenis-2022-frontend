@@ -33,15 +33,16 @@ function App() {
       .then(data =>  setCanchas(data.detail))
     }, [canchas]);
 
-
-/*   useEffect(() => {
-    const requestOptions={
-      method: 'GET'
-      } ;
-    fetch(`${URL_BASE}reservas`, requestOptions)
-      .then(response => response.json())
-      .then(data => setReservas(data.detail))
-  }, [reservas]) */
+    /* Lo voy a hacer con alquileres porque el GET de reservas salta. 
+    A posteriori hay que arreglar eso y que haga un GET de reservas por aca */   
+    useEffect(() =>{
+      const requestOptions={
+        method: 'GET'
+      };
+      fetch(`${URL_BASE}reservas`, requestOptions)
+        .then(response => response.json())
+        .then(data => setReservas(data.detail))
+    }, [reservas])
  
   return (
     <>
