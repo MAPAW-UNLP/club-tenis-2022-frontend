@@ -6,7 +6,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 //Components
 import FeedbackText from './FeedbackText'
 
-const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
+const CanchasAddForm = ({actived, setActived, setCanchas, canchas, setActivedLoader}) => {
 
   
   const URL_BASE = `http://localhost:80/api/`;
@@ -51,9 +51,7 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
   const handleClickaddCourt = (e) =>{
     //Aca meter un feedback de que la cancha se agrego correctamente
     e.preventDefault(); 
-    /* const nuevaCancha = {id:Math.random(99999) , nombre: nombreCancha, tipo: option}
-    console.log(nuevaCancha)
-    setCanchas((canchas) => [...canchas, nuevaCancha]); */
+    setActivedLoader((prevValue) => !prevValue);
     setOption("");
     setNombreCancha("");
     setFeedBack({...feedBack, 'text': '','color': '', 'backGroundColor':'', 'active': false})
@@ -64,7 +62,7 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas}) => {
    } ;
    fetch(`${URL_BASE}cancha`, requestOptions)
       .then(response => response.json())
-  
+      .then(response=> setActivedLoader((prevValue) => !prevValue))
   }
 
   const handleCloseForm = () =>{

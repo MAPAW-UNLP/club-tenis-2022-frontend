@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 
 //components
 import FeedbackText from './FeedbackText'
+import LoaderSpinner from './LoaderSpinner'
 
 const LoginForm = () => {
 
@@ -90,7 +91,7 @@ const LoginForm = () => {
                 <FeedbackText text={"El usuario o contraseña es invalido"} color={"#F4F4F4"} backGroundColor={"#CC3636"} active={active}  />
                  
                 <button type="submit" id='login-btn' className='login-form-btn' disabled >Iniciar Sesion 
-                    {activeLoader? <div id='contenedor'><div className='loader' id='loader'></div></div>: ""} 
+                    {<LoaderSpinner active={activeLoader} containerClass={'contenedorLogin'} loaderClass={'loader'} />} 
                 </button>
             </form>
         </div>
