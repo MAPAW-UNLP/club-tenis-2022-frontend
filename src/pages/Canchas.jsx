@@ -10,7 +10,7 @@ import CanchasAddForm from '../components/CanchasAddForm'
 import CanchasList from '../components/CanchasList'
 import LoaderSpinner from '../components/LoaderSpinner'
 
-const Canchas = ({canchas, setCanchas}) => {
+const Canchas = ({canchas, setActCanchas}) => {
 
   //>Ahora provisorio. Despues llamar a la api y cargar
   
@@ -29,7 +29,7 @@ const Canchas = ({canchas, setCanchas}) => {
 
       <div id='canchas-info'>
         <button id='canchas-add-btn' onClick={handleactivateForm}> <FontAwesomeIcon icon={faPlusCircle}/></button>
-        <CanchasAddForm actived={actived}   setActived={setActived} setCanchas={setCanchas} canchas={canchas} setActivedLoader={setActivedLoader}/>
+        <CanchasAddForm actived={actived}   setActived={setActived}  canchas={canchas} setActivedLoader={setActivedLoader} setActCanchas={setActCanchas}/>
         <CanchasList canchas={canchas}/>
       </div>
       <LoaderSpinner active={activedLoader} containerClass={'canchasLoader'} loaderClass={'canchasLoaderSpinner'} />

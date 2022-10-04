@@ -22,7 +22,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Reservas = ({canchas, reservas, setReservas}) => {
+const Reservas = ({canchas, reservas, setActReservas}) => {
 
   //navegacion
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
   const [horaInicio, setHoraInicio] = useState("");
   const [horaFin, setHoraFin] = useState("");
   
-  const horas = ["8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"]
+  const horas = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00"]
   
 
   //alquiler
@@ -61,7 +61,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
 
   const handleDayChange = (e) =>{
     
-    console.log(e.target.value)
+  
     setDia(e.target.value);
     const nextInput = document.getElementById('horaInicio');
     e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
@@ -77,8 +77,8 @@ const Reservas = ({canchas, reservas, setReservas}) => {
     //este algoritmo se por un lado se queda con los nombres de las canchas no disponibles y luego devuelve los nombres de las canchas que no aparecen en el primer arrreglo
     const nombresCanchasNoDisponibles = reservas.map((reserva) => 
     {
-      if((reserva.dia === dia)&&((horas.indexOf(horaFin) >= horas.indexOf(reserva.horaInicio))&&(horas.indexOf(horaInicio) <= horas.indexOf(reserva.horaFin)))){
-        return reserva.cancha
+      if((reserva.fecha === dia)&&((horas.indexOf(horaFin) >= horas.indexOf(reserva.horaIni))&&(horas.indexOf(horaInicio) <= horas.indexOf(reserva.horaFin)))){
+        return reserva.canchaNombre
       }
     }).filter((el) => el !== undefined);
 
@@ -94,15 +94,9 @@ const Reservas = ({canchas, reservas, setReservas}) => {
     setHoraFin(e.target.value)
   }
 
- 
-
   
   const handleAddReserva = () =>{
     const URL_BASE = `http://localhost:80/api/`
- /*    const newReserva = {'tipo': reservaTipo, 'horaInicio': horaInicio, 'horaFin': horaFin, 'nombre': nombre, 'telefono': telefono, 'dia': dia, 'cancha': cancha}
-    console.log(newReserva);
-    setReservas([...reservas, newReserva ]) */
-    //hacer el post y agregar el mensaje de confirmacion  
     const reserva = { nombre: nombre, telefono: telefono, "fecha": dia , cancha_id : cancha, hora_ini: horaInicio , hora_fin: horaFin}
     const form_data = new FormData();
 
@@ -114,12 +108,8 @@ const Reservas = ({canchas, reservas, setReservas}) => {
       body: form_data
     } ;
    fetch(`${URL_BASE}reserva`, requestOptions)
-      .then(console.log(requestOptions))
-      .then(response => console.log(response))
-  
-
-    navigate('../inicio');
-
+      .then(response => setActReservas((v) => !v))
+      .finally(navigate('../inicio'));
   }
 
   

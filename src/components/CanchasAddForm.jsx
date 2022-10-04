@@ -6,7 +6,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 //Components
 import FeedbackText from './FeedbackText'
 
-const CanchasAddForm = ({actived, setActived, setCanchas, canchas, setActivedLoader}) => {
+const CanchasAddForm = ({actived, setActived, canchas, setActivedLoader, setActCanchas}) => {
 
   
   const URL_BASE = `http://localhost:80/api/`;
@@ -63,6 +63,8 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas, setActivedLoa
    fetch(`${URL_BASE}cancha`, requestOptions)
       .then(response => response.json())
       .then(response=> setActivedLoader((prevValue) => !prevValue))
+      .finally(response => setActCanchas((v) => !v))
+      
   }
 
   const handleCloseForm = () =>{

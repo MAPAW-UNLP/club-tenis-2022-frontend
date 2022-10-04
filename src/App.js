@@ -21,6 +21,9 @@ function App() {
   //Todo esto podría ir a la store global:
   const [canchas, setCanchas] = useState([]);
   const [reservas, setReservas] = useState([]);
+
+  const [actCanchas, setActCanchas] = useState(false);
+  const [actReservas, setActReservas] = useState(false);
  
 
   const URL_BASE = `http://localhost:80/api/`;
@@ -31,10 +34,9 @@ function App() {
    fetch(`${URL_BASE}canchas`, requestOptions)
       .then(response => response.json())
       .then(data =>  setCanchas(data.detail))
-    }, [canchas]);
+    }, [actCanchas]);
 
-    /* Lo voy a hacer con alquileres porque el GET de reservas salta. 
-    A posteriori hay que arreglar eso y que haga un GET de reservas por aca */   
+    //Con las reservas
     useEffect(() =>{
       const requestOptions={
         method: 'GET'
@@ -42,7 +44,7 @@ function App() {
       fetch(`${URL_BASE}reservas`, requestOptions)
         .then(response => response.json())
         .then(data => setReservas(data.detail))
-    }, [reservas])
+    }, [actReservas])
  
   return (
     <>
@@ -51,8 +53,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Login />} ></Route>
             <Route path='/inicio' element={<Home canchas={canchas} reservas={reservas}/>}></Route>
-            <Route path='/canchas' element={<Canchas canchas={canchas} setCanchas={setCanchas}/>}></Route>
-            <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setReservas={setReservas}/>}></Route>
+            <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas}/>}></Route>
+            <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas}/>}></Route>
           </Routes>
         </div>
     </>
