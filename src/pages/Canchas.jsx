@@ -26,13 +26,13 @@ const Canchas = ({canchas, setActCanchas, activedLoader, setActivedLoader}) => {
   return (
     <div id='canchas-component'>
       <NavBar title={'Canchas'} />
-
+       <LoaderSpinner active={activedLoader} containerClass={'canchasLoader'} loaderClass={'canchasLoaderSpinner'} />
       <div id='canchas-info'>
         <button id='canchas-add-btn' onClick={handleactivateForm}> <FontAwesomeIcon icon={faPlusCircle}/></button>
         <CanchasAddForm actived={actived}   setActived={setActived}  canchas={canchas} setActivedLoader={setActivedLoader} setActCanchas={setActCanchas}/>
         <CanchasList canchas={canchas}/>
       </div>
-      <LoaderSpinner active={activedLoader} containerClass={'canchasLoader'} loaderClass={'canchasLoaderSpinner'} />
+     
     </div>
   )
 }

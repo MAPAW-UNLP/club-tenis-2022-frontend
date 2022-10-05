@@ -46,6 +46,7 @@ function App() {
         method: 'GET'
       };
       fetch(`${URL_BASE}reservas`, requestOptions)
+        .then(setReservasLoader(true))
         .then(response => response.json())
         .then(data => setReservas(data.detail))
         .then(response => setReservasLoader((v) => false))

@@ -4,7 +4,8 @@
     left: 40vw;
     width: 20vw;
     height: 20vh;
-    margin-top: -20%;
+    top: 50%;
+    z-index: 10;
 }
 
 .canchasLoaderSpinner {
@@ -14,19 +15,19 @@
     width: 2em;
     height: 2em;
     border-radius: 50%;
-    background: var(--neutral-black);
-    background: -moz-linear-gradient(left, var(--neutral-black) 10%, rgba(255, 255, 255, 0) 42%);
-    background: -webkit-linear-gradient(left, var(--neutral-black) 10%, rgba(255, 255, 255, 0) 42%);
-    background: -o-linear-gradient(left, var(--neutral-black) 10%, rgba(255, 255, 255, 0) 42%);
-    background: -ms-linear-gradient(left, var(--neutral-black) 10%, rgba(255, 255, 255, 0) 42%);
-    background: linear-gradient(to right, var(--neutral-black) 10%, rgba(255, 255, 255, 0) 42%);
+    background: var(--neutral-white);
+    background: -moz-linear-gradient(left, var(--neutral-whitek) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, var(--neutral-white) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(left, var(--neutral-white) 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, var(--neutral-white) 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, var(--neutral-white) 10%, rgba(255, 255, 255, 0) 42%);
     -webkit-animation: load3 1.4s infinite linear;
     animation: load3 1.4s infinite linear;
   }
   .canchasLoaderSpinner:before {
     width: 50%;
     height: 50%;
-    background: var(--neutral-black);
+    background: var(--neutral-white);
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;
