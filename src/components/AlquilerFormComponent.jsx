@@ -36,6 +36,7 @@ const AlquilerFormComponent = ({active, canchas,setCancha,setActive, handleAddRe
   return (
     <>
     {active &&
+      
         <div id='alquilerFormComponent'>
             <hr />
             <select name="" className='inputReserva' id="" onChange={handleChangeSelect} >
