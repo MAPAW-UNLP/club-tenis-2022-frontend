@@ -129,7 +129,7 @@ const Reservas = ({canchas, reservas, setReservas}) => {
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
-                <SelectComponent className={'inputReserva'} id={''} onChange={handleTypeChange} options={['Alquiler']} deshabilitado={false} />
+                <SelectComponent className={'inputReserva'} id={''} onChange={handleTypeChange} options={['Alquiler']} deshabilitado={false} placeholder={'Tipo de Reserva'} />
                 <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
                 
                 

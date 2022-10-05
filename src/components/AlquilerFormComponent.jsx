@@ -39,7 +39,7 @@ const AlquilerFormComponent = ({active, canchas,setCancha,setActive, handleAddRe
         <div id='alquilerFormComponent'>
             <hr />
             <select name="" className='inputReserva' id="" onChange={handleChangeSelect} >
-              <option value="">Nada</option>
+              <option value="">Cancha</option>
               {canchas.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>
             

@@ -83,7 +83,7 @@ const CanchasAddForm = ({actived, setActived, setCanchas, canchas, setActivedLoa
             <input type="text" name="" id="" placeholder='Nombre' className='cancha-add-form-input' onChange={handleCanchaNameChange} value={nombreCancha}/>
             <select name="" id='cancha-add-form-select' disabled onChange={handleSelect} value={option} >
               
-              <option value="" >Nada</option>
+              <option value="" >Tipo</option>
               <option value="roja" >Tierra batida</option>
               <option value="verde">Hierba</option>
               <option value="azul">Asfalto</option>
