@@ -1,20 +1,17 @@
 import { useEffect } from 'react'
+import { useState } from 'react';
 //Components
 import Login from './pages/Login'
 import Home from './pages/Home';
 import Canchas from "./pages/Canchas";
 import Reservas from "./pages/Reservas" 
-//react
-import { useState } from 'react';
+
 //Style
 import './styles/App.css';
 
 //routes react
 import { Routes, Route} from 'react-router-dom'
 
-//canchasDev
-/* import canchasDev from './DevDocs/canchas' */
-/* import reservasDev from './DevDocs/reservas'; */
 
 function App() {
 
@@ -24,9 +21,14 @@ function App() {
 
   const [actCanchas, setActCanchas] = useState(false);
   const [actReservas, setActReservas] = useState(false);
+
+  /* Loaders */
+  const [activedLoader, setActivedLoader] = useState(false);
+  const [reservasLoader, setReservasLoader] = useState(false);
  
 
   const URL_BASE = `http://localhost:80/api/`;
+
   useEffect(() =>{
     const requestOptions={
       method: 'GET'
@@ -34,6 +36,8 @@ function App() {
    fetch(`${URL_BASE}canchas`, requestOptions)
       .then(response => response.json())
       .then(data =>  setCanchas(data.detail))
+      .then(response => setActivedLoader((prevValue) => !prevValue)); //siempre aca da false
+      /* Desactivar spinner */
     }, [actCanchas]);
 
     //Con las reservas
@@ -44,6 +48,8 @@ function App() {
       fetch(`${URL_BASE}reservas`, requestOptions)
         .then(response => response.json())
         .then(data => setReservas(data.detail))
+        .then(response => setReservasLoader((v) => false))
+        /* Desactivar Spinner */
     }, [actReservas])
  
   return (
@@ -52,9 +58,9 @@ function App() {
           <header className="App-header"></header>
           <Routes>
             <Route path='/' element={<Login />} ></Route>
-            <Route path='/inicio' element={<Home canchas={canchas} reservas={reservas}/>}></Route>
-            <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas}/>}></Route>
-            <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas}/>}></Route>
+            <Route path='/inicio' element={<Home canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
+            <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
+            <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas}   setReservasLoader={setReservasLoader} /> }></Route>
           </Routes>
         </div>
     </>

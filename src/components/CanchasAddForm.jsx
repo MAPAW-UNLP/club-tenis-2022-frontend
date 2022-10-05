@@ -62,7 +62,6 @@ const CanchasAddForm = ({actived, setActived, canchas, setActivedLoader, setActC
    } ;
    fetch(`${URL_BASE}cancha`, requestOptions)
       .then(response => response.json())
-      .then(response=> setActivedLoader((prevValue) => !prevValue))
       .finally(response => setActCanchas((v) => !v))
       
   }

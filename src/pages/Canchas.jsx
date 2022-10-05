@@ -10,12 +10,12 @@ import CanchasAddForm from '../components/CanchasAddForm'
 import CanchasList from '../components/CanchasList'
 import LoaderSpinner from '../components/LoaderSpinner'
 
-const Canchas = ({canchas, setActCanchas}) => {
+const Canchas = ({canchas, setActCanchas, activedLoader, setActivedLoader}) => {
 
   //>Ahora provisorio. Despues llamar a la api y cargar
   
   const [actived, setActived] = useState(false);
-  const [activedLoader, setActivedLoader] = useState(false);
+  
 
   const handleactivateForm = () =>{
     setActived((actived) => true);

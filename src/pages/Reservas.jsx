@@ -22,7 +22,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Reservas = ({canchas, reservas, setActReservas}) => {
+const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
 
   //navegacion
   const navigate = useNavigate();
@@ -109,6 +109,7 @@ const Reservas = ({canchas, reservas, setActReservas}) => {
     } ;
    fetch(`${URL_BASE}reserva`, requestOptions)
       .then(response => setActReservas((v) => !v))
+      .then(setReservasLoader((v) => v = true))
       .finally(navigate('../inicio'));
   }
 

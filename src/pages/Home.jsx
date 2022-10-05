@@ -2,9 +2,10 @@ import React, {useState} from 'react'
 //react router
 import {useNavigate} from 'react-router-dom'
 
+//components
 import NavBar from './NavBar'
 import Reserva from '../components/Reserva'
-
+import LoaderSpinner from '../components/LoaderSpinner'
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faCaretRight, faCaretLeft } from '@fortawesome/free-solid-svg-icons'
@@ -16,7 +17,7 @@ import '../styles/home.css'
 
 
 
-const Home = ({canchas, reservas}) => {
+const Home = ({canchas, reservas, reservasLoader}) => {
 
 
   //Todo esto es para manejar una fecha visible para el usuario
@@ -55,6 +56,7 @@ const Home = ({canchas, reservas}) => {
     /* Hacer un useEffect que setee en un estado los proximos eventos de las canchas y hacer un map sobre estis */
     <div id="home-component">
         <NavBar title={"Tennis app"} />
+        
         <div id='table-component'>
           <div id='table-options'>
             <button id='addReservaBtn' onClick={() => navigate('../reservas')}><FontAwesomeIcon icon={faPlusCircle} ></FontAwesomeIcon></button>
@@ -68,7 +70,9 @@ const Home = ({canchas, reservas}) => {
           
             { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today} />  )}          
           </div>
+          <LoaderSpinner active={reservasLoader} containerClass={'homeLoader'} loaderClass={'homeLoaderSpinner'} />
         </div>
+        
 
     </div>
   )
