@@ -5,6 +5,8 @@ import Login from './pages/Login'
 import Home from './pages/Home';
 import Canchas from "./pages/Canchas";
 import Reservas from "./pages/Reservas" 
+//VarianteHome
+import HomeV from './pages/HomeVariant'
 
 //Style
 import './styles/App.css';
@@ -59,7 +61,8 @@ function App() {
           <header className="App-header"></header>
           <Routes>
             <Route path='/' element={<Login />} ></Route>
-            <Route path='/inicio' element={<Home canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
+            {/* <Route path='/inicio' element={<Home canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route> */}
+            <Route path='/inicio' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
             <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas}   setReservasLoader={setReservasLoader} /> }></Route>
           </Routes>

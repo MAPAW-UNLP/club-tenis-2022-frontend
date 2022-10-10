@@ -22,7 +22,7 @@
     background-color: var(--neutral-black);
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -161,4 +161,31 @@
   background-color: lightgray;    /* color of the scroll thumb */
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 2px solid var(--neutral-white);  /* creates padding around scroll thumb */
+}
+
+
+/* Home variante*/ 
+#table-panel-date{
+    display: flex;
+
+    width: 15%;
+    justify-content: space-between;
+}
+
+#table-panel-date a{
+    text-decoration: none;
+    color: var(--neutral-white-text);
+
+    transition: all 0.5s ease;
+}
+
+#table-panel-date a:hover{
+    color: var(--accent-yellow);
+}
+
+#table-panel-date button{
+    background-color: var(--neutral-black);
+    border: none;
+    color: var(--accent-yellow);
+    font-size: 190%;
 }
