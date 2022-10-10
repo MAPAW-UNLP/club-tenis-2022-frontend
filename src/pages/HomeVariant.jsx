@@ -56,7 +56,7 @@ const Home = ({canchas, reservas, reservasLoader}) => {
   }
 
   const goTomorrow = () =>{
-    
+
   }
 
   const navigate = useNavigate();
