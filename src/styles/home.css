@@ -152,20 +152,8 @@
 /* Home variante*/ 
 #table-panel-date{
     display: flex;
-
-    width: 15%;
+    width: 30vw;
     justify-content: space-between;
-}
-
-#table-panel-date a{
-    text-decoration: none;
-    color: var(--neutral-white-text);
-
-    transition: all 0.5s ease;
-}
-
-#table-panel-date a:hover{
-    color: var(--accent-yellow);
 }
 
 #table-panel-date button{

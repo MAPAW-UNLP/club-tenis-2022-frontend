@@ -1,0 +1,19 @@
+.pickers{
+    background-color: var(--neutral-black);
+    font-family: var(--title-text);
+    color: var(--neutral-white-text);
+    font-size: 130%;
+    text-align: center;
+    border: none;
+    transition: all 0.5s ease;
+}
+
+.pickers:hover{
+    color: var(--accent-yellow);
+}
+
+.pickers:focus{
+    outline: none;
+    border: none;
+    color: var(--accent-yellow);
+}
