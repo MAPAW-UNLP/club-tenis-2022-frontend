@@ -162,3 +162,11 @@
     color: var(--accent-yellow);
     font-size: 190%;
 }
+
+#home-content{
+    display: grid;
+    margin: 3vh 30% 0 30%;
+    grid-template-columns: auto auto;
+    width: 40vw;   
+    justify-content: space-around;
+}

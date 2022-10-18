@@ -5,10 +5,7 @@ import { useEffect } from 'react';
 
 
 /* Components */
-import Home from './Home';
-import Canchas from './Canchas';
-import Reservas from './Reservas';
-import Login from './Login';
+
 import LinkItem from '../components/LinkItem';
 
 import '../styles/navbar.css'
@@ -42,6 +39,7 @@ const NavBar = ({title}) => {
                   <LinkItem to={'/inicio'}  setActive={setActive} name={'Inicio'}/>
                   <LinkItem to={'/canchas'}  setActive={setActive} name={'Canchas'}/>
                   <LinkItem to={'/reservas'}  setActive={setActive} name={'Reservas'}/>
+                  <LinkItem to={'/alumnos'} setActive={setActive} name={'Alumnos'} />
                   <li> <Link to="/" className='linkCerrarSesion'>Cerrar Sesión </Link></li>
               </ul>
           </nav>

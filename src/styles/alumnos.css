@@ -1,0 +1,23 @@
+#alumnos-component{
+    background-color: var(--primary-blue);
+    height: 100vh;
+}
+
+#alumnos-component-mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 70vw;
+    /* Cambiar aca a 35vw si queremos algo compatible con las canchas */
+    margin: auto;
+    margin-top: 10vh;
+    align-items: center;
+
+}
+
+#alumnos-list-component{
+    margin-top: 5vh;
+    width: 100%;
+    border-radius: 20px;
+}
