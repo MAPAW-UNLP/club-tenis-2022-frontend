@@ -63,9 +63,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Login />} ></Route>
             <Route path='/inicio' element={<Home />}></Route>
-{/*             <Route path='/inicio' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
- */}        <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
-            <Route path='/reservas' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas}   setReservasLoader={setReservasLoader} /> }></Route>
+            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
+            <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
             <Route path='/alumnos' element={<Alumnos /> }></Route>
           </Routes>
         </div>
