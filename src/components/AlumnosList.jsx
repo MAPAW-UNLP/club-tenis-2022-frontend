@@ -1,25 +1,44 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 //components
 import Alumno from './Alumno'
+
 //Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faCaretDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-const AlumnosList = () => {
+const AlumnosList = ({alumnos}) => {
 
-    const[alumnos, setAlumnos] = useState([]);
+  const [alumnosFiltrados, setAlumnosFiltrados] = useState(alumnos)
+
+  const handleChangeSearchAlumnno = (e) =>{
+
+    const Posibles = (alumnos.filter((a) => a.nombre.toUpperCase().includes(e.target.value.toUpperCase())) );
+    if(e.target.value === ''){
+      setAlumnosFiltrados(alumnos);
+    }
+    else{
+      setAlumnosFiltrados(Posibles)
+    }
+
+  }
+
+  useEffect(() =>{
+    setAlumnosFiltrados(alumnos);
+  }, [alumnos])
+
   return (
     <div id='alumnos-list-component'>
 
         <div id='alumnos-list-options'>
             <p>Nombre <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
             <p>Telefono</p>
-            <div>
-                <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-                <input type="text" name="" id="" />
+            <p>Saldo</p>
+            <div id='alumnos-searchbar'>
+                <FontAwesomeIcon id='magnify-icon' icon={faMagnifyingGlass}></FontAwesomeIcon>
+                <input type="text" name="" id="" placeholder='Busca un alumno' onChange={handleChangeSearchAlumnno} />
             </div>
         </div>
 
-        {alumnos.map((a) => <Alumno key={a.id} properties={a}></Alumno>)}
+        {alumnosFiltrados.map((a) => <Alumno key={a.id} info={a}></Alumno>)}
     </div>
   )
 }

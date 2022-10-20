@@ -1,8 +1,12 @@
 import React from 'react'
 
-const Alumnos = () => {
+const Alumnos = ({info}) => {
   return (
-    <div>Alumno ccomponents mostrar nombre + telefono </div>
+    <div className='alumno-info'> 
+      <p>{info.nombre}</p>
+      <p>{info.telefono}</p>
+      <p>{info.saldo}</p>
+    </div>
   )
 }
 
