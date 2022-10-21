@@ -18,7 +18,7 @@ const Profesores = ({profesores, setProfesores}) => {
 
   return (
     <div id='alumnos-component'>
-      <NavBar title={'profesores'}></NavBar> 
+      <NavBar title={'Profesores'}></NavBar> 
       <div id='alumnos-component-mainContent'>
         <button id='canchas-add-btn' onClick={() => {setActive((active)=> true)}}> <FontAwesomeIcon icon={faPlusCircle}/></button>
         <AgregarProfesor active={active} setActive={setActive} setProfesores={setProfesores} />
