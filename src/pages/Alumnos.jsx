@@ -7,14 +7,13 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import NavBar from './NavBar'
 import AgregarAlumno from '../components/AgregarAlumno'
 import AlumnosList from '../components/AlumnosList'
-//Alumnos provisorio
-import Alumnos from '../DevelopmentData/Alumnos'
+
 //Styles 
 import '../styles/alumnos.css'
 
-const Users = () => {
+const Users = ({alumnos, setAlumnos}) => {
 
-  const [alumnos, setAlumnos] = useState(Alumnos);
+  // const [alumnos, setAlumnos] = useState(Alumnos);
 
   const [active, setActive] = useState(false);
 

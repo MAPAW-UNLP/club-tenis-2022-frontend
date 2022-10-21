@@ -21,6 +21,8 @@ function App() {
   //Todo esto podría ir a la store global:
   const [canchas, setCanchas] = useState([]);
   const [reservas, setReservas] = useState([]);
+  const [alumnos, setAlumnos] = useState([]);
+  const [profesores, setProfesores] = useState([]);
 
   const [actCanchas, setActCanchas] = useState(false);
   const [actReservas, setActReservas] = useState(false);
@@ -55,6 +57,17 @@ function App() {
         .then(response => setReservasLoader((v) => false))
         /* Desactivar Spinner */
     }, [actReservas])
+
+      //alumnos
+      useEffect(() =>{
+        const requestOptions={
+          method: 'GET'
+        };
+        fetch(`${URL_BASE}alumnos`, requestOptions)
+        .then(response => response.json())
+        .then(data =>  setAlumnos(data.detail))
+          /* Desactivar Spinner */
+      }, [actReservas])
  
   return (
     <>
@@ -65,7 +78,7 @@ function App() {
             <Route path='/inicio' element={<Home />}></Route>
             <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
-            <Route path='/alumnos' element={<Alumnos /> }></Route>
+            <Route path='/alumnos' element={<Alumnos alumnos={alumnos} setAlumnos={setAlumnos} /> }></Route>
           </Routes>
         </div>
     </>
