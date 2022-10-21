@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Canchas from "./pages/Canchas";
 import Reservas from "./pages/Reservas" 
 import Alumnos from './pages/Alumnos'
+import Profesores from './pages/Profesores'
 //VarianteHome
 import HomeV from './pages/HomeVariant'
 
@@ -26,6 +27,8 @@ function App() {
 
   const [actCanchas, setActCanchas] = useState(false);
   const [actReservas, setActReservas] = useState(false);
+  const [actAlumnos, setActAlumnos] = useState(false);
+  const [actProfesores, setActProfesores] = useState(false);
 
   /* Loaders */
   const [activedLoader, setActivedLoader] = useState(false);
@@ -67,7 +70,18 @@ function App() {
         .then(response => response.json())
         .then(data =>  setAlumnos(data.detail))
           /* Desactivar Spinner */
-      }, [actReservas])
+      }, [actAlumnos])
+
+      //profesores
+      useEffect(() =>{
+      const requestOptions={
+        method: 'GET'
+      };
+      fetch(`${URL_BASE}profesores`, requestOptions)
+      .then(response => response.json())
+      .then(data =>  setProfesores(data))
+        /* Desactivar Spinner */
+    }, [actProfesores])
  
   return (
     <>
@@ -79,6 +93,7 @@ function App() {
             <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
             <Route path='/alumnos' element={<Alumnos alumnos={alumnos} setAlumnos={setAlumnos} /> }></Route>
+            <Route path='/profesores' element={<Profesores profesores={profesores} setProfesores={setProfesores} /> }></Route>
           </Routes>
         </div>
     </>
