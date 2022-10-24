@@ -97,8 +97,6 @@ const CanchasAddForm = ({actived, setActived, canchas, setActivedLoader, setActC
         </div>
       }
     </>
-
-    
   )
 }
 

@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Canchas from "./pages/Canchas";
 import Reservas from "./pages/Reservas" 
 import Alumnos from './pages/Alumnos'
+import Profesores from './pages/Profesores';
 //VarianteHome
 import HomeV from './pages/HomeVariant'
 
@@ -66,6 +67,7 @@ function App() {
             <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
             <Route path='/alumnos' element={<Alumnos /> }></Route>
+            <Route path='/profesores' element={<Profesores />}></Route>
           </Routes>
         </div>
     </>

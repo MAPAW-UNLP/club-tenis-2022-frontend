@@ -40,6 +40,7 @@ const NavBar = ({title}) => {
                   <LinkItem to={'/canchas'}  setActive={setActive} name={'Canchas'}/>
                   <LinkItem to={'/reservas'}  setActive={setActive} name={'Reservas'}/>
                   <LinkItem to={'/alumnos'} setActive={setActive} name={'Alumnos'} />
+                  <LinkItem to={'/profesores'} setActive={setActive} name={'Profesores'} />
                   <li> <Link to="/" className='linkCerrarSesion'>Cerrar Sesión </Link></li>
               </ul>
           </nav>

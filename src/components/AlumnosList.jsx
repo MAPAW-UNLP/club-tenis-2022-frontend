@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faCaretDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 const AlumnosList = ({alumnos}) => {
 
-  const [alumnosFiltrados, setAlumnosFiltrados] = useState(alumnos)
+    const [alumnosFiltrados, setAlumnosFiltrados] = useState(alumnos)
 
   const handleChangeSearchAlumnno = (e) =>{
 

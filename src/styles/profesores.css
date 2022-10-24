@@ -1,9 +1,9 @@
-#alumnos-component{
+#profesores-component{
     background-color: var(--primary-blue);
     height: 100vh;
 }
 
-#alumnos-component-mainContent{
+#profesores-component-mainContent{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,18 +16,17 @@
 
 }
 
-#alumnos-list-component{
+#profesores-list-component{
     margin-top: 2vh;
     width: 100%;
     border-radius: 20px;
     background-color: var(--neutral-white);
-
 }
 
-#alumnos-list-options{
+#profesores-list-options{
     height: 5vh;
     display: grid;
-    grid-template-columns: 20% 20% 20% 40%;
+    grid-template-columns: 30% 30% 40%;
     align-content: center;
     align-items: center;
     justify-content: center;
@@ -41,12 +40,12 @@
 
 }
 
-#alumnos-searchbar{
+#profesores-searchbar{
     position: relative;
     width: 90%;
 }
 
-#alumnos-searchbar input{
+#profesores-searchbar input{
     width: 100%;
     
     font-family: var(--normal-text);
@@ -57,7 +56,7 @@
     padding-left: 2%;
 }
 
-#alumnos-searchbar input:focus{
+#profesores-searchbar input:focus{
     outline: 1.4px solid var(--accent-yellow);
     border: none;
 }
@@ -69,7 +68,7 @@
     right: 5%;
 }
 
-.alumno-info{
+.profesor-info{
     display: grid;
     grid-template-columns: 20% 20% 20%;
     margin: 0.5%;
@@ -81,7 +80,7 @@
     font-size: 110%;
 }
 
-#alumno-add-component{
+#profesor-add-component{
     background-color: var(--neutral-white);
     display: flex;
     flex-direction: column;
@@ -93,7 +92,7 @@
     box-shadow: -2px -4px 400px 600px rgba(0,0,0,0.24);
 }
 
-#close-alumno-add-form{
+#close-profesor-add-form{
     background:  none;
     position: absolute;
     top: 1vh;
@@ -105,7 +104,7 @@
     transition: all 1s ease;
 }
 
-#alumno-add-component h2{
+#profesor-add-component h2{
     width: 100%;
     
     margin-top: 3vh;
@@ -116,7 +115,7 @@
     font-family: var(--title-text);
 }
 
-#alumno-add-form{
+#profesor-add-form{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -125,7 +124,7 @@
     background-color: var(--neutral-white);
 }
 
-.alumno-add-form-input{
+.profesor-add-form-input{
     font-family: var(--normal-text);
     margin: auto;
     margin-bottom: 15px;
@@ -140,12 +139,12 @@
     transition: all 0.5s ease;
 }
 
-.alumno-add-form-input:focus{
+.profesor-add-form-input:focus{
     border:none;
     outline: 1.4px solid var(--accent-yellow);
 }
 
-#alumno-add-form-addBtn{
+#profesor-add-form-addBtn{
     width: 100%;
     background-color: var(--accent-green);
     height: 5rem;
@@ -154,6 +153,3 @@
     border-bottom-right-radius: 20px;
     
 }
-
-
-
