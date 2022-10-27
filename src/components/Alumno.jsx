@@ -5,7 +5,6 @@ const Alumnos = ({info}) => {
     <div className='alumno-info'> 
       <p>{info.nombre}</p>
       <p>{info.telefono}</p>
-      <p>{info.saldo}</p>
     </div>
   )
 }

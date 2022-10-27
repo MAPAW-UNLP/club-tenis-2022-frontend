@@ -31,7 +31,7 @@ const AlumnosList = ({alumnos}) => {
         <div id='alumnos-list-options'>
             <p>Nombre <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
             <p>Telefono</p>
-            <p>Saldo</p>
+           
             <div id='alumnos-searchbar'>
                 <FontAwesomeIcon id='magnify-icon' icon={faMagnifyingGlass}></FontAwesomeIcon>
                 <input type="text" name="" id="" placeholder='Busca un alumno' onChange={handleChangeSearchAlumnno} />

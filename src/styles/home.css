@@ -61,10 +61,11 @@
     font-family: var(--normal-text);
     font-size: 120%;
     text-align: center;
-    padding: 4%;
+    padding: 0%;
     border-right: 1px solid var(--accent-green) ;
     border-bottom: 1px solid var(--accent-green) ;
-    width: 8vw;
+    width: 13vw;
+    height: 4vh;
 }
 .horas{
     background-color: var(--neutral-black);
@@ -73,7 +74,7 @@
     font-size: 110%;
     text-align: center;
     padding: 2%;
-    width: 8vw;
+    width: 13vw;
 }
 
 .canchas{
@@ -81,11 +82,12 @@
     color: var(--neutral-black);
     font-family: var(--normal-text);
     width: 12vw;
+   
     font-size: 120%;
     text-align: center;
-    padding: 4%;
-    border-right: 1px solid var(--accent-green) ;
-    border-bottom: 1px solid var(--accent-green) ;  
+    font-weight: 600;
+    border-right: 1px solid var(--neutral-white) ;
+    border-bottom: 1px solid var(--neutral-white) ;  
 
     min-width: 100%;
     max-width: 100%;
@@ -169,4 +171,25 @@
     grid-template-columns: auto auto;
     width: 40vw;   
     justify-content: space-around;
+}
+
+/* //semanal */
+.semana{
+    background-color: var(--neutral-black);
+    filter: brightness(120%);
+    color: var(--neutral-white);
+    font-family: var(--normal-text);
+    width: 10vw;
+    font-size: 120%;
+    text-align: center;
+    font-weight: 600;
+    border-right: 1px solid var(--neutral-white) ;
+    border-bottom: 1px solid var(--neutral-white) ;  
+    min-width: 100%;
+    max-width: 100%;
+}
+
+#semana-nombre{
+    background-color: var(--neutral-black);
+    filter: brightness(80%);
 }

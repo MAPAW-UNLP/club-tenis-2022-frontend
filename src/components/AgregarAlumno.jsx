@@ -3,45 +3,107 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
+//birthdaypciker
+import { BirthdayPicker} from 'react-birthday-picker';
 //Components
+import InputComponent from './InputComponent'
 import FeedbackText from './FeedbackText'
 
 
-const AgregarAlumno = ({active, setActive, setAlumnos, alumnos}) => {
+const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) => {
 
+    const URL_BASE = `http://localhost:80/api/`;
     const [nombre, setNombre] = useState('');
     const [telefono, setTelefono] = useState('');
     const [nacimiento, setNacimiento] = useState('');
 
     //feedbackComponent
     const [feedBack, setFeedBack] = useState({'text': '', 'color':'', 'backGroundColor':'',  'active':false});
-
+    //feedback del input
+    const [nombreFB, setNombreFB] = useState({text: '', color: ''});
+    const [telefonoFB, setTelefonoFB] = useState({text: '', color: ''});
 
     const handleChangeName = (e) =>{
+        const pattern = new RegExp('^[A-Z]+$', 'i');
+        const word = (e.target.value).split(' ').join('');
+        const submitBtn = document.getElementById('alumno-add-form-addBtn');
+        console.log();
+        //validar que el nombrte sea solo texto y que no exista repetidos
         setNombre(e.target.value);
-        if(alumnos.map((each) => each.nombre.toUpperCase()).indexOf(e.target.value.toUpperCase()) === -1){
+        const nextInput = document.getElementById('telefonotinput');
+        if(e.target.value === ''){
+            setNombreFB({...nombreFB, 'text': '', color: ''});
+            nextInput.disabled = true;
+            submitBtn.disabled = true;
 
         }
-        else{
-            setFeedBack({...feedBack, 'text': 'El nombre del alumno ya existe','color': '#F4F4F4','backGroundColor': '#CC3636', 'active': true})
+        else {
+            //Cumple las expectativas de ser un nombre
+            if (pattern.test(word)){
+                if(alumnos.map((each) => each.nombre.toUpperCase()).indexOf(e.target.value.toUpperCase()) === -1) {
+                    setNombreFB({...nombreFB, 'text': 'El nombre de alumno es correcto', color: 'green'});
+                    nextInput.disabled = false;
+                }
+                else{
+                    setNombreFB({...nombreFB, 'text': 'El nombre de usuario ya existe', color: 'red'})
+                    nextInput.disabled = true;
+                    submitBtn.disabled = true;
+                }
+            }
+            else{
+                setNombreFB({...nombreFB, 'text': 'Escriba un nombre de usuario sin numeros', color: 'red'});
+            }
         }
         
     }
 
     const handleChangePhone = (e) =>{
-        setTelefono(e.target.value)
+        const pattern = "^[0-9]+$";
+        const tel = e.target.value;
+        //validar que el telefono sea valido aca yde ultima poner un mensaje de feedback
+        setTelefono(tel);
+        const nextInput = document.getElementById('inputDateBirth');
+        const submitBtn = document.getElementById('alumno-add-form-addBtn');
+
+        if(tel === ''){
+            setTelefonoFB({...telefonoFB, 'text': '', color: ''});
+            nextInput.disabled = true;
+            submitBtn.disabled = true;
+        }
+        else{
+            if(tel.match(pattern) != null){
+                setTelefonoFB({...telefonoFB, 'text': 'El nummero de telefono es correcto', color: 'green'});
+                nextInput.disabled = false;
+                submitBtn.disabled = false;
+            }
+            else{
+                setTelefonoFB({...telefonoFB, 'text': 'El numero de telefono es incorrecto', color: 'red'});
+                nextInput.disabled = true;
+                submitBtn.disabled = false;
+            }
+        }
     }
 
     const handlePickBirth = (e) =>{
-        setNacimiento(e.target.value);
+        //cambiar fotmato fecha de nacimiento
+        const fechaAdaptada = (e.target.value).split('-').join('')
+        setNacimiento(fechaAdaptada);
     }
 
-    const submitAlumnoForm = () =>{
-        const nuevoAlumno = {id: Math.random(89999), nombre: nombre, telefono: telefono,  saldo: 0, nacimiento: nacimiento};
-        setAlumnos((prevValue)=>[...prevValue, nuevoAlumno])
-        setActive(false)
-        /* Hacer el post aca y agrtegar el active loader */
-
+    const submitAlumnoForm = (e) =>{
+        e.preventDefault();
+        setNombreFB({...nombreFB, 'text': '', color: ''});
+        setTelefonoFB({...telefonoFB, 'text': '', color: ''});
+        
+        setActive(false);
+        const requestOptions={
+            method: 'POST',
+            body: JSON.stringify({ nombre: nombre, telefono: telefono, fechanac: nacimiento, esalumno: true})
+        } ;
+        
+        fetch(`${URL_BASE}persona`, requestOptions)
+            .then(response => response.json())
+            .then(response => setActAlumnos(v => !v))
     }
 
     const handleCloseForm = () =>{
@@ -54,10 +116,12 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos}) => {
                 <button id='close-alumno-add-form' onClick={ handleCloseForm}>x</button>
                 <h2>Nuevo Alumno</h2>     
                 <form action="" id='alumno-add-form' onSubmit={submitAlumnoForm} >
-                    <input type="text" name="" className='alumno-add-form-input' id="" placeholder='Nombre' value={nombre}  onChange={handleChangeName}/>
-                    <input type="text" name="" id="" placeholder='Telefono' className='alumno-add-form-input' value={telefono} onChange={handleChangePhone} />
-                    <input type="date" name="" id="" className='alumno-add-form-input'  value={nacimiento} onChange={handlePickBirth} />
-                    <button id='alumno-add-form-addBtn' type='sumbit'  ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}/></button>                
+                    <InputComponent type={'text'} className={'alumno-add-form-input'} placeholder={'Nombre'} onChangeFuncion={handleChangeName}/>
+                    <p className='feedbackInline' style={{color:nombreFB.color}}>{nombreFB.text}</p>
+                    <InputComponent type={'number'} id='telefonotinput' className={'alumno-add-form-input'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/>
+                    <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
+                    <input  type="date" name="" id="inputDateBirth" className='alumno-add-form-input'  value={nacimiento} onChange={handlePickBirth} max='2015-01-01' disabled/>
+                    <button id='alumno-add-form-addBtn' type='sumbit' disabled ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}  /></button>                
                 </form>
             </div>
         }

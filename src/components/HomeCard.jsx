@@ -7,7 +7,6 @@ import '../styles/homeCard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTableTennis } from '@fortawesome/free-solid-svg-icons'
 const HomeCard = ({title, descr, Logo, color, link}) => {
-  
 const ImgCard = styled.div`
     height: 60%;
     background-color: ${color};
