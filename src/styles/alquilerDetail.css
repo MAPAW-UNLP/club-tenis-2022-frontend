@@ -1,0 +1,71 @@
+#alquiler-detail-component{
+    box-shadow: -2px -4px 400px 600px rgba(0,0,0,0.24);
+    background-color: var(--neutral-white);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 30%;
+    left: 30vw;
+    border-radius:20px; 
+    width: 40vw;
+    z-index: 20;
+    text-align: center;
+    border: 5px solid var(--primary-blue);
+    background-color: var(--neutral-white);
+}
+
+#close-detail-btn{
+    position: absolute;
+    font-family: var(--title-text);
+    background: none;
+    border: none;
+    font-size: 150%;
+    color: var(--neutral-black);
+    right: 2%;
+}
+
+#alquiler-detail-component h2{
+    font-family: var(--title-text);
+    color: var(--neutral-black);
+    font-size: 300%;
+}
+
+#alquiler-detail-fecha{
+    font-family: var(--title-text);
+    color: var(--neutral-black);
+    font-size: 110%;
+}
+
+#alquiler-detail-component h3{
+    font-family:var(--title-text);
+    font-size: 150%;
+    color: var(--neutral-white-text) ;
+}
+
+.alquiler-detail-div{
+    background-color: var(--primary-blue) ;
+    border-radius: 20px;
+    height: 15vh;
+    text-align: start;
+    padding-left: 2%;
+    padding-top: 5%;
+}
+#alquiler-detail1div{
+    margin: 4vh 1vw 1vh 1vw;
+}
+
+#alquiler-detail2div{
+    margin: 0vh 1vw 4vh 1vw;
+}
+.alquiler-detail-nombre{
+    font-family: var(--normal-text);
+    color: var(--accent-yellow);
+    font-weight: bolder;
+    font-size: 120%;
+}
+
+.alquiler-detail-numeros{
+    font-family: var(--normal-text);
+    color: var(--neutral-white-text);
+    font-size: 120%;
+}

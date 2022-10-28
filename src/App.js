@@ -68,6 +68,8 @@ function App() {
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
             <Route path='/alumnos' element={<Alumnos /> }></Route>
             <Route path='/profesores' element={<Profesores />}></Route>
+            //ruta oculta
+            <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} />}></Route>
           </Routes>
         </div>
     </>

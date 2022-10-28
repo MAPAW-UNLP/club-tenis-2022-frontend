@@ -109,8 +109,8 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
     } ;
    fetch(`${URL_BASE}reserva`, requestOptions)
       .then(response => setActReservas((v) => !v))
-      .then(setReservasLoader((v) => v = true))
-      .finally(navigate('../inicio'));
+      .then(setReservasLoader((v) => v))
+      .finally(navigate('../reservas'));
   }
 
   

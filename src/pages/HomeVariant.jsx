@@ -8,6 +8,7 @@ import Reserva from '../components/Reserva'
 import LoaderSpinner from '../components/LoaderSpinner'
 import CalendarComponent from '../components/CalendarComponent'
 import VistaSemanal from '../components/VistaSemanal'
+import AlquilerDetails from '../components/AlquilerDetails'
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faCaretRight, faCaretLeft } from '@fortawesome/free-solid-svg-icons'
@@ -39,6 +40,9 @@ const Home = ({canchas, reservas, reservasLoader}) => {
     console.log(today);
   }
 
+  //Details
+  const [reservaDetail, setReservaDetail] = useState({});
+
   const navigate = useNavigate();
  
   
@@ -49,7 +53,12 @@ const Home = ({canchas, reservas, reservasLoader}) => {
     <div id="home-component">
         <NavBar title={"Tennis app"} />
 {/*         <VistaSemanal canchas={canchas} reservas={reservas}/>
- */}        <div id='table-component'>
+            
+ */}  
+      <AlquilerDetails reserva={reservaDetail} diaReserva={today} setReservaDetail={setReservaDetail}/>
+      <button onClick={() =>  navigate('../nuevaReserva')}> Agregar reserva  </button>   
+      <div id='table-component'>
+          
           <div id='table-options'>
             <div id='table-panel-date'>
               <CalendarComponent today={today} setToday={setToday}/>
@@ -63,7 +72,7 @@ const Home = ({canchas, reservas, reservasLoader}) => {
             
 
             {canchas.map((el, i) => <div className='canchas' key={el.id} style={{gridArea: `1/${i+2} / ${horas.lenght}/${i+3}`, backgroundColor: coloresCanchas[i]}} ><div style={{ backgroundColor: coloresCanchas[i], filter: 'brightness(120%)', height: '4vh'}}> {el.nombre}</div> </div>)}
-            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}   />  )}          
+            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail} />  )}          
           </div>
           <LoaderSpinner active={reservasLoader} containerClass={'homeLoader'} loaderClass={'homeLoaderSpinner'} />
         </div>
