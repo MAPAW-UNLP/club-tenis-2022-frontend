@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
 //components
 import Profesor from './Profesor'
+import InputComponent from './InputComponent'
 //Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faCaretDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const ProfesoresList = ({profesores}) => {
 
-  const [ profesoresFiltrador, setProfesoresFiltrados] = useState(profesores);
+  const [ profesoresFiltrados, setProfesoresFiltrados] = useState(profesores);
 
 
   const handleChangeSearchProfessor = (e) =>{
@@ -30,10 +31,10 @@ const ProfesoresList = ({profesores}) => {
             <p>Telefono</p>
             <div id='profesores-searchbar'>
                 <FontAwesomeIcon id='magnify-icon' icon={faMagnifyingGlass}></FontAwesomeIcon>
-                <input type="text" name="" id="" placeholder='Busca un alumno' onChange={handleChangeSearchProfessor} />
+                <InputComponent type={'text'} placeholder={'Busca un profesor'} onChangeFuncion={handleChangeSearchProfessor}/>
             </div>
         </div>
-        {profesoresFiltrador.map((p) => <Profesor key={p.id} info={p} ></Profesor>)}
+        {profesoresFiltrados.map((p) => <Profesor key={p.id} info={p} ></Profesor>)}
     </div>
   )
 }

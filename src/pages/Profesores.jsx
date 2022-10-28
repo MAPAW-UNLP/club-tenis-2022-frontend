@@ -13,16 +13,33 @@ import ProfesoresDoc from '../DevelopmentData/Profesores'
 import '../styles/profesores.css'
 const Profesores = () => {
 
-    const [profesores, setProfesores] = useState(ProfesoresDoc);
+    const [profesores, setProfesores] = useState([]);
+    const [actProfesores, setActProfesores] = useState(false);
     const [active, setActive] = useState(false);
+    const URL_BASE = `http://localhost/api/`;
+
+    useEffect(() =>{
+        const requestOptions={
+          method: 'GET'
+          } ;
+       fetch(`${URL_BASE}profesores`, requestOptions)
+          .then(response => response.json())
+          .then(data =>  setProfesores(data))
+      
+          /* Desactivar spinner */
+        }, [actProfesores]);
 
     return (
         <div id='profesores-component'>
             <NavBar title={'Profesores'}></NavBar>
             <div id='profesores-component-mainContent'>
                 <button id='canchas-add-btn' onClick={() => {setActive((active)=> true)}}> <FontAwesomeIcon icon={faPlusCircle}/> </button>
-                <AgregarProfesor active={active} setActive={setActive} setProfesores={setProfesores} profesores={profesores} />
+                <AgregarProfesor active={active} setActive={setActive} setProfesores={setProfesores} profesores={profesores} setActProfesores={setActProfesores} />
+                {profesores.length === 0 ?  
+                <div>...cargando</div>   
+                :
                 <ProfesoresList profesores={profesores} />
+            }
             </div>
         </div>
   )

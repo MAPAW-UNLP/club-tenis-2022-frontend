@@ -7,8 +7,6 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import NavBar from './NavBar'
 import AgregarAlumno from '../components/AgregarAlumno'
 import AlumnosList from '../components/AlumnosList'
-//Alumnos provisorio
-import Alumnos from '../DevelopmentData/Alumnos'
 //Styles 
 import '../styles/alumnos.css'
 
@@ -28,9 +26,9 @@ const Users = () => {
     const requestOptions={
       method: 'GET'
       } ;
-   fetch(`${URL_BASE}personas`, requestOptions)
+   fetch(`${URL_BASE}alumnos`, requestOptions)
       .then(response => response.json())
-      .then(data =>  setAlumnos(data))
+      .then(data =>  setAlumnos(data.detail))
   
       /* Desactivar spinner */
     }, [actAlumnos]);

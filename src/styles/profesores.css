@@ -70,7 +70,7 @@
 
 .profesor-info{
     display: grid;
-    grid-template-columns: 20% 20% 20%;
+    grid-template-columns: 30% 30%;
     margin: 0.5%;
     padding: 1%;
     border-radius: 12px;
@@ -144,6 +144,11 @@
     outline: 1.4px solid var(--accent-yellow);
 }
 
+.profesor-add-form-input:disabled{
+    border: none;
+    background-color: var(--neutral-black);
+}
+
 #profesor-add-form-addBtn{
     width: 100%;
     background-color: var(--accent-green);
@@ -152,4 +157,15 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     
+}
+
+#profesor-add-form-addBtn:disabled{
+    background-color: var(--neutral-black);
+}
+
+.feedbackInline{
+    font-family: var(--normal-text);
+    position: relative;
+    top: -1.5vh;
+    font-size: 80%;
 }

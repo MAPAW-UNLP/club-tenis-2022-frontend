@@ -3,8 +3,6 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
-//birthdaypciker
-import { BirthdayPicker} from 'react-birthday-picker';
 //Components
 import InputComponent from './InputComponent'
 import FeedbackText from './FeedbackText'
@@ -17,8 +15,6 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) 
     const [telefono, setTelefono] = useState('');
     const [nacimiento, setNacimiento] = useState('');
 
-    //feedbackComponent
-    const [feedBack, setFeedBack] = useState({'text': '', 'color':'', 'backGroundColor':'',  'active':false});
     //feedback del input
     const [nombreFB, setNombreFB] = useState({text: '', color: ''});
     const [telefonoFB, setTelefonoFB] = useState({text: '', color: ''});
@@ -27,7 +23,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) 
         const pattern = new RegExp('^[A-Z]+$', 'i');
         const word = (e.target.value).split(' ').join('');
         const submitBtn = document.getElementById('alumno-add-form-addBtn');
-        console.log();
+        
         //validar que el nombrte sea solo texto y que no exista repetidos
         setNombre(e.target.value);
         const nextInput = document.getElementById('telefonotinput');
@@ -79,7 +75,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) 
             else{
                 setTelefonoFB({...telefonoFB, 'text': 'El numero de telefono es incorrecto', color: 'red'});
                 nextInput.disabled = true;
-                submitBtn.disabled = false;
+                submitBtn.disabled = true;
             }
         }
     }
