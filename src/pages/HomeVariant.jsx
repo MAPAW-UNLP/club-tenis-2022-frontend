@@ -67,7 +67,7 @@ const Home = ({canchas, reservas, reservasLoader}) => {
             </div>            
             {/* Aca iria el selector */}
           </div>
-          <div id='table-grid' style={{display:'grid', gridTemplateColumns: `repeat(${canchas.length+1}, 1fr)`, gridTemplateRows: `repeat(${horas.length+1}, 1fr)` }}>
+          <div id='table-grid' style={{display:'grid', gridTemplateColumns: `13vw repeat(${canchas.length}, 1fr)`, gridTemplateRows: `repeat(${horas.length+1}, 1fr)` }}>
             <div id='hora' style={{gridArea: "1/1/2/2"}}>Hora</div>
             
             {horas.map((el, i) => <div className='horas' key={i} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
