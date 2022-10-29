@@ -22,6 +22,14 @@
     font-size: 150%;
     color: var(--neutral-black);
     right: 2%;
+    transition: all 0.5s ease;
+}
+
+
+#close-detail-btn:hover{
+    font-size: 175%;
+    font-weight: bolder;
+    color: #CC3636;
 }
 
 #alquiler-detail-component h2{

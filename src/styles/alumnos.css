@@ -103,7 +103,13 @@
     font-family: var(--title-text);
     font-size: 150%;
     color: var(--neutral-black);
-    transition: all 1s ease;
+    transition: all 0.5s ease;
+}
+
+#close-alumno-add-form:hover{
+    font-size: 175%;
+    font-weight: bolder;
+    color: #CC3636;
 }
 
 #alumno-add-component h2{
