@@ -10,28 +10,15 @@ import AlumnosList from '../components/AlumnosList'
 //Styles 
 import '../styles/alumnos.css'
 
-const Users = () => {
+const Users = ({actAlumnos, setActAlumnos, alumnos, setAlumnos}) => {
 
   
   
-  const [alumnos, setAlumnos] = useState([]);
-
-  const [actAlumnos, setActAlumnos] = useState(false);
 
   const [active, setActive] = useState(false);
 
   const URL_BASE = `http://localhost/api/`;
 
-  useEffect(() =>{
-    const requestOptions={
-      method: 'GET'
-      } ;
-   fetch(`${URL_BASE}alumnos`, requestOptions)
-      .then(response => response.json())
-      .then(data =>  setAlumnos(data.detail))
-  
-      /* Desactivar spinner */
-    }, [actAlumnos]);
 
   return (
     <div id='alumnos-component'>

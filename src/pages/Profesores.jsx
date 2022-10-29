@@ -11,23 +11,9 @@ import ProfesoresList from '../components/ProfesoresList'
 import ProfesoresDoc from '../DevelopmentData/Profesores'
 //styles
 import '../styles/profesores.css'
-const Profesores = () => {
+const Profesores = ({ctProfesores, setActProfesores, profesores, setProfesores}) => {
 
-    const [profesores, setProfesores] = useState([]);
-    const [actProfesores, setActProfesores] = useState(false);
     const [active, setActive] = useState(false);
-    const URL_BASE = `http://localhost/api/`;
-
-    useEffect(() =>{
-        const requestOptions={
-          method: 'GET'
-          } ;
-       fetch(`${URL_BASE}profesores`, requestOptions)
-          .then(response => response.json())
-          .then(data =>  setProfesores(data))
-      
-          /* Desactivar spinner */
-        }, [actProfesores]);
 
     return (
         <div id='profesores-component'>
