@@ -58,10 +58,11 @@ const Home = ({canchas, reservas, reservasLoader}) => {
             
  */}  
       <AlquilerDetails reserva={reservaDetail} diaReserva={today} setReservaDetail={setReservaDetail}/>
-      <button onClick={() =>  navigate('../nuevaReserva')}> Agregar reserva  </button>   
+
       <div id='table-component'>
-          
           <div id='table-options'>
+            <button id='home-addReservaBtn' onClick={() =>  navigate('../nuevaReserva')}> <FontAwesomeIcon id='reserva-add-btn' icon={faPlusCircle} /></button>   
+
             <div id='table-panel-date'>
               <CalendarComponent today={today} setToday={setToday}/>
             </div>            

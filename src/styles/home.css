@@ -1,6 +1,8 @@
 #home-component{
     background-color: var(--primary-green);
-    height: 100vh;
+    height: 120vh;
+    display: relative;
+    
 }
 
 #table-component{
@@ -10,11 +12,14 @@
     align-items: center;
     justify-content: flex-end;
     width: 90vw;
-    
 }
 
-#table-options{
 
+
+
+
+#table-options{
+    position: relative;
     border-top-left-radius: 20px ;
     border-top-right-radius: 20px ;
     width: 100%;
@@ -26,6 +31,31 @@
     align-items: center;
 }
 
+#home-addReservaBtn{
+    border: 1px solid var(--neutral-black);
+    position: absolute;
+    width: 13vw;
+    height: 5vh;
+    top: 0vh ;
+    left: 0vw;
+    border-top-left-radius: 20px;
+    background-color: var(--accent-green);
+    color: var(--neutral-white);
+    font-size: 200%;
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+
+#home-addReservaBtn:hover{
+    
+    font-size: 230%;
+    height: 15vh;
+    background-color: var(--accent-yellow);
+    color: var(--neutral-black);
+    border: 4px solid var(--neutral-white);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
 
 
 
