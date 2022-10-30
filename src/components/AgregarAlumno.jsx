@@ -8,7 +8,7 @@ import InputComponent from './InputComponent'
 import FeedbackText from './FeedbackText'
 
 
-const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) => {
+const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, setAlumnosLoader}) => {
 
     const URL_BASE = `http://localhost:80/api/`;
     const [nombre, setNombre] = useState('');
@@ -86,7 +86,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) 
         e.preventDefault();
         setNombreFB({...nombreFB, 'text': '', color: ''});
         setTelefonoFB({...telefonoFB, 'text': '', color: ''});
-        
+        setAlumnosLoader((prevValue) => !prevValue);
         setActive(false);
         const requestOptions={
             method: 'POST',

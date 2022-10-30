@@ -29,6 +29,8 @@ function App() {
   /* Loaders */
   const [activedLoader, setActivedLoader] = useState(false);
   const [reservasLoader, setReservasLoader] = useState(false);
+  const [alumnosLoader, setAlumnosLoader] = useState(false);
+  const [profesoresLoader, setProfesoresLoader] = useState(false);
 
   //para actualizar los alumnos
   const [alumnos, setAlumnos] = useState([])
@@ -74,6 +76,7 @@ function App() {
      fetch(`${URL_BASE}alumnos`, requestOptions)
         .then(response => response.json())
         .then(data =>  setAlumnos(data.detail))
+        .then(response => setAlumnosLoader((v) => false))
     
         /* Desactivar spinner */
       }, [actAlumnos]);
@@ -86,6 +89,7 @@ function App() {
      fetch(`${URL_BASE}profesores`, requestOptions)
         .then(response => response.json())
         .then(data =>  setProfesores(data))
+        .then(response => setProfesoresLoader((v) => false))
     
         /* Desactivar spinner */
       }, [actProfesores]);
@@ -99,8 +103,8 @@ function App() {
             <Route path='/inicio' element={<Home />}></Route>
             <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
-            <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}/> }></Route>
-          <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores}/>}></Route>
+            <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}  setAlumnosLoader={setAlumnosLoader} alumnosLoader={alumnosLoader}/>}></Route>
+            <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores} setProfesoresLoader={setProfesoresLoader} profesoresLoader={profesoresLoader}/> }></Route>
             //ruta oculta
             <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} />}></Route>
           </Routes>

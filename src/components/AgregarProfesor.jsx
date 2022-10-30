@@ -7,7 +7,7 @@ import { useState } from 'react'
 import FeedbackText from './FeedbackText'
 import InputComponent from './InputComponent'
 
-const AgregarProfesor = ({active, setActive, setProfesores, profesores, setActProfesores}) => {
+const AgregarProfesor = ({active, setActive, setProfesores, profesores, setActProfesores, setProfesoresLoader}) => {
   
     const URL_BASE = `http://localhost:80/api/`;
     const [nombre, setNombre] = useState('');
@@ -78,7 +78,7 @@ const AgregarProfesor = ({active, setActive, setProfesores, profesores, setActPr
         e.preventDefault();
         setNombreFB({...nombreFB, 'text': '', color: ''});
         setTelefonoFB({...telefonoFB, 'text': '', color: ''});
-        
+        setProfesoresLoader((prevValue) => !prevValue);
         setActive(false);
         const requestOptions={
             method: 'POST',
