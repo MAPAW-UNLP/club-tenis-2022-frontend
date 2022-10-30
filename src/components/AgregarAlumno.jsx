@@ -37,17 +37,17 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) 
             //Cumple las expectativas de ser un nombre
             if (pattern.test(word)){
                 if(alumnos.map((each) => each.nombre.toUpperCase()).indexOf(e.target.value.toUpperCase()) === -1) {
-                    setNombreFB({...nombreFB, 'text': 'El nombre de alumno es correcto', color: 'green'});
+                    setNombreFB({...nombreFB, 'text': 'El nombre de alumno es correcto', color: '#7CBD1E'});
                     nextInput.disabled = false;
                 }
                 else{
-                    setNombreFB({...nombreFB, 'text': 'El nombre de usuario ya existe', color: 'red'})
+                    setNombreFB({...nombreFB, 'text': 'El nombre de usuario ya existe', color: '#CC3636'})
                     nextInput.disabled = true;
                     submitBtn.disabled = true;
                 }
             }
             else{
-                setNombreFB({...nombreFB, 'text': 'Escriba un nombre de usuario sin numeros', color: 'red'});
+                setNombreFB({...nombreFB, 'text': 'Escriba un nombre de usuario sin numeros', color: '#CC3636'});
             }
         }
         
@@ -56,25 +56,21 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) 
     const handleChangePhone = (e) =>{
         const pattern = "^[0-9]+$";
         const tel = e.target.value;
-        //validar que el telefono sea valido aca yde ultima poner un mensaje de feedback
         setTelefono(tel);
-        const nextInput = document.getElementById('inputDateBirth');
         const submitBtn = document.getElementById('alumno-add-form-addBtn');
 
         if(tel === ''){
             setTelefonoFB({...telefonoFB, 'text': '', color: ''});
-            nextInput.disabled = true;
             submitBtn.disabled = true;
         }
         else{
-            if(tel.match(pattern) != null){
-                setTelefonoFB({...telefonoFB, 'text': 'El nummero de telefono es correcto', color: 'green'});
-                nextInput.disabled = false;
+            if((tel.match(pattern) != null)&&(telefono.length >= 6)){
+                
+                setTelefonoFB({...telefonoFB, 'text': 'El nummero de telefono es correcto', color: '#7CBD1E'});
                 submitBtn.disabled = false;
             }
             else{
-                setTelefonoFB({...telefonoFB, 'text': 'El numero de telefono es incorrecto', color: 'red'});
-                nextInput.disabled = true;
+                setTelefonoFB({...telefonoFB, 'text': 'Solo numeros, minimo 7', color: '#CC3636'});
                 submitBtn.disabled = true;
             }
         }
@@ -112,11 +108,15 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos}) 
                 <button id='close-alumno-add-form' onClick={ handleCloseForm}>x</button>
                 <h2>Nuevo Alumno</h2>     
                 <form action="" id='alumno-add-form' onSubmit={submitAlumnoForm} >
-                    <InputComponent type={'text'} className={'alumno-add-form-input'} placeholder={'Nombre'} onChangeFuncion={handleChangeName}/>
-                    <p className='feedbackInline' style={{color:nombreFB.color}}>{nombreFB.text}</p>
-                    <InputComponent type={'number'} id='telefonotinput' className={'alumno-add-form-input'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/>
-                    <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
-                    <input  type="date" name="" id="inputDateBirth" className='alumno-add-form-input'  value={nacimiento} onChange={handlePickBirth} max='2015-01-01' disabled/>
+                    <div className='inputlabel'>
+                        <InputComponent type={'text'} className={'alumno-add-form-input'} placeholder={'Nombre'} onChangeFuncion={handleChangeName}/>
+                        <p className='feedbackInline' style={{color:nombreFB.color}}>{nombreFB.text}</p>
+                    </div>
+                    <div className='inputlabel'>
+                        <InputComponent type={'text'} id='telefonotinput' className={'alumno-add-form-input'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true} min={7} max={12}/>
+                        <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
+                    </div>
+                    <input  type="date" name="" id="inputDateBirth" className='alumno-add-form-input'  onChange={handlePickBirth} max='2015-01-01'/>
                     <button id='alumno-add-form-addBtn' type='sumbit' disabled ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}  /></button>                
                 </form>
             </div>

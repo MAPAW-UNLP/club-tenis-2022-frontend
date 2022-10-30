@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InputComponent = ({type, id, className, placeholder, onChangeFuncion, deshabilitado, min}) => {
+const InputComponent = ({type, id, className, placeholder, onChangeFuncion, deshabilitado, min, max}) => {
   return (
     <input
       type={type}
@@ -10,7 +10,8 @@ const InputComponent = ({type, id, className, placeholder, onChangeFuncion, desh
       placeholder={placeholder}
       onChange={onChangeFuncion}
       disabled={deshabilitado}
-      min={min}
+      minLength={min}
+      maxLength={max}
     />
   );
 }

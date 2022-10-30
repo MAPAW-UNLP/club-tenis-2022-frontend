@@ -37,8 +37,9 @@ const AlumnosList = ({alumnos}) => {
                 <input type="text" name="" id="" placeholder='Busca un alumno' onChange={handleChangeSearchAlumnno} />
             </div>
         </div>
-
-        {alumnosFiltrados.map((a) => <Alumno key={a.id} info={a}></Alumno>)}
+        <div id='alumnos-list'>
+          {alumnosFiltrados.map((a) => <Alumno key={a.id} info={a}></Alumno>)}
+        </div>
     </div>
   )
 }

@@ -34,17 +34,18 @@ const AgregarProfesor = ({active, setActive, setProfesores, profesores, setActPr
             //Cumple las expectativas de ser un nombre
             if (pattern.test(word)){
                 if(profesores.map((each) => each.nombre.toUpperCase()).indexOf(e.target.value.toUpperCase()) === -1) {
-                    setNombreFB({...nombreFB, 'text': 'El nombre de profesor es correcto', color: 'green'});
+                    setNombreFB({...nombreFB, 'text': 'El nombre de profesor es correcto', color: '#7CBD1E'});
                     nextInput.disabled = false;
                 }
                 else{
-                    setNombreFB({...nombreFB, 'text': 'El nombre de profesor ya existe', color: 'red'})
+                    setNombreFB({...nombreFB, 'text': 'El nombre de profesor ya existe', color: '#CC3636'})
                     nextInput.disabled = true;
                     submitBtn.disabled = true;
                 }
             }
             else{
-                setNombreFB({...nombreFB, 'text': 'Escriba un nombre de profesor sin numeros', color: 'red'});
+                setNombreFB({...nombreFB, 'text': 'Escriba un nombre de profesor sin numeros', color: '#CC3636'});
+                submitBtn.disabled = true;
             }
         }
         
@@ -61,12 +62,13 @@ const AgregarProfesor = ({active, setActive, setProfesores, profesores, setActPr
             submitBtn.disabled = true;
         }
         else{
-            if(tel.match(pattern) != null){
-                setTelefonoFB({...telefonoFB, 'text': 'El nummero de telefono es correcto', color: 'green'});
+            if((tel.match(pattern) != null)&&(telefono.length >= 6)){
+                
+                setTelefonoFB({...telefonoFB, 'text': 'El nummero de telefono es correcto', color: '#7CBD1E'});
                 submitBtn.disabled = false;
             }
             else{
-                setTelefonoFB({...telefonoFB, 'text': 'El numero de telefono es incorrecto', color: 'red'});
+                setTelefonoFB({...telefonoFB, 'text': 'Solo numeros, minimo 7', color: '#CC3636'});
                 submitBtn.disabled = true;
             }
         }
@@ -89,6 +91,8 @@ const AgregarProfesor = ({active, setActive, setProfesores, profesores, setActPr
     }
 
     const handleCloseForm = () =>{
+        setNombreFB({...nombreFB, 'text': '', color: ''});
+        setTelefonoFB({...telefonoFB, 'text': '', color: ''});
         setActive(false);
       }
 
@@ -99,10 +103,14 @@ const AgregarProfesor = ({active, setActive, setProfesores, profesores, setActPr
                 <button id='close-profesor-add-form' onClick={ handleCloseForm}>x</button>
                 <h2>Nuevo Profesor</h2>     
                 <form action="" id='alumno-add-form' onSubmit={submitProfesorForm} >
-                    <InputComponent type={'text'} className={'profesor-add-form-input'} placeholder={'Nombre'} onChangeFuncion={handleChangeName} />
-                    <p className='feedbackInline' style={{color:nombreFB.color}}>{nombreFB.text}</p>
-                    <InputComponent type={'text'} id={'telefonotinput'} className={'profesor-add-form-input'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/>
-                    <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
+                    <div className='inputlabel'>
+                        <InputComponent type={'text'} className={'profesor-add-form-input'} placeholder={'Nombre'} onChangeFuncion={handleChangeName} />
+                        <p className='feedbackInline' style={{color:nombreFB.color}}>{nombreFB.text}</p>
+                    </div>
+                    <div className='inputlabel'>
+                        <InputComponent type={'text'} id={'telefonotinput'} className={'profesor-add-form-input'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true} min={7} max={12}/>
+                        <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
+                    </div>
                     <button disabled id='profesor-add-form-addBtn' type='sumbit'  ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}/></button>                
                 </form>
             </div>

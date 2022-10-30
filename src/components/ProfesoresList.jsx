@@ -34,7 +34,9 @@ const ProfesoresList = ({profesores}) => {
                 <InputComponent type={'text'} placeholder={'Busca un profesor'} onChangeFuncion={handleChangeSearchProfessor}/>
             </div>
         </div>
-        {profesoresFiltrados.map((p) => <Profesor key={p.id} info={p} ></Profesor>)}
+        <div id='profesores-list'>
+          {profesoresFiltrados.map((p) => <Profesor key={p.id} info={p} ></Profesor>)}
+        </div>
     </div>
   )
 }

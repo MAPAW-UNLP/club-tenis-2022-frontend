@@ -132,9 +132,9 @@
 
 .profesor-add-form-input{
     font-family: var(--normal-text);
-    margin: auto;
     margin-bottom: 15px;
     width: 90%;
+    margin: 2vh 2vw ;
     height: 2.2rem;
     border-radius: 2px;
     font-size: large;
@@ -168,10 +168,42 @@
 #profesor-add-form-addBtn:disabled{
     background-color: var(--neutral-black);
 }
+.inputlabel{
+    width: 90%;
+    position: relative;
+}
+
+#profesores-list{
+    min-height: 100%;
+    max-height: 60vh;
+    overflow-y: scroll; 
+}
+
+#profesores-list::-webkit-scrollbar {
+    width: 12px;/* width of the entire scrollbar */
+}
+  
+  #profesores-list::-webkit-scrollbar-track {
+    background-color:transparent;
+    border-bottom-left-radius:20px ;
+    border-bottom-right-radius:20px ;
+    opacity: .5;   
+}
+  
+#profesores-list::-webkit-scrollbar-thumb {
+      
+    background-color: var(--accent-green);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 2px solid var(--neutral-white);  /* creates padding around scroll thumb */
+}
+
 
 .feedbackInline{
     font-family: var(--normal-text);
-    position: relative;
-    top: -1.5vh;
+    position: absolute;
+    top: 0;
+    left: 2vw;
+    /* border: 1px solid red; */
     font-size: 80%;
+    transition: all 0.2s ease;
 }

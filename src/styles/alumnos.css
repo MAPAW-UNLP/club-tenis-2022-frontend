@@ -40,6 +40,7 @@
     border-top-right-radius: 2px;
     padding-left: 2%;
 
+
 }
 
 #alumnos-searchbar{
@@ -94,6 +95,31 @@
     box-shadow: -2px -4px 400px 600px rgba(0,0,0,0.24);
 }
 
+#alumnos-list{
+    min-height: 100%;
+    height: 60vh;
+    overflow-y: scroll; 
+}
+
+#alumnos-list::-webkit-scrollbar {
+    width: 12px;/* width of the entire scrollbar */
+}
+  
+  #alumnos-list::-webkit-scrollbar-track {
+    background-color:transparent;
+    border-bottom-left-radius:20px ;
+    border-bottom-right-radius:20px ;
+    opacity: .5;   
+}
+  
+#alumnos-list::-webkit-scrollbar-thumb {
+      
+    background-color: var(--accent-green);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 2px solid var(--neutral-white);  /* creates padding around scroll thumb */
+}
+
+
 #close-alumno-add-form{
     background:  none;
     position: absolute;
@@ -104,6 +130,7 @@
     font-size: 150%;
     color: var(--neutral-black);
     transition: all 0.5s ease;
+
 }
 
 #close-alumno-add-form:hover{
@@ -138,6 +165,7 @@
     margin-bottom: 15px;
     width: 90%;
     height: 2.2rem;
+    margin: 1.7vh 2vw ;
     border-radius: 2px;
     font-size: large;
     background-color: var(--neutral-white);
@@ -155,6 +183,9 @@
 .alumno-add-form-input:disabled{
     border: none;
     background-color: var(--neutral-black);
+}
+#inputDateBirth{
+    width: 81%;
 }
 
 #alumno-add-form-addBtn{
