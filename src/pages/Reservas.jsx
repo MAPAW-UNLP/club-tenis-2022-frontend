@@ -10,6 +10,7 @@ import SelectHoraFin from '../components/SelectHoraFin'
 //components
 import NavBar from './NavBar'
 import AlquilerFormComponent from '../components/AlquilerFormComponent'
+import ClaseFormComponent from '../components/ClaseFormComponent'
 import InputComponent from '../components/InputComponent'
 import SelectComponent from '../components/SelectComponent'
 
@@ -27,6 +28,7 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
   //navegacion
   const navigate = useNavigate();
   const [alquilerOp, setAlquilerOp] = useState(false);
+  const [claseOp, setClaseOp] = useState(false);
   //a futuro vamos a tener un tipo reserva por aca.
   const [reservaTipo, setReservaTipo] = useState("");
   const [cancha, setCancha] = useState("");
@@ -42,6 +44,10 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
 
+  //clase
+  const [profesor, setProfesor] = useState("");
+  const [alumnos, setAlumnos] = useState("");
+
   //diaFormateadopara HTML
   const mes = ("0" + (new Date().getMonth() + 1)).slice(-2)
   const day = ("0" + new Date().getDate()).slice(-2)
@@ -50,8 +56,9 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
   const today = `${año}-${mes}-${day}` 
 
   const handleTypeChange = (e) =>{
-    if(e.target.value !== 'Alquiler'){
-      setAlquilerOp(false);
+    if(e.target.value === 'Alquiler'){
+      setAlquilerOp(true);
+      setClaseOp(false)
     }
     setReservaTipo(e.target.value);
     
@@ -120,8 +127,8 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
-                <SelectComponent className={'inputReserva'} id={''} onChange={handleTypeChange} options={['Alquiler']} deshabilitado={false} placeholder={'Tipo de Reserva'} />
-                <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
+                <SelectComponent className={'inputReserva'} id={''} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Seleccionar Tipo de Reserva'} />
+                <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Seleccionar Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
                 
                 
                 {/*  LA IDEA ES USAR LOS COMENTADOS
@@ -130,10 +137,12 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
                 
                 <SelectHoraInicio id={'horaInicio'}  className={'inputReserva'} setHoraInicio={setHoraInicio}  />
                 <SelectHoraFin  id={'horaFin'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>         
-                {alquilerOp ? 
+                { alquilerOp ?
                 <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
+                : claseOp ?
+                <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setProfesor={setProfesor} setAlumnos={setAlumnos}/>
                 :
-                <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>
+                  <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>
                 }
            </form>
         </div>
