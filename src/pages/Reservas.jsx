@@ -23,7 +23,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
+const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoader, setProfesores, alumnos, setAlumnos}) => {
 
   //navegacion
   const navigate = useNavigate();
@@ -44,9 +44,17 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
 
+<<<<<<< HEAD
   //clase
   const [profesor, setProfesor] = useState("");
   const [alumnos, setAlumnos] = useState("");
+=======
+  // Clase
+
+  const [profesorSel, setProfesorSel] = useState(""); //id profesor
+  const [grupoIds, setGrupoIds] = useState(""); // ids Alumnos
+  const [replica, setReplica] = useState(false); 
+>>>>>>> jorge221030
 
   //diaFormateadopara HTML
   const mes = ("0" + (new Date().getMonth() + 1)).slice(-2)
@@ -59,6 +67,9 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
     if(e.target.value === 'Alquiler'){
       setAlquilerOp(true);
       setClaseOp(false)
+    }
+    if(e.target.value !== 'Clase'){
+      setClaseOp(false);
     }
     setReservaTipo(e.target.value);
     
@@ -77,7 +88,18 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
 
   const handleSubmitContinue = (e) =>{
     e.preventDefault();
-    setAlquilerOp(true);
+    console.log('eee',e)
+    const reservaType = document.getElementById('selectedReservaType');
+    console.log('Reservatype', reservaType.value)
+    if (reservaType.value == 'Alquiler'){
+      setAlquilerOp(true);
+      setClaseOp(false);
+
+    }
+    if (reservaType.value == 'Clase'){
+      setAlquilerOp(false);
+      setClaseOp(true);
+    }
   }
 
   const canchasDisponibles = () =>{
@@ -104,10 +126,21 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
   
   const handleAddReserva = () =>{
     const URL_BASE = `http://localhost:80/api/`
-    const reserva = { nombre: nombre, telefono: telefono, "fecha": dia , cancha_id : cancha, hora_ini: horaInicio , hora_fin: horaFin}
+    const reserva = { 
+      nombre: nombre, 
+      telefono: telefono, 
+      "fecha": dia , 
+      cancha_id : cancha, 
+      hora_ini: horaInicio , 
+      hora_fin: horaFin,
+      persona_id: profesorSel,
+      grupo_ids: grupoIds,
+      replica: replica
+    }
     const form_data = new FormData();
 
     for (var r in reserva){
+      console.log('form reserva ', r, reserva[r])
       form_data.append(r, reserva[r]);
     }
     const requestOptions={
@@ -127,9 +160,9 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
-                <SelectComponent className={'inputReserva'} id={''} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Seleccionar Tipo de Reserva'} />
-                <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Seleccionar Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
-                
+                <SelectComponent className={'inputReserva'} id={'selectedReservaType'} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Tipo de Reserva'} />
+                <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
+               
                 
                 {/*  LA IDEA ES USAR LOS COMENTADOS
                 <SelectComponent className={'inputReserva'} id={'horaInicio'} onChange={handleSetHoraInicio} options={horas} deshabilitado={false}/>
@@ -137,11 +170,13 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
                 
                 <SelectHoraInicio id={'horaInicio'}  className={'inputReserva'} setHoraInicio={setHoraInicio}  />
                 <SelectHoraFin  id={'horaFin'} className={'inputReserva'} setHoraFin={setHoraFin} horaInicio={horaInicio}/>         
-                { alquilerOp ?
+                {alquilerOp && 
                 <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
-                : claseOp ?
-                <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setProfesor={setProfesor} setAlumnos={setAlumnos}/>
-                :
+                }
+                {claseOp &&
+                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos} profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} />
+                }
+                { !alquilerOp && !claseOp  &&
                   <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>
                 }
            </form>

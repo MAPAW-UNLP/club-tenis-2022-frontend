@@ -101,12 +101,12 @@ function App() {
           <Routes>
             <Route path='/' element={<Login />} ></Route>
             <Route path='/inicio' element={<Home />}></Route>
-            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
+            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} profesores={profesores} reservasLoader={reservasLoader}/>}></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
             <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}  setAlumnosLoader={setAlumnosLoader} alumnosLoader={alumnosLoader}/>}></Route>
             <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores} setProfesoresLoader={setProfesoresLoader} profesoresLoader={profesoresLoader}/> }></Route>
             //ruta oculta
-            <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} />}></Route>
+            <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} />}></Route>
           </Routes>
         </div>
     </>

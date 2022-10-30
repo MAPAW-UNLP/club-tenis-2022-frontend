@@ -11,24 +11,43 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
+<<<<<<< HEAD
 const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setProfesor, setAlumnos}) => {
 
+=======
+const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setNombre, setTelefono, profesores, setProfesores, alumnos, setAlumnos, setGrupoIds, setProfesorSel}) => {
+
+  const [tipoClaseSel, setTipoClaseSel] = useState('');
+>>>>>>> jorge221030
 
 
     const handleChangeSelect = (e) =>{
         setCancha(e.target.value);
-        const nextInput = document.getElementById('profesorInput');
-        e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
       }
 
-      const handleChangeProfesor = (e) =>{
-        setProfesor(e.target.value);
-        const nextInput = document.getElementById('alumnosInput');
-        e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
-      }
+    const handleChangeProfesorSelect = (e) => {
+      console.log('Selecciono profesor ', e.target.value)
+      setProfesorSel(e.target.value);
+     }
+      
+    const handleChangeAlumnoSelect = (e) => {
+      console.log('Selecciono alumno ', e.target.value)
+      setGrupoIds(e.target.value)
+    }
 
-    const handleChangeAlumnos = (e) =>{
-        setAlumnos(e.target.value);
+    const handleChangeTipoClaseSelect = (e) => {
+      console.log('Selecciono tipo de clase ', e.target.value)
+       setTipoClaseSel(e.target.value)
+    }
+
+    const handleChangeName = (e) =>{
+      setNombre(e.target.value);
+      const nextInput = document.getElementById('telefonoInput');
+      e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
+    }
+
+    const handleChangePhone = (e) =>{
+        setTelefono(e.target.value);
         const nextBtn = document.getElementById('submit-btn');
         e.target.value === "" ? nextBtn.disabled = true: nextBtn.disabled = false;  
     }
@@ -43,9 +62,24 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
               <option value="">Cancha</option>
               {canchas.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>
-            
-            <InputComponent type={'text'} id={'profesorInput'} className={'inputReserva'} placeholder={'Profesor'} onChangeFuncion={handleChangeProfesor} deshabilitado={true} />
-            <InputComponent type={'text'} id={'alumnosInput'} className={'inputReserva'} placeholder={'Alumnos'} onChangeFuncion={handleChangeAlumnos} deshabilitado={true}/>
+            <select name="" className='inputReserva' id="" onChange={handleChangeProfesorSelect} >
+              <option value="">Profesor</option>
+              {profesores.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
+            </select>
+            <select name="" className='inputReserva' id="" onChange={handleChangeTipoClaseSelect} >
+              <option value="">Tipo de Clase</option>
+              <option value="g">Grupal</option>
+              <option value="i">Individual</option>
+            </select>
+
+            { tipoClaseSel == 'i' && 
+            <select name="" className='inputReserva' id="" onChange={handleChangeAlumnoSelect} >
+              <option value="">Alumno</option>
+              {alumnos.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
+            </select>
+            }
+            {/* <InputComponent type={'text'} id={'nameInput'} className={'inputReserva'} placeholder={'Nombre'} onChangeFuncion={handleChangeName} deshabilitado={true} />
+            <InputComponent type={'number'} id={'telefonoInput'} className={'inputReserva'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/> */}
             <button id='submit-btn' onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
         </div>
     }
