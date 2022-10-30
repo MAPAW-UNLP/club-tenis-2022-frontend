@@ -11,46 +11,40 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-<<<<<<< HEAD
-const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setProfesor, setAlumnos}) => {
-
-=======
 const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setNombre, setTelefono, profesores, setProfesores, alumnos, setAlumnos, setGrupoIds, setProfesorSel}) => {
 
   const [tipoClaseSel, setTipoClaseSel] = useState('');
->>>>>>> jorge221030
 
+  const handleChangeSelect = (e) =>{
+      setCancha(e.target.value);
+  }
 
-    const handleChangeSelect = (e) =>{
-        setCancha(e.target.value);
-      }
-
-    const handleChangeProfesorSelect = (e) => {
-      console.log('Selecciono profesor ', e.target.value)
-      setProfesorSel(e.target.value);
-     }
+  const handleChangeProfesorSelect = (e) => {
+    console.log('Selecciono profesor ', e.target.value)
+    setProfesorSel(e.target.value);
+  }
       
-    const handleChangeAlumnoSelect = (e) => {
-      console.log('Selecciono alumno ', e.target.value)
-      setGrupoIds(e.target.value)
-    }
+  const handleChangeAlumnoSelect = (e) => {
+    console.log('Selecciono alumno ', e.target.value)
+    setGrupoIds(e.target.value)
+  }
 
-    const handleChangeTipoClaseSelect = (e) => {
-      console.log('Selecciono tipo de clase ', e.target.value)
-       setTipoClaseSel(e.target.value)
-    }
+  const handleChangeTipoClaseSelect = (e) => {
+    console.log('Selecciono tipo de clase ', e.target.value)
+    setTipoClaseSel(e.target.value)
+  }
 
-    const handleChangeName = (e) =>{
-      setNombre(e.target.value);
-      const nextInput = document.getElementById('telefonoInput');
-      e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
-    }
+  const handleChangeName = (e) =>{
+    setNombre(e.target.value);
+    const nextInput = document.getElementById('telefonoInput');
+    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
+  }
 
-    const handleChangePhone = (e) =>{
-        setTelefono(e.target.value);
-        const nextBtn = document.getElementById('submit-btn');
-        e.target.value === "" ? nextBtn.disabled = true: nextBtn.disabled = false;  
-    }
+  const handleChangePhone = (e) =>{
+    setTelefono(e.target.value);
+    const nextBtn = document.getElementById('submit-btn');
+    e.target.value === "" ? nextBtn.disabled = true: nextBtn.disabled = false;  
+  }
     
   return (
     <>

@@ -44,17 +44,11 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
 
-<<<<<<< HEAD
   //clase
-  const [profesor, setProfesor] = useState("");
-  const [alumnos, setAlumnos] = useState("");
-=======
-  // Clase
 
   const [profesorSel, setProfesorSel] = useState(""); //id profesor
   const [grupoIds, setGrupoIds] = useState(""); // ids Alumnos
   const [replica, setReplica] = useState(false); 
->>>>>>> jorge221030
 
   //diaFormateadopara HTML
   const mes = ("0" + (new Date().getMonth() + 1)).slice(-2)
