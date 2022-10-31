@@ -43,6 +43,14 @@ function App() {
 
   const URL_BASE = `http://localhost:80/api/`;
 
+
+  const ordenarPorNombre =(datos)=>{
+    return datos.sort( function(a,b) {
+      if(a.nombre.toUpperCase() > b.nombre.toUpperCase()){ return 1}
+      else{return -1}
+    });
+  } 
+
   useEffect(() =>{
     const requestOptions={
       method: 'GET'
@@ -50,7 +58,7 @@ function App() {
    fetch(`${URL_BASE}canchas`, requestOptions)
       .then(response => response.json())
       .then(data =>  setCanchas(data.detail))
-      .then(response => setActivedLoader((prevValue) => !prevValue)); //siempre aca da false
+      .then(response => setActivedLoader((v) => false)); //siempre aca da false
       /* Desactivar spinner */
     }, [actCanchas]);
 
@@ -75,7 +83,7 @@ function App() {
         } ;
      fetch(`${URL_BASE}alumnos`, requestOptions)
         .then(response => response.json())
-        .then(data =>  setAlumnos(data.detail))
+        .then(data =>  setAlumnos(ordenarPorNombre(data.detail)))
         .then(response => setAlumnosLoader((v) => false))
     
         /* Desactivar spinner */
@@ -88,7 +96,7 @@ function App() {
         } ;
      fetch(`${URL_BASE}profesores`, requestOptions)
         .then(response => response.json())
-        .then(data =>  setProfesores(data))
+        .then(data =>  setProfesores(ordenarPorNombre(data)))
         .then(response => setProfesoresLoader((v) => false))
     
         /* Desactivar spinner */

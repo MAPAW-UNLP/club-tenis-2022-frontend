@@ -84,6 +84,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, s
 
     const submitAlumnoForm = (e) =>{
         e.preventDefault();
+        console.log(nacimiento)
         setNombreFB({...nombreFB, 'text': '', color: ''});
         setTelefonoFB({...telefonoFB, 'text': '', color: ''});
         setAlumnosLoader((prevValue) => !prevValue);
@@ -91,6 +92,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, s
         const requestOptions={
             method: 'POST',
             body: JSON.stringify({ nombre: nombre, telefono: telefono, fechanac: nacimiento, esalumno: true})
+
         } ;
         
         fetch(`${URL_BASE}persona`, requestOptions)

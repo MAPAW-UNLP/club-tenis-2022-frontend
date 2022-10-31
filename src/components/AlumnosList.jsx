@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 //components
 import Alumno from './Alumno'
-
 //Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {  faCaretDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
@@ -29,16 +28,16 @@ const AlumnosList = ({alumnos}) => {
     <div id='alumnos-list-component'>
 
         <div id='alumnos-list-options'>
-            <p>Nombre <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
+            <p>Nombre </p>
             <p>Telefono</p>
-           
+            <p>Nacimiento</p>
             <div id='alumnos-searchbar'>
                 <FontAwesomeIcon id='magnify-icon' icon={faMagnifyingGlass}></FontAwesomeIcon>
                 <input type="text" name="" id="" placeholder='Busca un alumno' onChange={handleChangeSearchAlumnno} />
             </div>
         </div>
         <div id='alumnos-list'>
-          {alumnosFiltrados.map((a) => <Alumno key={a.id} info={a}></Alumno>)}
+          {alumnosFiltrados.map((a) => <Alumno key={a.nombre} info={a}></Alumno>)}
         </div>
     </div>
   )
