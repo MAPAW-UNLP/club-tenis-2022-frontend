@@ -11,7 +11,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setNombre, setTelefono, profesores, setProfesores, alumnos, setAlumnos, setGrupoIds, setProfesorSel}) => {
+const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setNombre, setTelefono, profesores, setProfesores, alumnos, setAlumnos, grupoIds, setGrupoIds, setProfesorSel}) => {
 
   const [tipoClaseSel, setTipoClaseSel] = useState('');
 
@@ -27,6 +27,12 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
   const handleChangeAlumnoSelect = (e) => {
     console.log('Selecciono alumno ', e.target.value)
     setGrupoIds(e.target.value)
+  }
+
+  const handleChangeAlumnoMultSelect = (e) => {
+    console.log('Selecciono alumno ', e.target.value)
+    setGrupoIds(grupoIds=>[...grupoIds, e.target.value])
+    console.log(grupoIds)
   }
 
   const handleChangeTipoClaseSelect = (e) => {
@@ -68,6 +74,12 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
 
             { tipoClaseSel == 'i' && 
             <select name="" className='inputReserva' id="" onChange={handleChangeAlumnoSelect} >
+              <option value="">Alumno</option>
+              {alumnos.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
+            </select>
+            }
+            { tipoClaseSel == 'g' &&
+            <select name="" className='inputReserva' id="" multiple onChange={handleChangeAlumnoMultSelect} >
               <option value="">Alumno</option>
               {alumnos.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>

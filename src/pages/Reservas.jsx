@@ -47,7 +47,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   //clase
 
   const [profesorSel, setProfesorSel] = useState(""); //id profesor
-  const [grupoIds, setGrupoIds] = useState(""); // ids Alumnos
+  const [grupoIds, setGrupoIds] = useState([]); // ids Alumnos
   const [replica, setReplica] = useState(false); 
 
   //diaFormateadopara HTML
