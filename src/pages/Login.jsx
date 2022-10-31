@@ -9,7 +9,7 @@ import LoginForm from '../components/LoginForm'
 //style
 import '../styles/login.css'
 
-const Login = () => {
+const Login = ({setSesion}) => {
 
   
   return (
@@ -27,7 +27,7 @@ const Login = () => {
             </div>
             <div id='logo'></div>
             
-            <LoginForm/>
+            <LoginForm setSesion={setSesion}/>
 
         </div>
     </div>
