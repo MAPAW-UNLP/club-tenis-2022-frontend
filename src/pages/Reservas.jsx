@@ -97,7 +97,7 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
   
   const handleAddReserva = () =>{
     const URL_BASE = `http://localhost:80/api/`
-    const reserva = { nombre: nombre, telefono: telefono, "fecha": dia , cancha_id : cancha, hora_ini: horaInicio , hora_fin: horaFin}
+    const reserva = { nombre: nombre, telefono: telefono, fecha: dia , cancha_id : cancha, hora_ini: horaInicio , hora_fin: horaFin}
     const form_data = new FormData();
 
     for (var r in reserva){
