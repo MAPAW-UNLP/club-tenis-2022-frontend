@@ -12,7 +12,7 @@ import '../styles/navbar.css'
 import { useState } from 'react';
 
 
-const NavBar = ({title}) => {
+const NavBar = ({title, setSesion}) => {
 
     
     const [active, setActive] = useState('link');
@@ -41,7 +41,7 @@ const NavBar = ({title}) => {
                   <LinkItem to={'/reservas'}  setActive={setActive} name={'Reservas'}/>
                   <LinkItem to={'/alumnos'} setActive={setActive} name={'Alumnos'} />
                   <LinkItem to={'/profesores'} setActive={setActive} name={'Profesores'} />
-                  <li> <Link to="/" className='linkCerrarSesion'>Cerrar Sesión </Link></li>
+                  <li> <Link to="/" className='linkCerrarSesion' onClick={()=>{setSesion(pv => '')}}>Cerrar Sesión </Link></li>
               </ul>
           </nav>
           <h1>{title}</h1>        

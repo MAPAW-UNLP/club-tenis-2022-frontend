@@ -22,7 +22,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
+const Reservas = ({canchas, reservas, setActReservas, setReservasLoader, setSesion}) => {
 
   //navegacion
   const navigate = useNavigate();
@@ -116,7 +116,7 @@ const Reservas = ({canchas, reservas, setActReservas, setReservasLoader}) => {
   
   return (
     <div id='reservas-component'>
-        <NavBar title={'Reservas'}/>
+        <NavBar title={'Reservas'} setSesion={setSesion}/>
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >

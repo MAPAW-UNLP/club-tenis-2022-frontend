@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom'
 import FeedbackText from './FeedbackText'
 import LoaderSpinner from './LoaderSpinner'
 
-const LoginForm = () => {
+const LoginForm = ({setSesion}) => {
 
     const URL_BASE="http://localhost:80/api/";
 
@@ -54,6 +54,7 @@ const LoginForm = () => {
 
     const habldeSubmit = (e) =>{
         e.preventDefault();
+    
         setActiveLoader(true);
         const requestOptions={
             method: 'POST',
@@ -64,7 +65,7 @@ const LoginForm = () => {
             .then(data => {
                 if(data.rta === 'ok'){
 
-                    
+                    setSesion((pv)=>{'sesion Iniciada :D'})
                     //setear sesion  + poner algo que esta cargando D:
                     setActiveLoader(false);
                     navigate('../inicio')

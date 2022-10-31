@@ -27,7 +27,7 @@ const ProfesoresList = ({profesores}) => {
   return (
     <div id='profesores-list-component'>
         <div id='profesores-list-options'>
-            <p>Nombre <FontAwesomeIcon icon={faCaretDown}></FontAwesomeIcon></p>
+            <p>Nombre</p>
             <p>Telefono</p>
             <div id='profesores-searchbar'>
                 <FontAwesomeIcon id='magnify-icon' icon={faMagnifyingGlass}></FontAwesomeIcon>

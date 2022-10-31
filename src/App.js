@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 //Components
 import Login from './pages/Login'
 import Home from './pages/Home';
@@ -18,6 +19,11 @@ import { Routes, Route} from 'react-router-dom'
 
 
 function App() {
+  
+
+  //para la sesion
+  const navigate = useNavigate();
+  const [ sesion, setSesion] = useState('');
 
   //Todo esto podría ir a la store global:
   const [canchas, setCanchas] = useState([]);
@@ -43,6 +49,24 @@ function App() {
 
   const URL_BASE = `http://localhost:80/api/`;
 
+
+  const ordenarPorNombre =(datos)=>{
+    return datos.sort( function(a,b) {
+      if(a.nombre.toUpperCase() > b.nombre.toUpperCase()){ return 1}
+      else{return -1}
+    });
+  } 
+
+  //sesion Effect D: 
+  useEffect(() =>{
+    if(sesion === ''){
+      navigate('/');
+    }
+    else{
+      console.log("esta todo joya :D")
+    }
+  }, [sesion])
+
   useEffect(() =>{
     const requestOptions={
       method: 'GET'
@@ -50,7 +74,7 @@ function App() {
    fetch(`${URL_BASE}canchas`, requestOptions)
       .then(response => response.json())
       .then(data =>  setCanchas(data.detail))
-      .then(response => setActivedLoader((prevValue) => !prevValue)); //siempre aca da false
+      .then(response => setActivedLoader((v) => false)); //siempre aca da false
       /* Desactivar spinner */
     }, [actCanchas]);
 
@@ -75,7 +99,7 @@ function App() {
         } ;
      fetch(`${URL_BASE}alumnos`, requestOptions)
         .then(response => response.json())
-        .then(data =>  setAlumnos(data.detail))
+        .then(data =>  setAlumnos(ordenarPorNombre(data.detail)))
         .then(response => setAlumnosLoader((v) => false))
     
         /* Desactivar spinner */
@@ -88,7 +112,7 @@ function App() {
         } ;
      fetch(`${URL_BASE}profesores`, requestOptions)
         .then(response => response.json())
-        .then(data =>  setProfesores(data))
+        .then(data =>  setProfesores(ordenarPorNombre(data)))
         .then(response => setProfesoresLoader((v) => false))
     
         /* Desactivar spinner */
@@ -99,14 +123,14 @@ function App() {
         <div className="App">
           <header className="App-header"></header>
           <Routes>
-            <Route path='/' element={<Login />} ></Route>
-            <Route path='/inicio' element={<Home />}></Route>
-            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader}/>}></Route>
-            <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader}/>}></Route>
-            <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}  setAlumnosLoader={setAlumnosLoader} alumnosLoader={alumnosLoader}/>}></Route>
-            <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores} setProfesoresLoader={setProfesoresLoader} profesoresLoader={profesoresLoader}/> }></Route>
+            <Route path='/' element={<Login setSesion={setSesion}/>} ></Route>
+            <Route path='/inicio' element={<Home setSesion={setSesion}/>}></Route>
+            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader} setSesion={setSesion}/>}></Route>
+            <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader} setSesion={setSesion}/>}></Route>
+            <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}  setAlumnosLoader={setAlumnosLoader} alumnosLoader={alumnosLoader} setSesion={setSesion}/>}></Route>
+            <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores} setProfesoresLoader={setProfesoresLoader} profesoresLoader={profesoresLoader} setSesion={setSesion}/> }></Route>
             //ruta oculta
-            <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} />}></Route>
+            <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} setSesion={setSesion}/>}></Route>
           </Routes>
         </div>
     </>

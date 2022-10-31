@@ -10,13 +10,13 @@ import ProfesoresList from '../components/ProfesoresList'
 import LoaderSpinner from '../components/LoaderSpinner'
 //styles
 import '../styles/profesores.css'
-const Profesores = ({actProfesores, setActProfesores, profesores, setProfesores, setProfesoresLoader, profesoresLoader}) => {
+const Profesores = ({actProfesores, setActProfesores, profesores, setProfesores, setProfesoresLoader, profesoresLoader, setSesion}) => {
 
     const [active, setActive] = useState(false);
 
     return (
         <div id='profesores-component'>
-            <NavBar title={'Profesores'}></NavBar>
+            <NavBar title={'Profesores'} setSesion={setSesion}></NavBar>
             <LoaderSpinner active={profesoresLoader} containerClass={'canchasLoader'} loaderClass={'canchasLoaderSpinner'} />
             <div id='profesores-component-mainContent'>
                 <button id='canchas-add-btn' onClick={() => {setActive((active)=> true)}}> <FontAwesomeIcon icon={faPlusCircle}/> </button>

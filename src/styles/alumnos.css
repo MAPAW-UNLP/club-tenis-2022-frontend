@@ -7,11 +7,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     width: 70vw;
     /* Cambiar aca a 35vw si queremos algo compatible con las canchas */
     margin: auto;
-    margin-top: 10vh;
+    margin-top: 5vh;
     align-items: center;
    
 
@@ -22,20 +21,21 @@
     width: 100%;
     border-radius: 20px;
     background-color: var(--neutral-white);
-    margin-bottom: 50vh;    
+    margin-bottom: 10vh;    
 }
 
 #alumnos-list-options{
-    height: 5vh;
+    height: 8vh;
     display: grid;
-    grid-template-columns: 30% 30% 40%;
+    grid-template-columns: 20% 20% 20% 40%;
     align-content: center;
     align-items: center;
     justify-content: center;
-    color: var(--neutral-white-text);
+    color: var(--neutral-black);
     font-family: var(--title-text);
     font-size: 150%;
-    background-color: var(--neutral-black);
+    border-bottom: 5px solid var(--neutral-black);
+    background-color: var(--neutral-white);
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     padding-left: 2%;
@@ -52,28 +52,29 @@
     width: 100%;
     
     font-family: var(--normal-text);
-    font-size: 80%;
+    font-size: 100%;
     border-radius: 10px;
-    border: none;
+    border: 1px solid var(--neutral-black);
     color: var(--neutral-black);
     padding-left: 2%;
+    transition: all 0.5s ease;
 }
 
 #alumnos-searchbar input:focus{
-    outline: 1.4px solid var(--accent-yellow);
+    outline: 2px solid var(--primary-green);
     border: none;
 }
 
-#magnify-icon{
+#magnify-iconAlumnos{
     color: var(--neutral-black);
     position: absolute;
-    top: 30%;
+    top: 10%;
     right: 5%;
 }
 
 .alumno-info{
     display: grid;
-    grid-template-columns: 30% 30%;
+    grid-template-columns: 20% 20% 20% ;
     margin: 0.5%;
     padding: 1%;
     border-radius: 12px;
