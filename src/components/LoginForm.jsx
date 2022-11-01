@@ -64,9 +64,8 @@ const LoginForm = ({setSesion}) => {
             .then(response => response.json())
             .then(data => {
                 if(data.rta === 'ok'){
-
-                    setSesion((pv)=>{'sesion Iniciada :D'})
-                    //setear sesion  + poner algo que esta cargando D:
+                    localStorage.setItem('sesion', 'sesionIniciada' )
+                    setSesion('sesion Iniciada :D')
                     setActiveLoader(false);
                     navigate('../inicio')
                 }

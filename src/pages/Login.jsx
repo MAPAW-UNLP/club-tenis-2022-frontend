@@ -11,7 +11,7 @@ import '../styles/login.css'
 
 const Login = ({setSesion}) => {
 
-  
+
   return (
     <div id='login-frame'>
         <div id='nav-div'> 

@@ -59,11 +59,9 @@ function App() {
 
   //sesion Effect D: 
   useEffect(() =>{
-    if(sesion === ''){
+    const user = localStorage.getItem('sesion')
+    if(user === ''){
       navigate('/');
-    }
-    else{
-      console.log("esta todo joya :D")
     }
   }, [sesion])
 
