@@ -46,7 +46,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
 
   //clase
 
-  const [profesorSel, setProfesorSel] = useState(""); //id profesor
+  const [profesorSel, setProfesorSel] = useState(0); //id profesor
   const [grupoIds, setGrupoIds] = useState([]); // ids Alumnos
   const [replica, setReplica] = useState(false); 
 
