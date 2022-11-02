@@ -23,7 +23,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoader, setProfesores, alumnos, setAlumnos}) => {
+const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoader, setProfesores, alumnos, setAlumnos, setSesion}) => {
 
   //navegacion
   const navigate = useNavigate();
@@ -122,13 +122,15 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
     const reserva = { 
       nombre: nombre, 
       telefono: telefono, 
-      "fecha": dia , 
-      cancha_id : cancha, 
-      hora_ini: horaInicio , 
+      fecha: dia, 
+      cancha_id: cancha, 
+      hora_ini: horaInicio, 
       hora_fin: horaFin,
       persona_id: profesorSel,
-      grupo_ids: grupoIds,
-      replica: replica
+      replica: false,
+      estado_id:0,
+      grupo_ids: grupoIds
+       
     }
     const form_data = new FormData();
 
@@ -136,6 +138,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
       console.log('form reserva ', r, reserva[r])
       form_data.append(r, reserva[r]);
     }
+    console.log('form data', form_data)
     const requestOptions={
       method: 'POST',
       body: form_data
@@ -149,7 +152,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   
   return (
     <div id='reservas-component'>
-        <NavBar title={'Reservas'}/>
+        <NavBar title={'Reservas'} setSesion={setSesion}/>
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
@@ -167,7 +170,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
                 <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
                 }
                 {claseOp &&
-                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos} profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} />
+                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos}  profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} />
                 }
                 { !alquilerOp && !claseOp  &&
                   <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>

@@ -34,18 +34,6 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
         console.log('Selecciono tipo de clase ', e.target.value)
          setTipoClaseSel(e.target.value)
       }
-
-      const handleChangeName = (e) =>{
-        setNombre(e.target.value);
-        const nextInput = document.getElementById('telefonoInput');
-        e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
-      }
-
-    const handleChangePhone = (e) =>{
-        setTelefono(e.target.value);
-        const nextBtn = document.getElementById('submit-btn');
-        e.target.value === "" ? nextBtn.disabled = true: nextBtn.disabled = false;  
-    }
     
   return (
     <>
@@ -74,9 +62,7 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
               {alumnos.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>
             }
-            {/* <InputComponent type={'text'} id={'nameInput'} className={'inputReserva'} placeholder={'Nombre'} onChangeFuncion={handleChangeName} deshabilitado={true} />
-            <InputComponent type={'number'} id={'telefonoInput'} className={'inputReserva'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/> */}
-            <button id='submit-btn' onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
+            <button id='submit-btn' type="submit" onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
         </div>
     }
     </>
