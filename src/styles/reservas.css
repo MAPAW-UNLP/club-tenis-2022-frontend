@@ -1,30 +1,30 @@
-#reservas-component{
+#reservas-component {
     background-color: var(--primary-cyan);
     height: 100vh;
 }
 
 
-#reserva-nuevaReserva{
+#reserva-nuevaReserva {
     margin: auto;
-  
+
     text-align: center;
     background-color: var(--neutral-white);
     box-shadow: 1px 0px 40px var(--neutral-black);
-    border-radius:20px; 
+    border-radius: 20px;
     width: 40vw;
     margin-top: 3vh;
     font-family: var(--normal-text);
 }
 
-#reserva-nuevaReserva h2{
+#reserva-nuevaReserva h2 {
     font-family: var(--title-text);
     color: var(--neutral-black);
     font-size: 250%;
     margin-top: 3vh;
-    
+
 }
 
-#reserva-form{
+#reserva-form {
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
     border-bottom-right-radius: 20px;
 }
 
-.inputReserva{
+.inputReserva {
     font-family: var(--normal-text);
     width: 90%;
     height: 2.2rem;
@@ -47,21 +47,21 @@
     color: var(--neutral-black);
     padding-left: 5px;
     transition: all 0.5s ease;
-    
+
 }
 
-.inputReserva:focus{
+.inputReserva:focus {
     border: none;
     outline: 1.4px solid var(--accent-yellow);
 }
 
-.inputReserva:disabled{
+.inputReserva:disabled {
     border: none;
     background-color: var(--neutral-black);
     color: var(--neutral-white-text);
 }
 
-#continue-btn{
+#continue-btn {
     width: 100%;
     background-color: var(--accent-green);
     height: 5rem;
@@ -71,30 +71,31 @@
     transition: all 0.5s ease;
 }
 
-#continue-btn:disabled{
+#continue-btn:disabled {
     background-color: var(--neutral-black);
-    
+
 }
 
-#next-icon{
+#next-icon {
     color: var(--neutral-white);
     font-size: 250%;
 }
 
 
 
-hr{
+hr {
     width: 50%;
     text-align: center;
     margin: 2vh 25% 2vh 25%;
 
 }
 
-#alquilerFormComponent{
+#alquilerFormComponent {
     transition: all 1s ease-in;
     width: 100%;
 }
-#submit-btn{
+
+#submit-btn {
     width: 100%;
     background-color: var(--accent-green);
     height: 5rem;
@@ -104,18 +105,20 @@ hr{
     transition: all 0.5s ease;
 }
 
-#submit-btn:disabled{
-    background-color: var(--neutral-black);  
+#submit-btn:disabled {
+    background-color: var(--neutral-black);
 }
-.css-b62m3t-container{
+
+.css-b62m3t-container {
     border: none;
-    
+    margin-left: 5%;
+    margin-right: 5%;
 }
-.css-1s2u09g-control{
+
+.css-1s2u09g-control {
     font-family: var(--normal-text);
     width: 100%;
     height: 2.2rem;
-    margin: auto 5% 15px 5%;
     border-radius: 2px;
     border: 1px solid lightgrey;
     font-size: large;
@@ -124,23 +127,22 @@ hr{
     padding-left: 5px;
     transition: all 0.5s ease;
 }
-.css-1pahdxg-control{
+
+.css-1pahdxg-control {
     font-family: var(--normal-text);
     width: 100%;
     height: 2.2rem;
-    margin: auto 5% 15px 5%;
     border-radius: 2px;
     font-size: large;
     background-color: var(--neutral-white);
     color: var(--neutral-black);
     padding-left: 5px;
-    transition: all 0.5s ease;    
-    box-shadow: none!important;
-    border: 1.4px solid var(--accent-yellow)!important;
+    transition: all 0.5s ease;
+    box-shadow: none !important;
+    border: 1.4px solid var(--accent-yellow) !important;
 }
-#react-select-3-listbox{
+
+#react-select-3-listbox {
     font-family: var(--normal-text);
     width: 100%;
-    margin-left: 4%;
-    margin-right: 4%;
 }
