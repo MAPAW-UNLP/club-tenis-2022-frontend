@@ -23,7 +23,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoader, setProfesores, alumnos, setAlumnos}) => {
+const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoader, setProfesores, alumnos, setAlumnos, setSesion}) => {
 
   //navegacion
   const navigate = useNavigate();
@@ -123,7 +123,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
     const reserva = { 
       nombre: nombre, 
       telefono: telefono, 
-      "fecha": dia , 
+      fecha: dia , 
       cancha_id : cancha, 
       hora_ini: horaInicio , 
       hora_fin: horaFin,
@@ -150,7 +150,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   
   return (
     <div id='reservas-component'>
-        <NavBar title={'Reservas'}/>
+        <NavBar title={'Reservas'} setSesion={setSesion}/>
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >

@@ -11,7 +11,7 @@ import LoaderSpinner from '../components/LoaderSpinner'
 //Styles 
 import '../styles/alumnos.css'
 
-const Users = ({actAlumnos, setActAlumnos, alumnos, setAlumnos, setAlumnosLoader, alumnosLoader}) => {
+const Users = ({actAlumnos, setActAlumnos, alumnos, setAlumnos, setAlumnosLoader, alumnosLoader, setSesion}) => {
 
   
   
@@ -23,7 +23,7 @@ const Users = ({actAlumnos, setActAlumnos, alumnos, setAlumnos, setAlumnosLoader
 
   return (
     <div id='alumnos-component'>
-      <NavBar title={'Alumnos'}></NavBar> 
+      <NavBar title={'Alumnos'} setSesion={setSesion}></NavBar> 
       <LoaderSpinner active={alumnosLoader} containerClass={'canchasLoader'} loaderClass={'canchasLoaderSpinner'} />
       <div id='alumnos-component-mainContent'>
         <button id='canchas-add-btn' onClick={() => {setActive((active)=> true)}}> <FontAwesomeIcon icon={faPlusCircle}/></button>
