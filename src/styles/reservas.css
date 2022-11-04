@@ -109,10 +109,12 @@ hr {
     background-color: var(--neutral-black);
 }
 
-.css-b62m3t-container {
+.inputReserva.css-b62m3t-container {
     border: none;
     margin-left: 5%;
     margin-right: 5%;
+    padding: 0;
+    background-color: var(--neutral-white);
 }
 
 .css-1s2u09g-control {
