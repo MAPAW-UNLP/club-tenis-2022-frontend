@@ -41,12 +41,12 @@ const Reserva = ({datos, canchas, today, setReservaDetail}) => {
     }
   return (
     <>
-    { (datos.fecha === today)?    
+    { (datos.fecha === today)? 
     <div className='reservas' style={{gridArea: `${adivinarFila(datos.horaIni)+1}/${adivinarColumna(datos.canchaNombre)+1}/${adivinarFila(datos.horaFin)+2}/${adivinarColumna(datos.canchaNombre)+1}`, backgroundColor: setearColor(datos.tipo)}}>
         <div id='reserva-info'>
             <button id='reserva-infoBTN' onClick={abrirReservaDetail}><FontAwesomeIcon icon={faCircleInfo} id='infoBTNICO'></FontAwesomeIcon></button>
             <div id='reserva-datos'>
-                <h2 id='reserva-nombre'>{datos.titular.nombre}</h2>
+                <h2 id='reserva-nombre'>{datos.titular? datos.titular.nombre : ''}</h2>
                 {(datos.tipo ==='ALQUILER')?
                     <h2 id='reserva-rol'>Cliente</h2>
                 : <h2 id='reserva-rol'>Profesor</h2>}        

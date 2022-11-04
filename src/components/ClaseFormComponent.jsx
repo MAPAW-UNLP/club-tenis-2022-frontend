@@ -4,6 +4,7 @@ import { useState } from 'react';
 //Components
 import InputComponent from './InputComponent';
 import SelectComponent from './SelectComponent';
+import Select from 'react-select';
 
 
 //FontawesomeIcon
@@ -30,8 +31,8 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
   }
 
   const handleChangeAlumnoMultSelect = (e) => {
-    console.log('Selecciono alumno ', e.target.value)
-    setGrupoIds(grupoIds=>[...grupoIds, e.target.value])
+    console.log('Selecciono alumno ', e)
+    setGrupoIds(e.map((i)=>i.value))
     console.log(grupoIds)
   }
 
@@ -79,10 +80,8 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
             </select>
             }
             { tipoClaseSel == 'g' &&
-            <select name="" className='inputReserva' id="" multiple onChange={handleChangeAlumnoMultSelect} >
-              <option value="">Alumno</option>
-              {alumnos.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
-            </select>
+            <Select className='inputReserva' isMulti onChange={handleChangeAlumnoMultSelect} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))}>
+            </Select>
             }
             {/* <InputComponent type={'text'} id={'nameInput'} className={'inputReserva'} placeholder={'Nombre'} onChangeFuncion={handleChangeName} deshabilitado={true} />
             <InputComponent type={'number'} id={'telefonoInput'} className={'inputReserva'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true}/> */}
