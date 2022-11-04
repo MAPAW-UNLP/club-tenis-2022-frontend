@@ -81,10 +81,10 @@ const CanchasAddForm = ({actived, setActived, canchas, setActivedLoader, setActC
           <div id='close-cancha-add-form' onClick={ handleCloseForm}>x</div>
           <h2>Nueva cancha</h2>     
           <form action="" id='cancha-add-form' onSubmit={handleClickaddCourt}>
-            <input type="text" name="" id="" placeholder='Nombre' className='cancha-add-form-input' onChange={handleCanchaNameChange} value={nombreCancha}/>
+            <input type="text" name="" id="" placeholder='Ingresar nombre nueva Cancha' className='cancha-add-form-input' onChange={handleCanchaNameChange} value={nombreCancha}/>
             <select name="" id='cancha-add-form-select' disabled onChange={handleSelect} value={option} >
               
-              <option value="" >Tipo</option>
+              <option value="" >Seleccionar Tipo</option>
               <option value="roja" >Tierra batida</option>
               <option value="verde">Hierba</option>
               <option value="azul">Asfalto</option>

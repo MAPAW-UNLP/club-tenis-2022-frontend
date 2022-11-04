@@ -154,7 +154,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
-                <SelectComponent className={'inputReserva'} id={'selectedReservaType'} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Tipo de Reserva'} />
+                <SelectComponent className={'inputReserva'} id={'selectedReservaType'} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Seleccionar Tipo de Reserva'} />
                 <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
                
                 
