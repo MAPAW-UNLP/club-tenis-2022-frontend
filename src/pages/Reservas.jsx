@@ -44,10 +44,10 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
 
-  // Clase
+  //clase
 
-  const [profesorSel, setProfesorSel] = useState(""); //id profesor
-  const [grupoIds, setGrupoIds] = useState(""); // ids Alumnos
+  const [profesorSel, setProfesorSel] = useState(0); //id profesor
+  const [grupoIds, setGrupoIds] = useState([]); // ids Alumnos
   const [replica, setReplica] = useState(false); 
 
   //diaFormateadopara HTML
@@ -58,8 +58,9 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   const today = `${año}-${mes}-${day}` 
 
   const handleTypeChange = (e) =>{
-    if(e.target.value !== 'Alquiler'){
-      setAlquilerOp(false);
+    if(e.target.value === 'Alquiler'){
+      setAlquilerOp(true);
+      setClaseOp(false)
     }
     if(e.target.value !== 'Clase'){
       setClaseOp(false);
@@ -119,9 +120,9 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
     const reserva = { 
       nombre: nombre, 
       telefono: telefono, 
-      fecha: dia, 
-      cancha_id: cancha, 
-      hora_ini: horaInicio, 
+      fecha: dia , 
+      cancha_id : cancha, 
+      hora_ini: horaInicio , 
       hora_fin: horaFin,
       persona_id: profesorSel,
       replica: false,
@@ -153,9 +154,9 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
         <div id='reserva-nuevaReserva'>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
-                <SelectComponent className={'inputReserva'} id={'selectedReservaType'} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Tipo de Reserva'} />
+                <SelectComponent className={'inputReserva'} id={'selectedReservaType'} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Seleccionar Tipo de Reserva'} />
                 <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
-                
+               
                 
                 {/*  LA IDEA ES USAR LOS COMENTADOS
                 <SelectComponent className={'inputReserva'} id={'horaInicio'} onChange={handleSetHoraInicio} options={horas} deshabilitado={false}/>
