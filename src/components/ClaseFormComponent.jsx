@@ -30,12 +30,6 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
     setGrupoIds(e.target.value)
   }
 
-<<<<<<< HEAD
-      const handleChangeTipoClaseSelect = (e) => {
-        console.log('Selecciono tipo de clase ', e.target.value)
-         setTipoClaseSel(e.target.value)
-      }
-=======
   const handleChangeAlumnoMultSelect = (e) => {
     console.log('Selecciono alumno ', e)
     setGrupoIds(e.map((i)=>i.value))
@@ -58,7 +52,6 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
     const nextBtn = document.getElementById('submit-btn');
     e.target.value === "" ? nextBtn.disabled = true: nextBtn.disabled = false;  
   }
->>>>>>> main
     
   return (
     <>
@@ -86,15 +79,11 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
               {alumnos.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>
             }
-<<<<<<< HEAD
-            <button id='submit-btn' type="submit" onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
-=======
             { tipoClaseSel == 'g' &&
             <Select className='inputReserva' isMulti onChange={handleChangeAlumnoMultSelect} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} placeholder="Seleccionar alumnos">
             </Select>
             }
             <button id='submit-btn' onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
->>>>>>> main
         </div>
     }
     </>
