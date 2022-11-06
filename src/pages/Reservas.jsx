@@ -84,7 +84,6 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   const handleSubmitContinue = (e) =>{
     e.preventDefault();
     const reservaType = document.getElementById('selectedReservaType');
-    console.log(reservaType.value)
     if (reservaType.value == 'Alquiler'){
       setAlquilerOp(true);
       setClaseOp(false);

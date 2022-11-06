@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import moment from 'moment'
 
 import '../styles/claseDetail.css'
 //fontawesome
@@ -22,7 +23,9 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
       const [selectActive, setActiveSelect] = useState(false);
 
-      const handleDeleteAlumno =() =>{
+      const handleDeleteAlumno = (indexItem) =>{
+        setAlumnosDeLaClase((prevState) =>
+        prevState.filter((alu, index) => index !== indexItem))
         //aca vamos a deletear al alumno de la clase
       }
     
@@ -32,6 +35,14 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
     
         const destructFecha = fecha.split('-');
         return `${nombreDia} ${destructFecha[2]}/${destructFecha[1]}`
+      }
+
+      const clasePasada = (fecha)=>{
+        return (fecha.split('-').join('') <  moment(new Date()).format("YYYYMMDD"))
+      }
+
+      const actualizarClase = () =>{
+        //Aca agarrar todos los datos que tiene detalles y hacer un POST a la API, el unico problema es que los IDs de los usuarios no vienen a la front
       }
   
   return (
@@ -50,21 +61,38 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
         <div id='clase-detail-profesor' className='clase-caja'>
             <h3>Profesor</h3>
+            
             <p className='clase-detail-nombre'>{reserva.titular.nombre}</p>
+            {clasePasada(reserva.fecha) ? 
+            ""
+            : 
             <button id='clase-detail-profesor-edit'><FontAwesomeIcon icon={faPenToSquare} /></button>
+            }
         </div>
 
         <div id='clase-detail-alumnos'  className='clase-caja'>
             <h3>Alumnos</h3>
             <div id='alumnosList'>
-             {alumnosDeLaClase.map((el) => <div key={el.nombre} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p> <button onClick={handleDeleteAlumno}>x</button></div>)}
+             {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p>  {clasePasada(reserva.fecha) ? "": <button id='deleteAlumnoBtn' onClick={() => handleDeleteAlumno(index)}>x</button>}  </div>)}
             </div>
-            <SelectAlumnosAddClase alumnosDeLaClase={alumnosDeLaClase} alumnos={alumnos} setAlumnos={setAlumnosDeLaClase}/>
-
-            <button id='clase-detail-alumnos-addBTN'><FontAwesomeIcon icon={faPlusCircle} /></button>
+            {clasePasada(reserva.fecha) ?
+              ""
+            :
+              <div id='clase-detail-alumnos-nuevosAlumnos'>
+{/*                 <SelectAlumnosAddClase alumnosDeLaClase={alumnosDeLaClase} alumnos={alumnos} setAlumnos={setAlumnosDeLaClase}/>
+ */}                <button id='clase-detail-alumnos-addBTN'><FontAwesomeIcon icon={faPlusCircle} /></button>
+              </div>
+            }        
         </div>
-        <button id='clase-detail-guardar'>Guardar</button>
-        <button id='clase-detail-cancelar'>Cancelar</button>
+        {clasePasada(reserva.fecha) ?
+        
+        ""
+        :
+          <div id='clase-detail-btns'>
+            <button id='clase-detail-guardar' onClick={() => actualizarClase}>Guardar</button>
+            <button id='clase-detail-cancelar' onClick={() => setClaseDetail({})}>Cancelar</button>
+          </div>
+        }
     </div>
     
     : ""}   
