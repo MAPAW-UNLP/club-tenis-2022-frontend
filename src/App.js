@@ -123,7 +123,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Login setSesion={setSesion}/>} ></Route>
             <Route path='/inicio' element={<Home setSesion={setSesion}/>}></Route>
-            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader} setSesion={setSesion}/>}></Route>
+            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader} setSesion={setSesion} alumnos={alumnos}/> }></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader} setSesion={setSesion}/>}></Route>
             <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}  setAlumnosLoader={setAlumnosLoader} alumnosLoader={alumnosLoader} setSesion={setSesion}/>}></Route>
             <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores} setProfesoresLoader={setProfesoresLoader} profesoresLoader={profesoresLoader} setSesion={setSesion}/> }></Route>

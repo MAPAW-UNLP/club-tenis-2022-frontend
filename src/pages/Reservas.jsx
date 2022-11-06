@@ -81,13 +81,10 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
 
   const handleSubmitContinue = (e) =>{
     e.preventDefault();
-    console.log('eee',e)
     const reservaType = document.getElementById('selectedReservaType');
-    console.log('Reservatype', reservaType.value)
     if (reservaType.value == 'Alquiler'){
       setAlquilerOp(true);
       setClaseOp(false);
-
     }
     if (reservaType.value == 'Clase'){
       setAlquilerOp(false);
@@ -172,7 +169,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
                 {claseOp &&
                   <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos}  profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} />
                 }
-                { !alquilerOp && !claseOp  &&
+                { (!alquilerOp && !claseOp) &&
                   <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>
                 }
            </form>

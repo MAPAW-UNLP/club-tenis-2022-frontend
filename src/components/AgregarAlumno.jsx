@@ -87,6 +87,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, s
         console.log(nacimiento)
         setNombreFB({...nombreFB, 'text': '', color: ''});
         setTelefonoFB({...telefonoFB, 'text': '', color: ''});
+        setNacimiento('')
         setAlumnosLoader((prevValue) => !prevValue);
         setActive(false);
         const requestOptions={
