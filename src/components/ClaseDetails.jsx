@@ -58,9 +58,9 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
             <h3>Alumnos</h3>
             <div id='alumnosList'>
              {alumnosDeLaClase.map((el) => <div key={el.nombre} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p> <button onClick={handleDeleteAlumno}>x</button></div>)}
-
             </div>
-            <SelectAlumnosAddClase alumnos={alumnos} setAlumnos={setAlumnosDeLaClase}/>
+            <SelectAlumnosAddClase alumnosDeLaClase={alumnosDeLaClase} alumnos={alumnos} setAlumnos={setAlumnosDeLaClase}/>
+
             <button id='clase-detail-alumnos-addBTN'><FontAwesomeIcon icon={faPlusCircle} /></button>
         </div>
         <button id='clase-detail-guardar'>Guardar</button>

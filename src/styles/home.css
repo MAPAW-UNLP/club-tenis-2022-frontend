@@ -2,7 +2,7 @@
     background-color: var(--primary-green);
     height: 120vh;
     display: relative;
-    
+
 }
 
 #table-component{
@@ -74,12 +74,10 @@
     border-bottom-left-radius: 20px ;
     border-bottom-right-radius: 20px ;
     background-color: var(--neutral-white);
- 
     grid-column-gap: 1px;
     grid-row-gap: 1px;
-    height: 60vh;
+    height: 70vh;
     overflow-y: scroll;
-
     width: 90vw;
     overflow-x: scroll;
 
