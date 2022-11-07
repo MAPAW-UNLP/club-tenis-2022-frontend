@@ -31,7 +31,7 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
       <div id='alquiler-detail-general' class='clase-caja-alq'>
         <h2 >{reserva.canchaNombre}</h2>
         <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-        <p className='alquiler-detail-numeros'>{reserva.horaIni} - {reserva.horaFin}</p>
+        <p>{reserva.horaIni} - {reserva.horaFin}</p>
       </div>
 
       <div id='alquiler-detail-detail' className='clase-caja-alq' >
