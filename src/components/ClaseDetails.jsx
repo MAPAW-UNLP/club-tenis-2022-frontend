@@ -9,7 +9,7 @@ import { faPlusCircle , faPenToSquare} from '@fortawesome/free-solid-svg-icons'
 import SelectAlumnosAddClase from './SelectAlumnosAddClase'
 
 
-const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, alumnos}) => {
+const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, alumnos, profesores}) => {
     
     const dias = [
         'Lunes',
@@ -60,6 +60,11 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
             <h3>Profesor</h3>
             
             <p className='clase-detail-nombre'>{reserva.titular.nombre}</p>
+            <p>Cambiar profe</p>
+            <select name="" className='inputReserva' id='profeInput'>
+              <option value="">Profesor</option>
+              {profesores.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
+            </select>
             {clasePasada(reserva.fecha) ? 
             ""
             : 
