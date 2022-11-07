@@ -62,8 +62,9 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
       setAlquilerOp(true);
       setClaseOp(false)
     }
-    if(e.target.value !== 'Clase'){
-      setClaseOp(false);
+    if(e.target.value === 'Clase'){
+      setClaseOp(true);
+      setAlquilerOp(false);
     }
     setReservaTipo(e.target.value);
     
