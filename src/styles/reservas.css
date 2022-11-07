@@ -1,6 +1,8 @@
 #reservas-component {
     background-color: var(--primary-cyan);
-    height: 100vh;
+    height: 100%;
+    padding-bottom: 20vh;
+    /* background-color: var(--neutral-white); */
 }
 
 
@@ -14,6 +16,7 @@
     width: 40vw;
     margin-top: 3vh;
     font-family: var(--normal-text);
+   
 }
 
 #reserva-nuevaReserva h2 {
@@ -52,7 +55,7 @@
 
 .inputReserva:focus {
     border: none;
-    outline: 1.4px solid var(--accent-yellow);
+    outline: 2px solid var(--accent-green);
 }
 
 .inputReserva:disabled {
@@ -111,6 +114,9 @@ hr {
     background-color: var(--neutral-black);
     cursor: default;
 }
+#claseFormComponent{
+    width: 100%;
+}
 
 .inputReserva.css-b62m3t-container {
     border: none;
@@ -145,7 +151,7 @@ hr {
     padding-left: 5px;
     transition: all 0.5s ease;
     box-shadow: none !important;
-    border: 1.4px solid var(--accent-yellow) !important;
+    border: 2px solid var(--accent-green) !important;
     cursor: pointer!important;
 }
 

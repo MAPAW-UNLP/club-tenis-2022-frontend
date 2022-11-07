@@ -61,7 +61,7 @@
 }
 
 #alumnos-searchbar input:focus{
-    outline: 2px solid var(--primary-green);
+    outline: 2px solid var(--accent-green);
     border: none;
 }
 
@@ -178,7 +178,7 @@
 
 .alumno-add-form-input:focus{
     border:none;
-    outline: 1.4px solid var(--accent-yellow);
+    outline: 2px solid var(--accent-green);
 }
 
 .alumno-add-form-input:disabled{
