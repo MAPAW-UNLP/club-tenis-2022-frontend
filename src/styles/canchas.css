@@ -21,7 +21,7 @@
     color: var(--neutral-white-text);
     font-size: 200%;
     box-shadow: 0px 5px 2px var(--neutral-black);
-
+    cursor: pointer;
 
 
 }
@@ -55,6 +55,7 @@
     font-size: 175%;
     font-weight: bolder;
     color: #CC3636;
+    cursor: pointer;
 }
 #cancha-add-component h2{
     width: 100%;
@@ -108,7 +109,7 @@
     border-radius: 2px;
     font-size: large;
     background-color: var(--neutral-white);
-
+    cursor: pointer;
     color: var(--neutral-black);
     padding-left: 5px;
     transition: all 0.5s ease;
@@ -118,6 +119,7 @@
     background-color: var(--neutral-black);
     color: var(--neutral-white-text);
     border: none;
+    cursor: default;
 }
 
 
@@ -134,6 +136,7 @@
     border: none;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    cursor: pointer;
     
  /*    width: 100%;
     background-color: var(--neutral-black);
@@ -154,6 +157,7 @@
 #cancha-add-form-addBtn:disabled{
     background-color: var(--neutral-black);
     border: none;
+    cursor: default;
 }
 
 #canchas-add-form-btn{
@@ -175,19 +179,19 @@
     margin-bottom: 40vh;
 }
 #cancha-component{
-     background-color: var(--neutral-black);
-     border-radius: 20px;
-     margin-bottom: 1vh;
-     padding-left: 2vw;
-     height: 15vh;  
-     width: 25vw;
-     margin-right:1vw ;
-     position: relative;  
-     z-index: 1;
-     font-family: var(--normal-text);
-     color: var(--neutral-white-text);
-     box-shadow: 0px 2px 10px var(--neutral-black) ;
-
+    background-color: var(--neutral-black);
+    border-radius: 20px;
+    margin-bottom: 1vh;
+    padding-left: 2vw;
+    height: 15vh;  
+    width: 25vw;
+    margin-right:1vw ;
+    position: relative;  
+    z-index: 1;
+    font-family: var(--normal-text);
+    color: var(--neutral-white-text);
+    box-shadow: 0px 2px 10px var(--neutral-black) ;
+    cursor: pointer;
 }
 
 #cancha-component h2{

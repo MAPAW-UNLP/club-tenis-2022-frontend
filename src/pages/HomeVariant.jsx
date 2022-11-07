@@ -79,7 +79,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos}) => {
             {horas.map((el, i) => <div className='horas' key={i} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
             
 
-            {canchas.map((el, i) => <div className='canchas' key={el.id} style={{gridArea: `1/${i+2} / ${horas.lenght}/${i+3}`, backgroundColor: coloresCanchas[i%coloresCanchas.length]}} ><div style={{ backgroundColor:coloresCanchas[i%coloresCanchas.length], filter: 'brightness(120%)', height: '4vh'}}> {el.nombre}</div> </div>)}
+            {canchas.map((el, i) => <div className='canchas' key={el.id} style={{gridArea: `1/${i+2} / ${horas.lenght}/${i+3}`, backgroundColor: coloresCanchas[i%coloresCanchas.length]}} ><div style={{ backgroundColor:coloresCanchas[i%coloresCanchas.length], filter: 'brightness(120%)', height: '4vh'}}><p> {el.nombre} </p></div> </div>)}
             { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail}  setClaseDetail={setClaseDetail} setAlumnos={setAlumnosDeLaClase}/>  )}          
           </div>
           <LoaderSpinner active={reservasLoader} containerClass={'homeLoader'} loaderClass={'homeLoaderSpinner'} />

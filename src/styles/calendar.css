@@ -10,6 +10,7 @@
 
 .pickers:hover{
     color: var(--accent-yellow);
+    cursor: pointer;
 }
 
 .pickers:focus{
@@ -37,4 +38,7 @@
 .derecha{
     position: absolute;
     
+}
+#table-panel-date button{
+    cursor: pointer;
 }
