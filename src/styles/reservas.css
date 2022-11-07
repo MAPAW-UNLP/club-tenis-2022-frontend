@@ -153,3 +153,19 @@ hr {
     font-family: var(--normal-text);
     width: 100%;
 }
+#checkbox-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0 0 4% 5%;
+    width: 100%;
+    position: relative;
+    font-family: var(--normal-text);
+    color: var(--neutral-black);
+    font-size: large;
+}
+#checkbox-container input{
+    cursor: pointer;
+    margin-right: 2%;
+    width: 16px;
+}

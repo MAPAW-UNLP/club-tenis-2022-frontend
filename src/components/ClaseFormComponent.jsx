@@ -12,7 +12,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setNombre, setTelefono, profesores, setProfesores, alumnos, setAlumnos, grupoIds, setGrupoIds, setProfesorSel}) => {
+const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setNombre, setTelefono, profesores, setProfesores, alumnos, setAlumnos, grupoIds, setGrupoIds, setProfesorSel, replica, setReplica}) => {
 
   const [tipoClaseSel, setTipoClaseSel] = useState('');
 
@@ -47,6 +47,11 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
   const handleChangeTipoClaseSelect = (e) => {
     console.log('Selecciono tipo de clase ', e.target.value)
     setTipoClaseSel(e.target.value)
+  }
+
+  const handleChangeCheck = (e) => {
+    console.log('Repetir', e.target.checked)
+    setReplica(e.target.checked)
   }
 
   const handleChangeName = (e) =>{
@@ -91,7 +96,8 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
             <Select className='inputReserva' isMulti onChange={handleChangeAlumnoMultSelect} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} placeholder="Seleccionar alumnos">
             </Select>
             }
-            <button id='submit-btn' onClick={handleAddReserva} disabled> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
+            <label id='checkbox-container'><input type='checkbox' onChange={handleChangeCheck} />Repetir Clase</label>
+            <button id='submit-btn' onClick={handleAddReserva}> <FontAwesomeIcon id='next-icon' icon={faPlusCircle} /> </button>   
         </div>
     }
     </>

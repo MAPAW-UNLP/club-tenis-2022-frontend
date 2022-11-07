@@ -126,7 +126,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
       hora_ini: horaInicio , 
       hora_fin: horaFin,
       persona_id: profesorSel,
-      replica: false,
+      replica: replica,
       estado_id:0,
       grupo_ids: grupoIds
        
@@ -169,7 +169,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
                 <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
                 }
                 {claseOp &&
-                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos}  profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} />
+                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos}  profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} replica={replica} setReplica={setReplica} />
                 }
                 { (!alquilerOp && !claseOp) &&
                   <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>
