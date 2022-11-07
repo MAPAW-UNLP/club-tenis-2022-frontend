@@ -22,8 +22,12 @@
     font-size: 200%;
     box-shadow: 0px 5px 2px var(--neutral-black);
     cursor: pointer;
-
-
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#canchas-add-btn:hover{
+    height: 6rem;
+    box-shadow: 0px 8px 15px var(--accent-tennis-green);
+    font-size: 350%;
 }
 
   
@@ -95,7 +99,7 @@
 
 .cancha-add-form-input:focus{
     border:none;
-    outline: 1.4px solid var(--accent-yellow);
+    outline: 2px solid var(--accent-green);
 }
 
 
@@ -124,7 +128,7 @@
 
 
 #cancha-add-form-select:focus{
-    outline: 1.4px solid var(--accent-yellow);
+    outline: 2px solid var(--accent-green);
     border: none;
 }
 

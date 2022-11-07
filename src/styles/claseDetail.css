@@ -61,7 +61,9 @@
     padding-top: 5%;
     width: 18vw;
     box-shadow: 0px 1px 5px var(--neutral-black);
+
 }
+
 
 #clase-detail-general{
     grid-area:general;
@@ -82,8 +84,31 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-left: 0%
+    padding-left: 0%;
+    position: relative;
+    
 }
+
+#deleteAlumnoBtn{
+    border: 1px solid var(--neutral-white);
+    border-radius: 2px;
+    width: 5vw;
+    height: 2vh;
+    background-color: #CC3636;
+    position: absolute;
+    right: 0%;
+    width: 10%;
+    color: var(--neutral-white-text);
+    transition: 0.2s all cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#deleteAlumnoBtn:hover{
+    box-shadow: 0px 5px 10px #CC3636;
+    width: 5.1vw;
+    height: 2.5vh;
+}
+
+
 
 #clase-detail-alumnos h3{
     border-bottom: 2px solid var(--neutral-white-text);
@@ -96,6 +121,9 @@
     padding-top: 2%;
     height: 100%;
     overflow-y: scroll;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
 }
 
 #alumnosList::-webkit-scrollbar {
@@ -121,6 +149,7 @@
 #alumnosList-detail{
     display: flex;
     justify-content: space-between;
+    
 }
 
 #clase-detail-alumnos-addBTN{
@@ -132,6 +161,7 @@
     color: var(--accent-tennis-green);
     font-size: 150%;
     padding: 4%;
+    width: 100%;
 }
 
 #clase-detail-profesor-edit{
@@ -166,6 +196,10 @@
     color: var(--neutral-white-text);
     font-size: 120%;
 }
+
+#clase-detail-btns{
+    grid-area: botonA;
+}
 #clase-detail-guardar{
     
     grid-area: botonA;
@@ -173,6 +207,7 @@
     height: 4vh;
     border-radius: 20px;
     margin: auto;
+    margin-bottom: 10px;
     margin-top: 2vh;
     background-color:  var(--accent-green);
     border: 1px solid var(--neutral-black);
@@ -195,3 +230,22 @@
     box-shadow: 0px 2px 5px var(--neutral-black);
 }
 
+
+
+/* selector alumnos */
+#selectorAlumnosDetallesClase{
+    position: absolute;
+    top: 6vh;
+    padding-left: 2%;
+    width: 100%;
+    background-color: var(--neutral-black);
+    height: 20vh;
+}
+
+#selectorAlumnos{
+    width: 98%;
+   
+    margin: auto;
+    border: 1px solid red;
+    
+}

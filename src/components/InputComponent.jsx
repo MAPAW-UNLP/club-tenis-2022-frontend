@@ -12,6 +12,7 @@ const InputComponent = ({type, id, className, placeholder, onChangeFuncion, desh
       disabled={deshabilitado}
       minLength={min}
       maxLength={max}
+      min={min}
     />
   );
 }

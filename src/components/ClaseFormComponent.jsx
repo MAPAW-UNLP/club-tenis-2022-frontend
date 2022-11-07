@@ -7,6 +7,7 @@ import SelectComponent from './SelectComponent';
 import Select from 'react-select';
 
 
+
 //FontawesomeIcon
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,29 +24,22 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
   }
 
   const handleChangeProfesorSelect = (e) => {
-    console.log('Selecciono profesor ', e.target.value)
     setProfesorSel(e.target.value);
     const nextInput = document.getElementById('typeReserva');
     e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;
   }
       
   const handleChangeAlumnoSelect = (e) => {
-    console.log('Selecciono alumno ', e.target.value);
-    setGrupoIds(e.target.value);
-    const nextInput = document.getElementById('submit-btn');
-    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;
+    setGrupoIds(e.target.value)
   }
 
   const handleChangeAlumnoMultSelect = (e) => {
-    console.log('Selecciono alumno ', e);
-    setGrupoIds(e.map((i)=>i.value));
-    console.log(grupoIds);
-    const nextInput = document.getElementById('submit-btn');
-    e.value === [] ? nextInput.disabled = true: nextInput.disabled = false;
+    console.log('Selecciono alumno ', e)
+    setGrupoIds(e.map((i)=>i.value))
+    console.log(grupoIds)
   }
 
   const handleChangeTipoClaseSelect = (e) => {
-    console.log('Selecciono tipo de clase ', e.target.value)
     setTipoClaseSel(e.target.value)
   }
 
