@@ -13,7 +13,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, setNombre, setTelefono, profesores, setProfesores, alumnos, setAlumnos, grupoIds, setGrupoIds, setProfesorSel, replica, setReplica}) => {
+const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, profesores, setProfesores, alumnos, setAlumnos, grupoIds, setGrupoIds, setProfesorSel, replica, setReplica}) => {
 
   const [tipoClaseSel, setTipoClaseSel] = useState('');
 
@@ -46,18 +46,6 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
   const handleChangeCheck = (e) => {
     console.log('Repetir', e.target.checked)
     setReplica(e.target.checked)
-  }
-
-  const handleChangeName = (e) =>{
-    setNombre(e.target.value);
-    const nextInput = document.getElementById('telefonoInput');
-    e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
-  }
-
-  const handleChangePhone = (e) =>{
-    setTelefono(e.target.value);
-    const nextBtn = document.getElementById('submit-btn');
-    e.target.value === "" ? nextBtn.disabled = true: nextBtn.disabled = false;  
   }
     
   return (

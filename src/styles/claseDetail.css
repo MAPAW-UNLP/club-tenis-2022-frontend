@@ -19,6 +19,7 @@
     text-align: center;
     border: 5px solid var(--primary-green);
     background-color: var(--neutral-white);
+    cursor: default;
 }
 
 #clase-closeBTN{
@@ -37,6 +38,7 @@
     font-size: 175%;
     font-weight: bolder;
     color: #CC3636;
+    cursor: pointer;
 }
 
 #clase-detail-component h2{
@@ -106,6 +108,7 @@
     box-shadow: 0px 5px 10px #CC3636;
     width: 5.1vw;
     height: 2.5vh;
+    cursor: pointer;
 }
 
 
@@ -162,6 +165,7 @@
     font-size: 150%;
     padding: 4%;
     width: 100%;
+    cursor: pointer;
 }
 
 #clase-detail-profesor-edit{
@@ -177,6 +181,7 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    cursor: pointer;
 }
 #clase-detail-component h3{
     font-family:var(--title-text);
@@ -214,6 +219,7 @@
     color: var(--neutral-white);
     font-size: 140%;
     box-shadow: 0px 2px 15px var(--neutral-black);
+    cursor: pointer;
 }
 
 #clase-detail-cancelar{
@@ -228,6 +234,7 @@
     background-color: var(--neutral-white-text);
     color: var(--neutral-black);
     box-shadow: 0px 2px 5px var(--neutral-black);
+    cursor: pointer;
 }
 
 
