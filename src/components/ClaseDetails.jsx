@@ -12,13 +12,13 @@ import SelectAlumnosAddClase from './SelectAlumnosAddClase'
 const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, alumnos}) => {
     
     const dias = [
-        'lunes',
-        'martes',
-        'miércoles',
-        'jueves',
-        'viernes',
-        'sabado',
-        'domingo',
+        'Lunes',
+        'Martes',
+        'Miércoles',
+        'Jueves',
+        'Viernes',
+        'Sábado',
+        'Domingo',
       ];
 
       const [selectActive, setActiveSelect] = useState(false);
@@ -50,13 +50,10 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
     {reserva.canchaNombre !== undefined ?
     <div id='clase-detail-component'>
         <button id='clase-closeBTN' onClick={() => setClaseDetail({})}>x</button>
-        <h2>Detalles</h2>
-      
-        <h4 id='clase-detail-fecha'>{formateoFecha(reserva.fecha)}</h4>
         <div id='clase-detail-general'  className='clase-caja' >
-            <h3>General</h3>
-            <p className='clase-detail-nombre'>{reserva.canchaNombre}</p>
-            <p className='clase-detail-numeros'>{reserva.horaIni} - {reserva.horaFin}</p>
+          <h2>{reserva.canchaNombre}</h2>
+          <p id='clase-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
+          <p >{reserva.horaIni} - {reserva.horaFin}</p>
         </div>
 
         <div id='clase-detail-profesor' className='clase-caja'>

@@ -3,11 +3,9 @@
     background-color: var(--neutral-white);
     display: grid;
     grid-template-areas: "titulo titulo"
-                        "fecha fecha"
-                        "general alumnos"
-                        "profesor alumnos"
-                        "botonA botonA"
-                        "botonB botonB";
+                         "profesor alumnos"
+                         "botonA botonA"
+                         "botonB botonB";
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     position: absolute;
@@ -41,19 +39,17 @@
     cursor: pointer;
 }
 
-#clase-detail-component h2{
-    grid-area: titulo;
+/*#clase-detail-component h2{
     font-family: var(--title-text);
     color: var(--neutral-black);
     font-size: 300%;
 }
 #clase-detail-fecha{
     margin-top: -4%;
-    grid-area: fecha;
     font-family: var(--title-text);
     color: var(--neutral-black);
     font-size: 110%;
-}
+}*/
 
 .clase-caja{
     background-color: var(--primary-green);
@@ -66,11 +62,25 @@
 
 }
 
-
 #clase-detail-general{
-    grid-area:general;
-    height: 15vh;
-    margin-left: 1vw;
+    grid-area:titulo;
+    font-family: var(--title-text);
+    color: var(--neutral-black);
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-top: 3%;
+    padding: 0;
+    text-align: center;
+    flex-direction: column;
+}
+#clase-detail-general h2{
+    color: var(--neutral-white-text);
+    font-size: 250%;
+}
+#clase-detail-general p{
+    font-size: 150%;
 }
 
 #clase-detail-profesor{
