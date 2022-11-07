@@ -4,8 +4,7 @@
     display: grid;
     grid-template-areas: "titulo titulo"
                          "profesor alumnos"
-                         "botonA botonA"
-                         "botonB botonB";
+                         "botones botones";
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     /*grid-template-rows: 20% auto 10% 10%;*/
@@ -222,13 +221,15 @@
 }
 
 #clase-detail-btns{
-    grid-area: botonA;
+    grid-area: botones;
+    display: grid;
+    grid-template-areas: "botonA"
+                         "botonB";
 }
 #clase-detail-guardar{
-    
     grid-area: botonA;
     width: 95%;
-    height: 4vh;
+    /*height: 4vh;*/
     border-radius: 20px;
     margin: auto;
     margin-bottom: 10px;
@@ -244,7 +245,7 @@
 #clase-detail-cancelar{
     grid-area: botonB;
     width: 95%;
-    height: 4vh;
+    /*height: 4vh;*/
     border-radius: 20px;
     margin: auto;
     margin-bottom: 2vh;
