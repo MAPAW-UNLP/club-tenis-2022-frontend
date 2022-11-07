@@ -9,6 +9,7 @@ import LoaderSpinner from '../components/LoaderSpinner'
 import CalendarComponent from '../components/CalendarComponent'
 import VistaSemanal from '../components/VistaSemanal'
 import AlquilerDetails from '../components/AlquilerDetails'
+import ClaseDetails from '../components/ClaseDetails'
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faCaretRight, faCaretLeft } from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +21,7 @@ import '../styles/home.css'
 
 
 
-const Home = ({canchas, reservas, reservasLoader, setSesion}) => {
+const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos}) => {
 
 
   //Todo esto es para manejar una fecha visible para el usuario
@@ -40,10 +41,14 @@ const Home = ({canchas, reservas, reservasLoader, setSesion}) => {
     console.log(today);
   }
 
+  //alumnos de la clase
+  const [alumnosDeLaClase, setAlumnosDeLaClase] = useState([]);
+
   
 
   //Details
   const [reservaDetail, setReservaDetail] = useState({});
+  const [claseDetail, setClaseDetail] = useState({});
 
   const navigate = useNavigate();
  
@@ -58,7 +63,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion}) => {
             
  */}  
       <AlquilerDetails reserva={reservaDetail} diaReserva={today} setReservaDetail={setReservaDetail}/>
-
+      <ClaseDetails reserva={claseDetail} diaReserva={today} setClaseDetail={setClaseDetail} alumnosDeLaClase={alumnosDeLaClase} setAlumnosDeLaClase={setAlumnosDeLaClase} alumnos={alumnos}/>
       <div id='table-component'>
           <div id='table-options'>
             <button id='home-addReservaBtn' onClick={() =>  navigate('../nuevaReserva')}> <FontAwesomeIcon id='reserva-add-btn' icon={faPlusCircle} /></button>   
@@ -75,7 +80,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion}) => {
             
 
             {canchas.map((el, i) => <div className='canchas' key={el.id} style={{gridArea: `1/${i+2} / ${horas.lenght}/${i+3}`, backgroundColor: coloresCanchas[i%coloresCanchas.length]}} ><div style={{ backgroundColor:coloresCanchas[i%coloresCanchas.length], filter: 'brightness(120%)', height: '4vh'}}> {el.nombre}</div> </div>)}
-            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail} />  )}          
+            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail}  setClaseDetail={setClaseDetail} setAlumnos={setAlumnosDeLaClase}/>  )}          
           </div>
           <LoaderSpinner active={reservasLoader} containerClass={'homeLoader'} loaderClass={'homeLoaderSpinner'} />
         </div>

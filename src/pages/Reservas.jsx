@@ -83,13 +83,10 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
 
   const handleSubmitContinue = (e) =>{
     e.preventDefault();
-    console.log('eee',e)
     const reservaType = document.getElementById('selectedReservaType');
-    console.log('Reservatype', reservaType.value)
     if (reservaType.value == 'Alquiler'){
       setAlquilerOp(true);
       setClaseOp(false);
-
     }
     if (reservaType.value == 'Clase'){
       setAlquilerOp(false);
@@ -129,8 +126,10 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
       hora_ini: horaInicio , 
       hora_fin: horaFin,
       persona_id: profesorSel,
-      grupo_ids: grupoIds,
-      replica: replica
+      replica: false,
+      estado_id:0,
+      grupo_ids: grupoIds
+       
     }
     const form_data = new FormData();
 
@@ -138,6 +137,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
       console.log('form reserva ', r, reserva[r])
       form_data.append(r, reserva[r]);
     }
+    console.log('form data', form_data)
     const requestOptions={
       method: 'POST',
       body: form_data
@@ -169,9 +169,9 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
                 <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
                 }
                 {claseOp &&
-                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos} profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} />
+                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos}  profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} />
                 }
-                { !alquilerOp && !claseOp  &&
+                { (!alquilerOp && !claseOp) &&
                   <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>
                 }
            </form>

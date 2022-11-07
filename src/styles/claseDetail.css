@@ -1,0 +1,197 @@
+#clase-detail-component{
+    box-shadow: -2px -4px 400px 600px rgba(0,0,0,0.24);
+    background-color: var(--neutral-white);
+    display: grid;
+    grid-template-areas: "titulo titulo"
+                        "fecha fecha"
+                        "general alumnos"
+                        "profesor alumnos"
+                        "botonA botonA"
+                        "botonB botonB";
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    position: absolute;
+    top: 30%;
+    left: 30vw;
+    border-radius:20px; 
+    width: 40vw;
+    z-index: 20;
+    text-align: center;
+    border: 5px solid var(--primary-green);
+    background-color: var(--neutral-white);
+}
+
+#clase-closeBTN{
+    position: absolute;
+    font-family: var(--title-text);
+    background: none;
+    border: none;
+    font-size: 150%;
+    color: var(--neutral-black);
+    right: 2%;
+    transition: all 0.5s ease;
+}
+
+
+#clase-closeBTN:hover{
+    font-size: 175%;
+    font-weight: bolder;
+    color: #CC3636;
+}
+
+#clase-detail-component h2{
+    grid-area: titulo;
+    font-family: var(--title-text);
+    color: var(--neutral-black);
+    font-size: 300%;
+}
+#clase-detail-fecha{
+    margin-top: -4%;
+    grid-area: fecha;
+    font-family: var(--title-text);
+    color: var(--neutral-black);
+    font-size: 110%;
+}
+
+.clase-caja{
+    background-color: var(--primary-green);
+    border-radius: 20px;
+    text-align: start;
+    padding-left: 2%;
+    padding-top: 5%;
+    width: 18vw;
+    box-shadow: 0px 1px 5px var(--neutral-black);
+}
+
+#clase-detail-general{
+    grid-area:general;
+    height: 15vh;
+    margin-left: 1vw;
+}
+
+#clase-detail-profesor{
+    grid-area: profesor;
+    height: 15vh;
+    margin-left: 1vw;
+    position: relative;
+}
+#clase-detail-alumnos{
+    grid-area: alumnos;
+    width: 18vw;
+    margin-right: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 0%
+}
+
+#clase-detail-alumnos h3{
+    border-bottom: 2px solid var(--neutral-white-text);
+    text-align: center;
+}
+
+#alumnosList{
+    background-color: #29754F;
+    padding-left: 2%;
+    padding-top: 2%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+#alumnosList::-webkit-scrollbar {
+    width: 12px;/* width of the entire scrollbar */
+      
+  }
+  
+#alumnosList::-webkit-scrollbar-track {
+      background-color:transparent;
+      border-bottom-left-radius:20px ;
+      border-bottom-right-radius:20px ;
+      opacity: .5;   
+      /* color of the tracking area */
+  }
+  
+#alumnosList::-webkit-scrollbar-thumb {
+      
+    background-color: var(--accent-tennis-green);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 2px solid var(--neutral-white);  /* creates padding around scroll thumb */
+}
+
+#alumnosList-detail{
+    display: flex;
+    justify-content: space-between;
+}
+
+#clase-detail-alumnos-addBTN{
+    height: 5vh;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px solid var(--neutral-white);
+    background-color: var(--neutral-black);
+    color: var(--accent-tennis-green);
+    font-size: 150%;
+    padding: 4%;
+}
+
+#clase-detail-profesor-edit{
+    height: 5vh;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 2px solid var(--neutral-white);
+    background-color: var(--neutral-black);
+    color: var(--accent-tennis-green);
+    font-size: 150%;
+    width: 100%;
+    padding: 4%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+#clase-detail-component h3{
+    font-family:var(--title-text);
+    font-size: 150%;
+    color: var(--neutral-white-text) ;
+}
+
+.clase-detail-nombre{
+    font-family: var(--normal-text);
+    color: var(--accent-yellow);
+    font-weight: bolder;
+    font-size: 120%;
+}
+
+.clase-detail-numeros{
+    font-family: var(--normal-text);
+    color: var(--neutral-white-text);
+    font-size: 120%;
+}
+#clase-detail-guardar{
+    
+    grid-area: botonA;
+    width: 95%;
+    height: 4vh;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 2vh;
+    background-color:  var(--accent-green);
+    border: 1px solid var(--neutral-black);
+    color: var(--neutral-white);
+    font-size: 140%;
+    box-shadow: 0px 2px 15px var(--neutral-black);
+}
+
+#clase-detail-cancelar{
+    grid-area: botonB;
+    width: 95%;
+    height: 4vh;
+    border-radius: 20px;
+    margin: auto;
+    margin-bottom: 2vh;
+    font-size: 130%;
+    border: 1px solid var(--neutral-black);
+    background-color: var(--neutral-white-text);
+    color: var(--neutral-black);
+    box-shadow: 0px 2px 5px var(--neutral-black);
+}
+
