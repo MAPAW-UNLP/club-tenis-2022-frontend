@@ -5,13 +5,13 @@ import '../styles/alquilerDetail.css'
 const AlquilerDetails = ({reserva, setReservaDetail}) => {
   
   const dias = [
-    'lunes',
-    'martes',
-    'miércoles',
-    'jueves',
-    'viernes',
-    'sabado',
-    'domingo',
+    'Lunes',
+    'Martes',
+    'Miércoles',
+    'Jueves',
+    'Viernes',
+    'Sábado',
+    'Domingo',
   ];
   
 
@@ -28,19 +28,16 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     {reserva.canchaNombre !== undefined ?
     <div id='alquiler-detail-component'>
       <button id='close-detail-btn' onClick={()=> setReservaDetail({})} >x</button>
-      <h2 >Detalles</h2>
-      <h4 id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</h4>
-      <div className='alquiler-detail-div' id='alquiler-detail1div'>
-        <h3>General</h3>
-        
-        <p className='alquiler-detail-nombre'>{reserva.canchaNombre}</p>
+      <div id='alquiler-detail-general' class='clase-caja-alq'>
+        <h2 >{reserva.canchaNombre}</h2>
+        <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
         <p className='alquiler-detail-numeros'>{reserva.horaIni} - {reserva.horaFin}</p>
       </div>
 
-      <div className='alquiler-detail-div' id='alquiler-detail2div'>
+      <div id='alquiler-detail-detail' className='clase-caja-alq' >
         <h3>Cliente info</h3>
-        <p className='alquiler-detail-nombre'>nombre: {reserva.titular.nombre}</p>
-        <p className='alquiler-detail-numeros'> telefono: {reserva.titular.telefono}</p>
+        <p className='alquiler-detail-nombre'>Cliente: {reserva.titular.nombre}</p>
+        <p className='alquiler-detail-numeros'> Teléfono: {reserva.titular.telefono}</p>
       </div>
     </div>
     :
