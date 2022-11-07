@@ -85,7 +85,6 @@
 
 #clase-detail-profesor{
     grid-area: profesor;
-    height: 15vh;
     margin-left: 1vw;
     position: relative;
 }
