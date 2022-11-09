@@ -44,7 +44,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores
   //alumnos de la clase
   const [alumnosDeLaClase, setAlumnosDeLaClase] = useState([]);
 
-  
+  const [profeClase, setProfeClase] = useState('');
 
   //Details
   const [reservaDetail, setReservaDetail] = useState({});
@@ -63,7 +63,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores
             
  */}  
       <AlquilerDetails reserva={reservaDetail} diaReserva={today} setReservaDetail={setReservaDetail}/>
-      <ClaseDetails reserva={claseDetail} diaReserva={today} setClaseDetail={setClaseDetail} alumnosDeLaClase={alumnosDeLaClase} setAlumnosDeLaClase={setAlumnosDeLaClase} alumnos={alumnos} profesores={profesores}/>
+      <ClaseDetails reserva={claseDetail} diaReserva={today} setClaseDetail={setClaseDetail} alumnosDeLaClase={alumnosDeLaClase} setAlumnosDeLaClase={setAlumnosDeLaClase} profeClase={profeClase} setProfeClase={setProfeClase} alumnos={alumnos} profesores={profesores}/>
       <div id='table-component'>
           <div id='table-options'>
             <button id='home-addReservaBtn' onClick={() =>  navigate('../nuevaReserva')}> <FontAwesomeIcon id='reserva-add-btn' icon={faPlusCircle} /></button>   
@@ -80,7 +80,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores
             
 
             {canchas.map((el, i) => <div className='canchas' key={el.id} style={{gridArea: `1/${i+2} / ${horas.lenght}/${i+3}`, backgroundColor: coloresCanchas[i%coloresCanchas.length]}} ><div style={{ backgroundColor:coloresCanchas[i%coloresCanchas.length], filter: 'brightness(120%)', height: '4vh'}}><p> {el.nombre} </p></div> </div>)}
-            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail}  setClaseDetail={setClaseDetail} setAlumnos={setAlumnosDeLaClase}/>  )}          
+            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail}  setClaseDetail={setClaseDetail} setAlumnos={setAlumnosDeLaClase} setProfe={setProfeClase} />  )}          
           </div>
           <LoaderSpinner active={reservasLoader} containerClass={'homeLoader'} loaderClass={'homeLoaderSpinner'} />
         </div>

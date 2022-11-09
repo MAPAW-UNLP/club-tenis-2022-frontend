@@ -7,7 +7,9 @@
                          "botones botones";
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    /*grid-template-rows: 20% auto 10% 10%;*/
+    grid-template-rows: 20% auto 10% 10%;
+    grid-template-columns: 47% 47%;
+    justify-content: center;
     position: absolute;
     top: 30%;
     left: 30vw;
@@ -56,7 +58,7 @@
     border-radius: 20px;
     text-align: start;
     padding-top: 5%;
-    width: 18vw;
+    /*width: 18vw;*/
     box-shadow: 0px 1px 5px var(--neutral-black);
 
 }
@@ -81,7 +83,6 @@
     justify-self: center;
     margin-top: 3%;
     padding: 0;
-    text-align: center;
     flex-direction: column;
 }
 #clase-detail-general h2{
@@ -97,7 +98,7 @@
 
 #clase-detail-profesor{
     grid-area: profesor;
-    margin-left: 1vw;
+    /*margin-left: 1vw;*/
     position: relative;
     display: flex;
     flex-direction: column;
@@ -106,33 +107,34 @@
 }
 #clase-detail-alumnos{
     grid-area: alumnos;
-    width: 18vw;
-    margin-right: 1vw;
+    /*width: 18vw;
+    margin-right: 1vw;*/
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding-left: 0%;
+    /*justify-content: space-between;
+    padding-left: 0%;*/
     position: relative;
-    
+    overflow: scroll;
 }
 
 #deleteAlumnoBtn{
     border: 1px solid var(--neutral-white);
     border-radius: 2px;
-    width: 5vw;
-    height: 2vh;
+    width: 25px;
+    height: 25px;
+    margin-right: 5%;
     background-color: #CC3636;
-    position: absolute;
-    right: 0%;
-    width: 10%;
+    position: relative;
+    /*right: 0%;
+    width: 10%;*/
     color: var(--neutral-white-text);
     transition: 0.2s all cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #deleteAlumnoBtn:hover{
     box-shadow: 0px 5px 10px #CC3636;
-    width: 5.1vw;
-    height: 2.5vh;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -140,11 +142,47 @@
     background-color: #29754F;
     padding-left: 2%;
     padding-top: 2%;
-    height: 100%;
+    height: 60%;
     overflow-y: scroll;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     position: relative;
+}
+.css-b62m3t-container{
+    height: 100%;
+}
+.css-1s2u09g-control{
+    display: inline-flex!important;
+    height: 100%;
+    /*display: flex;*/
+    flex-direction: row;
+    flex-wrap: wrap!important;
+    width: 96%;
+}
+
+.css-g1d714-ValueContainer{
+    width: 80%;
+    height: 100%;
+    padding: 0!important;
+    align-content: flex-start;
+}
+.css-1hb7zxy-IndicatorsContainer{
+    height: 50%;
+    padding: 0;
+    margin: 0;
+}
+.css-tj5bde-Svg{
+
+}
+.css-tlfecz-indicatorContainer{
+    padding: 8px 0 8px 0!important;
+}
+
+#clase-detail-alumnos-nuevosAlumnos{
+    position: relative;
+    height: 40%;
 }
 
 #alumnosList::-webkit-scrollbar {
@@ -169,19 +207,21 @@
 
 #alumnosList-detail{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    
+    align-items: center;
 }
 
 #clase-detail-alumnos-addBTN{
-    height: 5vh;
+    /*height: 5vh;*/
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border: 2px solid var(--neutral-white);
     background-color: var(--neutral-black);
     color: var(--accent-tennis-green);
     font-size: 150%;
-    padding: 4%;
+    /*padding: 4%;*/
+    position: relative;
     width: 100%;
     cursor: pointer;
 }

@@ -10,12 +10,12 @@ import { faPlusCircle , faPenToSquare} from '@fortawesome/free-solid-svg-icons'
 import SelectAlumnosAddClase from './SelectAlumnosAddClase'
 import FeedbackText from './FeedbackText'
 import LoaderSpinner from './LoaderSpinner'
+import Select from 'react-select';
 
 
-const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, alumnos, profesores}) => {
+const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, profeClase, setProfeClase, alumnos, profesores}) => {
     
-      
-  
+       
       const dias = [
         'Lunes',
         'Martes',
@@ -41,8 +41,14 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
       const handleEditProfe = (e) =>{
         console.log(e.target.value);
+        setProfeClase(parseInt(e.target.value));
         setActProfe(parseInt(e.target.value));
-        console.log(actProfe);
+      }
+
+      const handleEditAlumnos = (e) => {
+        console.log('Selecciono alumnos ', e)
+        setAlumnosDeLaClase(e.map((i)=>i.value))
+        console.log(alumnosDeLaClase)
       }
     
       const formateoFecha = (fecha)=>{
@@ -59,27 +65,36 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
       const actualizarClase = () =>{
         //Aca agarrar todos los datos que tiene detalles y hacer un POST a la API, el unico problema es que los IDs de los usuarios no vienen a la front
+        const URL_BASE="http://localhost:80/api/";
+        const params = new URLSearchParams();
+        params.append('reserva_id', reserva.reservaId);
+        params.append('persona_id', actProfe);
+        params.append('grupo_ids', alumnosDeLaClase);
+        console.log(params);
+                
+        const requestOptions = {
+            method: 'PUT',
+            body: params
+        } ;
+        fetch(`${URL_BASE}clase_reserva`, requestOptions)
+          .then(response => setClaseDetail((v) => !v))
+          .finally(navigate('/reservas'));
       }
 
       const editProfe = () =>{
-        //setIdReserva(reserva.reservaId);
-        
-        setProfeLoader(true);
-        //console.log(typeof idReserva, typeof actProfe);
         const URL_BASE="http://localhost:80/api/";
         const params = new URLSearchParams();
         params.append('reserva_id', reserva.reservaId);
         params.append('persona_id', actProfe);
         
-
         const requestOptions = {
             method: 'PUT',
             body: params
         } ;
         fetch(`${URL_BASE}profe_reserva`, requestOptions)
-          .then(response => setActProfe((v) => !v))
+          .then(response => setClaseDetail((v) => !v))
           .then(setProfeLoader(true))
-          .finally(navigate('../reservas'));
+          .finally(navigate('/reservas'));
       }
   
   return (
@@ -113,7 +128,9 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         <div id='clase-detail-alumnos'  className='clase-caja'>
             <h3>Alumnos</h3>
             <div id='alumnosList'>
-             {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p>  {clasePasada(reserva.fecha) ? "": <button id='deleteAlumnoBtn' onClick={() => handleDeleteAlumno(index)}>x</button>}  </div>)}
+            <Select className='' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos">
+            </Select>
+             {/*alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p>  {clasePasada(reserva.fecha) ? "": <button id='deleteAlumnoBtn' onClick={() => handleDeleteAlumno(index)}>X</button>}  </div>)*/}
             </div>
             {clasePasada(reserva.fecha) ?
               ""
@@ -129,7 +146,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         ""
         :
           <div id='clase-detail-btns'>
-            <button id='clase-detail-guardar' onClick={() => actualizarClase}>Guardar</button>
+            <button id='clase-detail-guardar' onClick={actualizarClase}>Guardar</button>
             <button id='clase-detail-cancelar' onClick={() => setClaseDetail({})}>Cancelar</button>
           </div>
         }
