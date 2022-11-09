@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import moment from 'moment'
+import {useNavigate} from 'react-router-dom'
 
 import '../styles/claseDetail.css'
 //fontawesome
@@ -7,11 +8,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle , faPenToSquare} from '@fortawesome/free-solid-svg-icons'
 //components
 import SelectAlumnosAddClase from './SelectAlumnosAddClase'
+import FeedbackText from './FeedbackText'
+import LoaderSpinner from './LoaderSpinner'
 
 
 const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, alumnos, profesores}) => {
     
-    const dias = [
+      
+  
+      const dias = [
         'Lunes',
         'Martes',
         'Miércoles',
@@ -22,11 +27,22 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
       ];
 
       const [selectActive, setActiveSelect] = useState(false);
+      const [actProfe, setActProfe] = useState('');
+      const [idReserva, setIdReserva] = useState('');
+
+      const [profeLoader, setProfeLoader] = useState(false);
+      const navigate = useNavigate();
 
       const handleDeleteAlumno = (indexItem) =>{
         setAlumnosDeLaClase((prevState) =>
         prevState.filter((alu, index) => index !== indexItem))
         //aca vamos a deletear al alumno de la clase
+      }
+
+      const handleEditProfe = (e) =>{
+        console.log(e.target.value);
+        setActProfe(parseInt(e.target.value));
+        console.log(actProfe);
       }
     
       const formateoFecha = (fecha)=>{
@@ -43,6 +59,27 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
       const actualizarClase = () =>{
         //Aca agarrar todos los datos que tiene detalles y hacer un POST a la API, el unico problema es que los IDs de los usuarios no vienen a la front
+      }
+
+      const editProfe = () =>{
+        //setIdReserva(reserva.reservaId);
+        
+        setProfeLoader(true);
+        //console.log(typeof idReserva, typeof actProfe);
+        const URL_BASE="http://localhost:80/api/";
+        const params = new URLSearchParams();
+        params.append('reserva_id', reserva.reservaId);
+        params.append('persona_id', actProfe);
+        
+
+        const requestOptions = {
+            method: 'PUT',
+            body: params
+        } ;
+        fetch(`${URL_BASE}profe_reserva`, requestOptions)
+          .then(response => setActProfe((v) => !v))
+          .then(setProfeLoader(true))
+          .finally(navigate('../reservas'));
       }
   
   return (
@@ -61,7 +98,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
             
             <p className='clase-detail-nombre'>{reserva.titular.nombre}</p>
 
-            <select name="" className='inputReserva' id='profeInput'>
+            <select name="" className='inputReserva' id='profeInput' onChange={handleEditProfe}>
               <option value="">Cambiar Profe</option>
               {profesores.map((el) => { return reserva.titular.nombre !== el.nombre ? <option value={el.id} key={el.id}>{el.nombre}</option>
               : ""})}
@@ -69,7 +106,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
             {clasePasada(reserva.fecha) ? 
             ""
             : 
-            <button id='clase-detail-profesor-edit'><FontAwesomeIcon icon={faPenToSquare} /></button>
+            <button id='clase-detail-profesor-edit' onClick={editProfe}><FontAwesomeIcon icon={faPenToSquare} /></button>
             }
         </div>
 
