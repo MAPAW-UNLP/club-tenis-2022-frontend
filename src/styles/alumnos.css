@@ -21,7 +21,8 @@
     width: 100%;
     border-radius: 20px;
     background-color: var(--neutral-white);
-    margin-bottom: 10vh;    
+    margin-bottom: 10vh;
+    cursor: default; 
 }
 
 #alumnos-list-options{
@@ -131,7 +132,7 @@
     font-size: 150%;
     color: var(--neutral-black);
     transition: all 0.5s ease;
-
+    cursor: pointer;
 }
 
 #close-alumno-add-form:hover{
@@ -187,6 +188,7 @@
 }
 #inputDateBirth{
     width: 81%;
+    cursor: pointer;
 }
 
 #alumno-add-form-addBtn{
@@ -196,7 +198,7 @@
     border: none;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    
+    cursor: pointer;
 }
 
 #alumno-add-form-addBtn:disabled{
