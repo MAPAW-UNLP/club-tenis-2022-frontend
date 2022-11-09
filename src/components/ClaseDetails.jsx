@@ -27,7 +27,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
       ];
 
       const [selectActive, setActiveSelect] = useState(false);
-      const [actProfe, setActProfe] = useState('');
+      const [actProfe, setActProfe] = useState(null);
       const [idReserva, setIdReserva] = useState('');
 
       const [profeLoader, setProfeLoader] = useState(false);
@@ -41,7 +41,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
       const handleEditProfe = (e) =>{
         console.log(e.target.value);
-        setProfeClase(parseInt(e.target.value));
+        /*setProfeClase(parseInt(e.target.value));*/
         setActProfe(parseInt(e.target.value));
       }
 
@@ -67,8 +67,9 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         //Aca agarrar todos los datos que tiene detalles y hacer un POST a la API, el unico problema es que los IDs de los usuarios no vienen a la front
         const URL_BASE="http://localhost:80/api/";
         const params = new URLSearchParams();
+        const profeDefault = document.getElementById('idProfeSelected').value;
         params.append('reserva_id', reserva.reservaId);
-        params.append('persona_id', actProfe);
+        actProfe == null ? params.append('persona_id', profeDefault):params.append('persona_id', actProfe);
         params.append('grupo_ids', alumnosDeLaClase);
         console.log(params);
                 
@@ -92,9 +93,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
             body: params
         } ;
         fetch(`${URL_BASE}profe_reserva`, requestOptions)
-          .then(response => setClaseDetail((v) => !v))
-          .then(setProfeLoader(true))
-          .finally(navigate('/reservas'));
+          .then(response => setClaseDetail((v) => !v));
       }
   
   return (
@@ -113,8 +112,8 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
             
             <p className='clase-detail-nombre'>{reserva.titular.nombre}</p>
 
-            <select name="" className='inputReserva' id='profeInput' onChange={handleEditProfe}>
-              <option value="">Cambiar Profe</option>
+            <select name="" className='inputReserva' id='profeInput' onChange={handleEditProfe} defaultValue={reserva.titular.id}>
+              <option id='idProfeSelected' value={reserva.titular.id} >Cambiar Profe</option>
               {profesores.map((el) => { return reserva.titular.nombre !== el.nombre ? <option value={el.id} key={el.id}>{el.nombre}</option>
               : ""})}
             </select>
