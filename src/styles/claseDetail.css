@@ -139,15 +139,15 @@
 }
 
 #alumnosList{
-    background-color: #29754F;
+    /*background-color: #29754F;*/
     padding-left: 2%;
     padding-top: 2%;
     height: 60%;
     overflow-y: scroll;
-    border-bottom-left-radius: 20px;
+    /*border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-top-right-radius: 20px;*/
     position: relative;
 }
 .css-b62m3t-container{
