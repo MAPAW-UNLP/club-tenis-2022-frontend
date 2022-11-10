@@ -21,7 +21,7 @@ import '../styles/home.css'
 
 
 
-const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores}) => {
+const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores, setActReservas}) => {
 
 
   //Todo esto es para manejar una fecha visible para el usuario
@@ -63,7 +63,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores
             
  */}  
       <AlquilerDetails reserva={reservaDetail} diaReserva={today} setReservaDetail={setReservaDetail}/>
-      <ClaseDetails reserva={claseDetail} diaReserva={today} setClaseDetail={setClaseDetail} alumnosDeLaClase={alumnosDeLaClase} setAlumnosDeLaClase={setAlumnosDeLaClase} profeClase={profeClase} setProfeClase={setProfeClase} alumnos={alumnos} profesores={profesores}/>
+      <ClaseDetails reserva={claseDetail} diaReserva={today} setClaseDetail={setClaseDetail} alumnosDeLaClase={alumnosDeLaClase} setAlumnosDeLaClase={setAlumnosDeLaClase} profeClase={profeClase} setProfeClase={setProfeClase} alumnos={alumnos} profesores={profesores} setActReservas={setActReservas}/>
       <div id='table-component'>
           <div id='table-options'>
             <button id='home-addReservaBtn' onClick={() =>  navigate('../nuevaReserva')}> <FontAwesomeIcon id='reserva-add-btn' icon={faPlusCircle} /></button>   

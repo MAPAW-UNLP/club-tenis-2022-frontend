@@ -13,7 +13,7 @@ import LoaderSpinner from './LoaderSpinner'
 import Select from 'react-select';
 
 
-const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, profeClase, setProfeClase, alumnos, profesores}) => {
+const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, profeClase, setProfeClase, alumnos, profesores, setActReservas}) => {
     
        
       const dias = [
@@ -78,6 +78,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
             body: params
         } ;
         fetch(`${URL_BASE}clase_reserva`, requestOptions)
+          .then(response => setActReservas((v) => !v))
           .then(response => setClaseDetail((v) => !v))
           .finally(navigate('/reservas'));
       }
@@ -87,12 +88,14 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         const params = new URLSearchParams();
         params.append('reserva_id', reserva.reservaId);
         params.append('persona_id', actProfe);
+        console.log("Acutalizando las reservas");
         
         const requestOptions = {
             method: 'PUT',
             body: params
         } ;
         fetch(`${URL_BASE}profe_reserva`, requestOptions)
+    
           .then(response => setClaseDetail((v) => !v));
       }
   
@@ -102,34 +105,44 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
     <div id='clase-detail-component'>
         <button id='clase-closeBTN' onClick={() => setClaseDetail({})}>x</button>
         <div id='clase-detail-general'  className='clase-caja' >
-          <h2>{reserva.canchaNombre}</h2>
+          <h2>Cancha: {reserva.canchaNombre}</h2>
           <p id='clase-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-          <p >{reserva.horaIni} - {reserva.horaFin}</p>
+          <p id='clase-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
         </div>
 
         <div id='clase-detail-profesor' className='clase-caja'>
             <h3>Profesor</h3>
-            <p className='clase-detail-nombre'>{reserva.titular.nombre}</p>
             {clasePasada(reserva.fecha) ? 
-            <p>{reserva.titular.nombre}</p>
+              <div id='profesor-label'>
+                <p id='profesor'>nombre: </p><p className='clase-detail-nombre'>{reserva.titular.nombre}</p>
+              </div>
             : 
-            <select name="" className='inputReserva' id='profeInput' onChange={handleEditProfe} defaultValue={reserva.titular.id}>
-              <option id='idProfeSelected' value={reserva.titular.id} >Cambiar Profe</option>
-              {profesores.map((el) => { return reserva.titular.nombre !== el.nombre ? <option value={el.id} key={el.id}>{el.nombre}</option>
-              : ""})}
-            </select>
+            <div>
+              <div id='profesor-label'>
+                  <p id='profesor'>nombre: </p><p className='clase-detail-nombre'>{reserva.titular.nombre} </p>
+                </div>
+              <select name="" className='inputReserva' id='profesorInput' onChange={handleEditProfe} defaultValue={reserva.titular.id}>
+                <option id='idProfeSelected' value={reserva.titular.id} >Cambiar Profe</option>
+                {profesores.map((el) => { return reserva.titular.nombre !== el.nombre ? <option value={el.id} key={el.id}>{el.nombre}</option>
+                : ""})}
+              </select>
+            </div>
   }
         </div>
 
         <div id='clase-detail-alumnos'  className='clase-caja'>
             <h3>Alumnos</h3>
-            <div id='alumnosList'>
-            </div>
+           
+            
             {clasePasada(reserva.fecha) ?
-              alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p>  </div>)
-            :
-            <Select className='' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos">
-            </Select>
+             <div id='alumnosList'>
+                {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p>  </div>)}
+              </div>
+              :
+            <div>
+              <Select className='selectorAlumnos' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos"></Select>
+            </div>
+            
             }        
         </div>
         {clasePasada(reserva.fecha) ?

@@ -153,12 +153,11 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
     <div id='reservas-component'>
         <NavBar title={'Reservas'} setSesion={setSesion}/>
         <div id='reserva-nuevaReserva'>
+            <button id='clase-closeBTN' onClick={() => navigate('../reservas')}>x</button>
             <h2>Nueva reserva</h2>
             <form action="" id='reserva-form' onSubmit={handleSubmitContinue}  >
                 <SelectComponent className={'inputReserva'} id={'selectedReservaType'} onChange={handleTypeChange} options={['Alquiler','Clase']} deshabilitado={false} placeholder={'Seleccionar Tipo de Reserva'} />
                 <InputComponent type={'date'} id={'fecha'} className={'inputReserva'} placeholder={'Fecha'} onChangeFuncion={handleDayChange} deshabilitado={true} min={today}/>
-               
-                
                 {/*  LA IDEA ES USAR LOS COMENTADOS
                 <SelectComponent className={'inputReserva'} id={'horaInicio'} onChange={handleSetHoraInicio} options={horas} deshabilitado={false}/>
                 <SelectComponent className={'inputReserva'} id={'horaInicio'} onChange={handleSetHoraFin} options={horas} deshabilitado={false}/> */}

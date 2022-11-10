@@ -114,17 +114,16 @@
     margin: auto;
     width: 85%;
     text-align: start;
-    font-family: var(--normal-text);
+    font-family: var(--title-text);
     color: var(--accent-yellow);
-    font-weight: bolder;
-    font-size: 120%;
+    font-size: 140%;
     margin-top: 2vh;
 }
 
 .alquiler-detail-numeros{
     margin: auto;
     width: 85%;
-    margin: -2vh auto 2vh auto;
+    margin: -3vh auto 2vh auto;
     text-align: start;
     font-family: var(--normal-text);
     color: var(--neutral-white-text);

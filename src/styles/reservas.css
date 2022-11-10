@@ -1,14 +1,14 @@
 #reservas-component {
     background-color: var(--primary-cyan);
     height: 100%;
-    padding-bottom: 20vh;
+    padding-bottom: 25vh;
     /* background-color: var(--neutral-white); */
 }
 
 
 #reserva-nuevaReserva {
     margin: auto;
-
+    position: relative;
     text-align: center;
     background-color: var(--neutral-white);
     box-shadow: 1px 0px 40px var(--neutral-black);
