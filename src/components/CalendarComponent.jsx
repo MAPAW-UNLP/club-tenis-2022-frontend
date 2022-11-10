@@ -39,7 +39,7 @@ const CalendarComponent = ({today,setToday}) => {
   return (
     <>
       <button onClick={yesterday}> <FontAwesomeIcon icon={faCaretLeft}/></button>
-      <DatePicker selected={startDate} onChange={(date) => {setStartDate(date); setDate(date)}} locale="es" className='pickers' dateFormat="dd 'de' MMMM" withPortal  />
+      <DatePicker id='date' selected={startDate} onChange={(date) => {setStartDate(date); setDate(date)}} locale="es" className='pickers' dateFormat="dd 'de' MMMM" withPortal  />
       <button onClick={tomorrow}> <FontAwesomeIcon icon={faCaretRight}/></button>
     </>
   );
