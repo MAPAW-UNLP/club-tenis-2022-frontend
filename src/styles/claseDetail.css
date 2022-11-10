@@ -7,7 +7,6 @@
                          "botones botones";
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    grid-template-rows: 20% auto 10% 10%;
     grid-template-columns: 47% 47%;
     justify-content: center;
     position: absolute;
@@ -45,13 +44,14 @@
     font-family: var(--title-text);
     color: var(--neutral-black);
     font-size: 300%;
-}
-#clase-detail-fecha{
-    margin-top: -4%;
-    font-family: var(--title-text);
-    color: var(--neutral-black);
-    font-size: 110%;
 }*/
+#clase-detail-fecha{
+    padding-top: 4%;
+    font-family: var(--title-text);
+    color: var(--neutral-white);
+    font-size: 110%;
+    
+}
 
 .clase-caja{
     background-color: var(--primary-green);
@@ -77,7 +77,7 @@
     grid-area:titulo;
     font-family: var(--title-text);
     color: var(--neutral-black);
-    width: 90%;
+    width: 95%;
     display: flex;
     align-items: center;
     justify-self: center;
@@ -91,30 +91,31 @@
     padding: 0;
 }
 #clase-detail-general p{
-    text-shadow: 0 0 10px var(--neutral-white-text);
+    
+    text-shadow: 0 0 20px var(--neutral-white-text);
     font-size: 150%;
     padding: 0;
 }
 
 #clase-detail-profesor{
     grid-area: profesor;
-    /*margin-left: 1vw;*/
+    margin-left: 1vw;
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+
     
 }
 #clase-detail-alumnos{
     grid-area: alumnos;
-    /*width: 18vw;
-    margin-right: 1vw;*/
+    /*width: 18vw;*/
+    margin-right: 1vw;
     display: flex;
     flex-direction: column;
-    /*justify-content: space-between;
-    padding-left: 0%;*/
+    /*justify-content: space-between;*/
+    padding-left: 0%;
     position: relative;
-    overflow: scroll;
+    /* overflow-y: hidden; */
 }
 
 #deleteAlumnoBtn{

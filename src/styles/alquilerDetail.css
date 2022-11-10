@@ -53,7 +53,7 @@
 #alquiler-detail-general{
     grid-area:titulo;
     font-family: var(--title-text);
-    color: var(--neutral-black);
+    color: var(--neutral-white);
     width: 90%;
     display: flex;
     align-items: center;
@@ -62,6 +62,8 @@
     padding: 0;
     text-align: center;
     flex-direction: column;
+    padding-bottom: 5vh;
+
 }
 
 #alquiler-detail-general h2{
@@ -69,12 +71,24 @@
     color: var(--neutral-white-text);
     font-size: 250%;
     padding: 0;
+    width: 100%;
+    border-bottom: 3px solid var(--neutral-white);
+    margin-bottom: 2vh;
 }
 #alquiler-detail-general p{
-    font-family: var(--title-text);
-    text-shadow: 0 0 10px var(--neutral-white-text);
+   /*  font-family: var(--title-text); */
+    
     font-size: 150%;
+    width: 80%;
+    text-align: start;
     padding: 0;
+}
+
+#alquiler-detail-hora{
+    font-family: var(--normal-text);
+    color: var(--accent-yellow);
+    font-size: 90%;
+
 }
 
 #alquiler-detail-detail{
@@ -85,21 +99,33 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    overflow: scroll;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5vh;
+    
 }
 #alquiler-detail-detail h3{
+    
     font-family:var(--title-text);
     font-size: 150%;
     color: var(--neutral-white-text) ;
 }
 .alquiler-detail-nombre{
+    margin: auto;
+    width: 85%;
+    text-align: start;
     font-family: var(--normal-text);
     color: var(--accent-yellow);
     font-weight: bolder;
     font-size: 120%;
+    margin-top: 2vh;
 }
 
 .alquiler-detail-numeros{
+    margin: auto;
+    width: 85%;
+    margin: -2vh auto 2vh auto;
+    text-align: start;
     font-family: var(--normal-text);
     color: var(--neutral-white-text);
     font-size: 120%;

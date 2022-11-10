@@ -29,9 +29,9 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     <div id='alquiler-detail-component'>
       <button id='close-detail-btn' onClick={()=> setReservaDetail({})} >x</button>
       <div id='alquiler-detail-general' class='clase-caja-alq'>
-        <h2 >{reserva.canchaNombre}</h2>
+        <h2 >Cancha: {reserva.canchaNombre}</h2>
         <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-        <p>{reserva.horaIni} - {reserva.horaFin}</p>
+        <p id='alquiler-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
       </div>
 
       <div id='alquiler-detail-detail' className='clase-caja-alq' >

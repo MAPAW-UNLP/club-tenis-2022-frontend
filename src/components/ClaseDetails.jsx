@@ -109,35 +109,27 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
         <div id='clase-detail-profesor' className='clase-caja'>
             <h3>Profesor</h3>
-            
             <p className='clase-detail-nombre'>{reserva.titular.nombre}</p>
-
+            {clasePasada(reserva.fecha) ? 
+            <p>{reserva.titular.nombre}</p>
+            : 
             <select name="" className='inputReserva' id='profeInput' onChange={handleEditProfe} defaultValue={reserva.titular.id}>
               <option id='idProfeSelected' value={reserva.titular.id} >Cambiar Profe</option>
               {profesores.map((el) => { return reserva.titular.nombre !== el.nombre ? <option value={el.id} key={el.id}>{el.nombre}</option>
               : ""})}
             </select>
-            {clasePasada(reserva.fecha) ? 
-            ""
-            : 
-            <button id='clase-detail-profesor-edit' onClick={editProfe}><FontAwesomeIcon icon={faPenToSquare} /></button>
-            }
+  }
         </div>
 
         <div id='clase-detail-alumnos'  className='clase-caja'>
             <h3>Alumnos</h3>
             <div id='alumnosList'>
-            <Select className='' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos">
-            </Select>
-             {/*alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p>  {clasePasada(reserva.fecha) ? "": <button id='deleteAlumnoBtn' onClick={() => handleDeleteAlumno(index)}>X</button>}  </div>)*/}
             </div>
             {clasePasada(reserva.fecha) ?
-              ""
+              alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-nombre' id='alumnosList-detail'><p>{el.nombre}</p>  </div>)
             :
-              <div id='clase-detail-alumnos-nuevosAlumnos'>
-{/*                 <SelectAlumnosAddClase alumnosDeLaClase={alumnosDeLaClase} alumnos={alumnos} setAlumnos={setAlumnosDeLaClase}/>
- */}                <button id='clase-detail-alumnos-addBTN'><FontAwesomeIcon icon={faPlusCircle} /></button>
-              </div>
+            <Select className='' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos">
+            </Select>
             }        
         </div>
         {clasePasada(reserva.fecha) ?
