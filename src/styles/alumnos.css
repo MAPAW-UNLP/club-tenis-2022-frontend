@@ -214,13 +214,17 @@
 
 #nacimientoPicker{
     height: 2rem;
-    border: 1px solid red;
     margin: 2vh 10% 2vh 10%;
     width: 80%;
     border: 1px solid var(--neutral-black);
     border-radius: 2px;
     font-family: var(--normal-text);
     font-size: 105%;
+    transition: all 0.2s ease;
+}
+
+#nacimientoPicker:focus{
+    outline: 2px solid var(--accent-green);
 }
 
 #fecha-nacimiento{
