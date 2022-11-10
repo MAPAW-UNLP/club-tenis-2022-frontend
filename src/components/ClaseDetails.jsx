@@ -121,7 +121,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
               <div id='profesor-label'>
                   <p id='profesor'>nombre: </p><p className='clase-detail-nombre'>{reserva.titular.nombre} </p>
                 </div>
-              <select name="" className='inputReserva' id='profesorInput' onChange={handleEditProfe} defaultValue={reserva.titular.id}>
+              <select name="" className='inputReserva' id='profeInput' onChange={handleEditProfe} defaultValue={reserva.titular.id}>
                 <option id='idProfeSelected' value={reserva.titular.id} >Cambiar Profe</option>
                 {profesores.map((el) => { return reserva.titular.nombre !== el.nombre ? <option value={el.id} key={el.id}>{el.nombre}</option>
                 : ""})}
@@ -140,13 +140,17 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
               </div>
               :
             <div>
+              {/* <div id='alumnosList'>
+                {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p>  </div>)}
+              </div> */}
               <Select className='selectorAlumnos' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos"></Select>
-            </div>
+
+{/*               
+ */}        </div>
             
             }        
         </div>
         {clasePasada(reserva.fecha) ?
-        
         ""
         :
           <div id='clase-detail-btns'>

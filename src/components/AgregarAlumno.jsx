@@ -122,8 +122,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, s
                         <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
                     </div>
                     <NacimientoComponent setNacimiento={setNacimiento} />
-{/*                     <input  type="date" name="" id="inputDateBirth" className='alumno-add-form-input'  onChange={handlePickBirth} max='2015-01-01'/>
- */}                     <button id='alumno-add-form-addBtn' type='sumbit' disabled ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}  /></button>                
+                    <button id='alumno-add-form-addBtn' type='sumbit' disabled ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}  /></button>                
                 </form>
             </div>
         }
