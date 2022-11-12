@@ -37,7 +37,7 @@ const NacimientoComponent = ({setNacimiento}) => {
 
     }
     return (
-      <DatePicker id='nacimientoPicker'
+      <DatePicker id='nacimientoPicker' placeholderText=' Fecha de nacimiento'
         renderCustomHeader={({
           date,
           changeYear,
@@ -86,7 +86,7 @@ const NacimientoComponent = ({setNacimiento}) => {
             </button>
           </div>
         )}
-        selected={startDate}
+       // selected={startDate}
         onChange={(date) => handleChangeDate(date)}
       />
     );

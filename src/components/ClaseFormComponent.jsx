@@ -55,7 +55,7 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
         <div id='claseFormComponent'>
             <hr />
             <select name="" className='inputReserva' id="" onChange={handleChangeSelect} >
-              <option value="">Cancha</option>
+              <option value="">Canchas disponibles</option>
               {canchas.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>
             <select name="" className='inputReserva' id='profeInput' onChange={handleChangeProfesorSelect} disabled>

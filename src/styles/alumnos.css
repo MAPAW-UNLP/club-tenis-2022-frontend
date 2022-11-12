@@ -216,11 +216,17 @@
     height: 2rem;
     margin: 2vh 10% 2vh 10%;
     width: 80%;
-    border: 1px solid var(--neutral-black);
+    border: 1px solid lightgrey;
     border-radius: 2px;
     font-family: var(--normal-text);
     font-size: 105%;
     transition: all 0.2s ease;
+    cursor: pointer;
+}
+#nacimientoPicker::placeholder{
+    font-family: var(--normal-text);
+    font-size: large;
+    color: var(--neutral-black);
 }
 
 #nacimientoPicker:focus{
