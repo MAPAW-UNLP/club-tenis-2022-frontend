@@ -145,8 +145,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
               </div> */}
               <Select className='selectorAlumnos' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos"></Select>
 
-{/*               
- */}        </div>
+      </div>
             
             }        
         </div>

@@ -1,8 +1,15 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import moment from 'moment';
 import '../styles/alquilerDetail.css'
 
+//fontawesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendar, faCheck } from '@fortawesome/free-solid-svg-icons';
+import EditFechaYHoraController from './EditFechaYHoraController';
+
 const AlquilerDetails = ({reserva, setReservaDetail}) => {
+
+  const [active, setActive] = useState(false);
   
   const dias = [
     'Lunes',
@@ -13,6 +20,10 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     'Sábado',
     'Domingo',
   ];
+
+  const clasePasada = (fecha)=>{
+    return (fecha.split('-').join('') <  moment(new Date()).format("YYYYMMDD"))
+  }
   
 
   const formateoFecha = (fecha)=>{
@@ -22,26 +33,82 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     const destructFecha = fecha.split('-');
     return `${nombreDia} ${destructFecha[2]}/${destructFecha[1]}`
   }
+
+  const setClassActive = () =>{
+
+    setActive(true);
+    const background = document.getElementById('alquiler-detail-futuro');
+    const componente = document.getElementById('btn-background');
+    console.log(componente)
+    background.classList.add("active")
+    componente.classList.add("active");
+
+  }
+
+  const cerrarEdicion = () =>{
+
+    setActive(false);
+    const componente = document.getElementById('btn-background');
+    const background = document.getElementById('alquiler-detail-futuro');
+    console.log(componente.className)
+    background.classList.remove("active")
+    componente.classList.remove("active")
+  }
   
   return (
     <>
     {reserva.canchaNombre !== undefined ?
     <div id='alquiler-detail-component'>
       <button id='close-detail-btn' onClick={()=> setReservaDetail({})} >x</button>
-      <div id='alquiler-detail-general' class='clase-caja-alq'>
-        <h2 >Cancha: {reserva.canchaNombre}</h2>
-        <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-        <p id='alquiler-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
-      </div>
-
+      {clasePasada(reserva.fecha) ? 
+        <div id='alquiler-detail-general' class='clase-caja-alq'>
+          <h2 >Cancha: {reserva.canchaNombre}</h2>
+          <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
+          <p id='alquiler-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
+        </div>
+      :
+        <div id='alquiler-detail-futuro' class='clase-caja-alq'>
+          <h2 >Cancha: {reserva.canchaNombre}</h2>
+          { active ?
+            <div id='alquiler-detail-contenido'>
+              <div id='alquiler-detail-texto'>
+                <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
+                <p id='alquiler-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
+              </div>
+              <div id='btn-background'>
+                <EditFechaYHoraController reserva={reserva}/>
+                <button id='alquiler-detail-edit-btn' onClick={cerrarEdicion}>  <FontAwesomeIcon icon={faCheck} /></button>
+              </div>
+            </div>
+          :
+            <div id='alquiler-detail-contenido'>
+              <div id='alquiler-detail-texto'>
+                <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
+                <p id='alquiler-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
+              </div>
+              <div id='btn-background'>
+                <button id='alquiler-detail-edit-btn' onClick={setClassActive}>  <FontAwesomeIcon icon={faCalendar} /></button>
+              </div>
+            </div>
+          }
+        </div> 
+    }
       <div id='alquiler-detail-detail' className='clase-caja-alq' >
         <h3>Cliente info</h3>
         <p className='alquiler-detail-nombre'>Cliente: {reserva.titular.nombre}</p>
         <p className='alquiler-detail-numeros'> Teléfono: {reserva.titular.telefono}</p>
       </div>
-    </div>
+      {clasePasada(reserva.fecha) ? 
+        ""
+        :
+        <div id='alquiler-detail-btns'>
+          <button id='alquiler-detail-guardar' >Guardar</button>
+          <button id='alquiler-detail-cancelar' onClick={() => setReservaDetail({})}>Cancelar</button>
+        </div>
+        }
+    </div> 
     :
-    <div></div>
+    ""
     }
     </>
   )

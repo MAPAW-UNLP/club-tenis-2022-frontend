@@ -6,7 +6,6 @@ const SelectHoraInicio = ({id, className, setHoraInicio}) => {
     
     const handleChangeHoraInicio = (e) =>{
       setHoraInicio(e.target.value);
-
       const nextInput = document.getElementById('horaFin');
       e.target.value === "" ? nextInput.disabled = true: nextInput.disabled = false;  
     }
