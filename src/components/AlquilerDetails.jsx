@@ -54,12 +54,17 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     background.classList.remove("active")
     componente.classList.remove("active")
   }
+
+  const cerrarDetalles = () =>{
+    cerrarEdicion();
+    setReservaDetail({})
+  }
   
   return (
     <>
     {reserva.canchaNombre !== undefined ?
     <div id='alquiler-detail-component'>
-      <button id='close-detail-btn' onClick={()=> setReservaDetail({})} >x</button>
+      <button id='close-detail-btn' onClick={cerrarDetalles} >x</button>
       {clasePasada(reserva.fecha) ? 
         <div id='alquiler-detail-general' class='clase-caja-alq'>
           <h2 >Cancha: {reserva.canchaNombre}</h2>
@@ -103,7 +108,7 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
         :
         <div id='alquiler-detail-btns'>
           <button id='alquiler-detail-guardar' >Guardar</button>
-          <button id='alquiler-detail-cancelar' onClick={() => setReservaDetail({})}>Cancelar</button>
+          <button id='alquiler-detail-cancelar' onClick={cerrarDetalles}>Cancelar</button>
         </div>
         }
     </div> 
