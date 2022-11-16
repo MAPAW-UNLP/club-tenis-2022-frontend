@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import moment from 'moment';
 import '../styles/alquilerDetail.css'
 
@@ -9,8 +9,11 @@ import EditFechaYHoraController from './EditFechaYHoraController';
 
 const AlquilerDetails = ({reserva, setReservaDetail}) => {
 
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState();
+
+  const [horaInicio, setHoraInicio] = useState('');
   
+
   const dias = [
     'Lunes',
     'Martes',
@@ -29,7 +32,6 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
   const formateoFecha = (fecha)=>{
     const numeroDia = new Date(fecha).getDay();
     const nombreDia = dias[numeroDia];
-
     const destructFecha = fecha.split('-');
     return `${nombreDia} ${destructFecha[2]}/${destructFecha[1]}`
   }
@@ -64,7 +66,11 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     <>
     {reserva.canchaNombre !== undefined ?
     <div id='alquiler-detail-component'>
+      {clasePasada(reserva.fecha) ? 
+      <button id='close-detail-btn' onClick={()=> setReservaDetail({})} >x</button>
+      :
       <button id='close-detail-btn' onClick={cerrarDetalles} >x</button>
+      }
       {clasePasada(reserva.fecha) ? 
         <div id='alquiler-detail-general' class='clase-caja-alq'>
           <h2 >Cancha: {reserva.canchaNombre}</h2>
@@ -78,10 +84,10 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
             <div id='alquiler-detail-contenido'>
               <div id='alquiler-detail-texto'>
                 <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-                <p id='alquiler-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
+                <p id='alquiler-detail-hora'>{horaInicio === '' ?  reserva.horaIni: horaInicio} - {reserva.horaFin}</p>
               </div>
               <div id='btn-background'>
-                <EditFechaYHoraController reserva={reserva}/>
+                <EditFechaYHoraController reserva={reserva} setHoraInicio={setHoraInicio} horaInicio={horaInicio}/>
                 <button id='alquiler-detail-edit-btn' onClick={cerrarEdicion}>  <FontAwesomeIcon icon={faCheck} /></button>
               </div>
             </div>
@@ -89,7 +95,7 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
             <div id='alquiler-detail-contenido'>
               <div id='alquiler-detail-texto'>
                 <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-                <p id='alquiler-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
+                <p id='alquiler-detail-hora'>{horaInicio === '' ?  reserva.horaIni : horaInicio} - {reserva.horaFin}</p>
               </div>
               <div id='btn-background'>
                 <button id='alquiler-detail-edit-btn' onClick={setClassActive}>  <FontAwesomeIcon icon={faCalendar} /></button>

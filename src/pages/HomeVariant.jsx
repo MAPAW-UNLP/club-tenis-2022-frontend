@@ -55,8 +55,6 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores
   
 
   return (
-
-    /* Hacer un useEffect que setee en un estado los proximos eventos de las canchas y hacer un map sobre estis */
     <div id="home-component">
         <NavBar title={"Tennis app"} setSesion={setSesion} />
 {/*         <VistaSemanal canchas={canchas} reservas={reservas}/>
@@ -77,8 +75,6 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores
             <div id='hora' style={{gridArea: "1/1/2/2"}}>Hora</div>
             
             {horas.map((el, i) => <div className='horas' key={i} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
-            
-
             {canchas.map((el, i) => <div className='canchas' key={el.id} style={{gridArea: `1/${i+2} / ${horas.lenght}/${i+3}`, backgroundColor: coloresCanchas[i%coloresCanchas.length]}} ><div style={{ backgroundColor:coloresCanchas[i%coloresCanchas.length], filter: 'brightness(120%)', height: '4vh'}}><p> {el.nombre} </p></div> </div>)}
             { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail}  setClaseDetail={setClaseDetail} setAlumnos={setAlumnosDeLaClase} setProfe={setProfeClase} />  )}          
           </div>

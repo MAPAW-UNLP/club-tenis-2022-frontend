@@ -147,7 +147,7 @@
 }
 
 #alquiler-detail-futuro.active{
-    height: 32.4vh;
+    height: 30.7vh;
 }
 
 #alquiler-detail-texto{
@@ -250,7 +250,7 @@
     position: absolute;
     left: 0%;
     border-bottom-left-radius: 20px ;
-    height: 20px; 
+    height: 20px !important;
  }
 
 
