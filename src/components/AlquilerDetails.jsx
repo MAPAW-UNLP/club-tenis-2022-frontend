@@ -12,6 +12,9 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
   const [active, setActive] = useState();
 
   const [horaInicio, setHoraInicio] = useState('');
+  const [horaFinal, setHoraFinal] = useState('');
+  const [diaElegido, setDiaElegido] = useState('');
+
   
 
   const dias = [
@@ -52,7 +55,6 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     setActive(false);
     const componente = document.getElementById('btn-background');
     const background = document.getElementById('alquiler-detail-futuro');
-    console.log(componente.className)
     background.classList.remove("active")
     componente.classList.remove("active")
   }
@@ -60,6 +62,9 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
   const cerrarDetalles = () =>{
     cerrarEdicion();
     setReservaDetail({})
+    setHoraFinal('');
+    setHoraInicio('');
+    setDiaElegido('');
   }
   
   return (
@@ -83,19 +88,19 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
           { active ?
             <div id='alquiler-detail-contenido'>
               <div id='alquiler-detail-texto'>
-                <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-                <p id='alquiler-detail-hora'>{horaInicio === '' ?  reserva.horaIni: horaInicio} - {reserva.horaFin}</p>
+                <p id='alquiler-detail-fecha'>{diaElegido === '' ?  formateoFecha(reserva.fecha) : formateoFecha(diaElegido)}</p>
+                <p id='alquiler-detail-hora'>{horaInicio === '' ?  reserva.horaIni: horaInicio} - {horaFinal === '' ?  reserva.horaFin: horaFinal}</p>
               </div>
               <div id='btn-background'>
-                <EditFechaYHoraController reserva={reserva} setHoraInicio={setHoraInicio} horaInicio={horaInicio}/>
+                <EditFechaYHoraController reserva={reserva} setHoraInicio={setHoraInicio} horaInicio={horaInicio} setHoraFinal={setHoraFinal} horaFinal={horaFinal} diaElegido={diaElegido} setDiaElegido={setDiaElegido}/>
                 <button id='alquiler-detail-edit-btn' onClick={cerrarEdicion}>  <FontAwesomeIcon icon={faCheck} /></button>
               </div>
             </div>
           :
             <div id='alquiler-detail-contenido'>
               <div id='alquiler-detail-texto'>
-                <p id='alquiler-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-                <p id='alquiler-detail-hora'>{horaInicio === '' ?  reserva.horaIni : horaInicio} - {reserva.horaFin}</p>
+                <p id='alquiler-detail-fecha'>{diaElegido === '' ?  formateoFecha(reserva.fecha) : formateoFecha(diaElegido)}</p>
+                <p id='alquiler-detail-hora'>{horaInicio === '' ?  reserva.horaIni : horaInicio} - {horaFinal === '' ?  reserva.horaFin: horaFinal}</p>
               </div>
               <div id='btn-background'>
                 <button id='alquiler-detail-edit-btn' onClick={setClassActive}>  <FontAwesomeIcon icon={faCalendar} /></button>
