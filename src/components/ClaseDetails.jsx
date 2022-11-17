@@ -5,17 +5,23 @@ import {useNavigate} from 'react-router-dom'
 import '../styles/claseDetail.css'
 //fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle , faPenToSquare} from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle , faPenToSquare, faCalendar, faCheck} from '@fortawesome/free-solid-svg-icons'
 //components
 import SelectAlumnosAddClase from './SelectAlumnosAddClase'
 import FeedbackText from './FeedbackText'
 import LoaderSpinner from './LoaderSpinner'
 import Select from 'react-select';
+import EditFechaYHoraController from './EditFechaYHoraController'
 
 
 const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, profeClase, setProfeClase, alumnos, profesores, setActReservas}) => {
     
-       
+      const [active, setActive] = useState();
+
+      const [horaInicio, setHoraInicio] = useState('');
+      const [horaFinal, setHoraFinal] = useState('');
+      const [diaElegido, setDiaElegido] = useState('');
+
       const dias = [
         'Lunes',
         'Martes',
@@ -63,6 +69,33 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         return (fecha.split('-').join('') <  moment(new Date()).format("YYYYMMDD"))
       }
 
+      const setClassActive = () =>{
+
+        setActive(true);
+        const background = document.getElementById('clase-detail-futuro');
+        const componente = document.getElementById('clase-btn-background');
+        console.log(componente)
+        background.classList.add("active")
+        componente.classList.add("active");
+    
+      }
+      const cerrarEdicion = () =>{
+
+        setActive(false);
+        const componente = document.getElementById('clase-btn-background');
+        const background = document.getElementById('clase-detail-futuro');
+        background.classList.remove("active")
+        componente.classList.remove("active")
+      }
+    
+      const cerrarDetalles = () =>{
+        cerrarEdicion();
+        setClaseDetail({})
+        setHoraFinal('');
+        setHoraInicio('');
+        setDiaElegido('');
+      }
+
       const actualizarClase = () =>{
         //Aca agarrar todos los datos que tiene detalles y hacer un POST a la API, el unico problema es que los IDs de los usuarios no vienen a la front
         const URL_BASE="http://localhost:80/api/";
@@ -103,12 +136,48 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
     <>
     {reserva.canchaNombre !== undefined ?
     <div id='clase-detail-component'>
-        <button id='clase-closeBTN' onClick={() => setClaseDetail({})}>x</button>
-        <div id='clase-detail-general'  className='clase-caja' >
-          <h2>Cancha: {reserva.canchaNombre}</h2>
-          <p id='clase-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
-          <p id='clase-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
-        </div>
+        {clasePasada(reserva.fecha) ? 
+          <button id='clase-closeBTN' onClick={()=> setClaseDetail({})} >x</button>
+          :
+          <button id='clase-closeBTN' onClick={cerrarDetalles} >x</button>
+        }
+
+
+        {clasePasada(reserva.fecha) ? 
+          <div id='clase-detail-general'  className='clase-caja' >
+            <h2>Cancha: {reserva.canchaNombre}</h2>
+            <p id='clase-detail-fecha'>{formateoFecha(reserva.fecha)}</p>
+            <p id='clase-detail-hora'>{reserva.horaIni} - {reserva.horaFin}</p>
+          </div>
+        :
+
+          <div id='clase-detail-futuro' className='clase-caja'>
+            <h2>Cancha: {reserva.canchaNombre}</h2>
+            { active ? 
+              <div id='clase-detail-contenido'>
+              <div id='clase-detail-texto'>
+                <p id='clase-detail-fecha'>{diaElegido === '' ?  formateoFecha(reserva.fecha) : formateoFecha(diaElegido)}</p>
+                <p id='clase-detail-hora'>{horaInicio === '' ?  reserva.horaIni: horaInicio} - {horaFinal === '' ?  reserva.horaFin: horaFinal}</p>
+              </div>
+              <div id='clase-btn-background'>
+                <EditFechaYHoraController reserva={reserva} setHoraInicio={setHoraInicio} horaInicio={horaInicio} setHoraFinal={setHoraFinal} horaFinal={horaFinal} diaElegido={diaElegido} setDiaElegido={setDiaElegido}/>
+                <button id='clase-detail-edit-btn' onClick={cerrarEdicion}>  <FontAwesomeIcon icon={faCheck} /></button>
+              </div>
+            </div>
+            :
+            <div id='clase-detail-contenido'>
+              <div id='clase-detail-texto'>
+                <p id='clase-detail-fecha'>{diaElegido === '' ?  formateoFecha(reserva.fecha) : formateoFecha(diaElegido)}</p>
+                <p id='clase-detail-hora'>{horaInicio === '' ?  reserva.horaIni : horaInicio} - {horaFinal === '' ?  reserva.horaFin: horaFinal}</p>
+              </div>
+              <div id='clase-btn-background'>
+                <button id='clase-detail-edit-btn' onClick={setClassActive}>  <FontAwesomeIcon icon={faCalendar} /></button>
+              </div>
+            </div>
+            }
+          </div>
+        }
+        
 
         <div id='clase-detail-profesor' className='clase-caja'>
             <h3>Profesor</h3>
