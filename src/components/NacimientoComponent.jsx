@@ -4,6 +4,7 @@ import getYear from "date-fns/getYear";
 import getMonth from "date-fns/getYear";
 import getDate from "date-fns/getYear";
 import range from "lodash/range";
+import moment from 'moment';
 
 
 const NacimientoComponent = ({setNacimiento}) => {
@@ -38,6 +39,7 @@ const NacimientoComponent = ({setNacimiento}) => {
     }
     return (
       <DatePicker id='nacimientoPicker'
+        placeholderText='Nacimiento'
         renderCustomHeader={({
           date,
           changeYear,
@@ -46,6 +48,7 @@ const NacimientoComponent = ({setNacimiento}) => {
           increaseMonth,
           prevMonthButtonDisabled,
           nextMonthButtonDisabled,
+
         }) => (
           <div
             style={{
@@ -86,7 +89,7 @@ const NacimientoComponent = ({setNacimiento}) => {
             </button>
           </div>
         )}
-        selected={startDate}
+        selected={startDate.getDay() === new Date().getDay() ?  '': startDate }
         onChange={(date) => handleChangeDate(date)}
       />
     );
