@@ -197,28 +197,28 @@
     margin: auto;
 }
 
-.canchas{
+.canchashc{
     grid-area: canchas;
     width: 25vw;
     margin: 5%;
 }
-.alumnos{
+.alumnoshc{
     grid-area: alumnos;
     width: 25vw;
     margin: 5%;
 }
-.reservas{
+.reservashc{
     grid-area: reservas;
     width: 51.7vw;
     margin: 2.7%;
 
 }
-.profesores{
+.profesoreshc{
     grid-area: profesores;
     width: 25vw;
     margin: 5%;
 }
-.pagos{
+.pagoshc{
     grid-area: pagos;
     width: 25vw;
     margin: 5%;

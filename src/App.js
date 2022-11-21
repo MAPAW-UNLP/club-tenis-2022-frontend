@@ -8,6 +8,7 @@ import Canchas from "./pages/Canchas";
 import Reservas from "./pages/Reservas" 
 import Alumnos from './pages/Alumnos'
 import Profesores from './pages/Profesores';
+import Pagos from './pages/Pagos';
 //VarianteHome
 import HomeV from './pages/HomeVariant'
 
@@ -31,7 +32,7 @@ function App() {
 
   const [actCanchas, setActCanchas] = useState(false);
   const [actReservas, setActReservas] = useState(false);
-
+  /*  */
   /* Loaders */
   const [activedLoader, setActivedLoader] = useState(false);
   const [reservasLoader, setReservasLoader] = useState(false);
@@ -127,6 +128,7 @@ function App() {
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader} setSesion={setSesion}/>}></Route>
             <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}  setAlumnosLoader={setAlumnosLoader} alumnosLoader={alumnosLoader} setSesion={setSesion}/>}></Route>
             <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores} setProfesoresLoader={setProfesoresLoader} profesoresLoader={profesoresLoader} setSesion={setSesion}/> }></Route>
+            <Route path='/pagos' element={<Pagos pagos={alumnos} setSesion={setSesion} />} />
             //ruta oculta
             <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} setSesion={setSesion}  profesores={profesores} alumnos={alumnos} setProfesores={setProfesores}/>}></Route>
           </Routes>
