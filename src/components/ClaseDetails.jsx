@@ -114,7 +114,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         componente.classList.remove("activeAlumnos");
       }
       const cerrarEdicion = () =>{
-
+        setAlumnosBtnActive(false);
         setActive(false);
         const componente = document.getElementById('clase-btn-background');
         const background = document.getElementById('clase-detail-futuro');
@@ -133,11 +133,12 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
       const actualizarClase = () =>{
         //Aca agarrar todos los datos que tiene detalles y hacer un POST a la API, el unico problema es que los IDs de los usuarios no vienen a la front
         const URL_BASE="http://localhost:80/api/";
+        const alumnos_ID = alumnosDeLaClase.map((el) => el.id)
         const params = new URLSearchParams();
         const profeDefault = document.getElementById('idProfeSelected').value;
         params.append('reserva_id', reserva.reservaId);
         actProfe == null ? params.append('persona_id', profeDefault):params.append('persona_id', actProfe);
-        params.append('grupo_ids', alumnosDeLaClase);
+        params.append('grupo_ids', alumnos_ID);
         console.log(params);
                 
         const requestOptions = {
