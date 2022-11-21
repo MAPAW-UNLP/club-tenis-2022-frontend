@@ -1,0 +1,13 @@
+#pagos-component{
+    background-color: var(--primary-blue);
+    height: 100%;
+}
+#pagos-component-mainContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70vw;
+    margin: auto;
+    margin-top: 5vh;
+    align-items: center;
+}

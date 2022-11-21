@@ -1,3 +1,5 @@
+
+
 #clase-detail-component{
     box-shadow: -2px -4px 400px 600px rgba(0,0,0,0.24);
     background-color: var(--neutral-white);
@@ -73,6 +75,35 @@
     margin-left: 2%;
 }
 
+#clase-detail-contenido{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+}
+#clase-detail-futuro{
+    grid-area:titulo;
+    font-family: var(--title-text);
+    color: var(--neutral-white);
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin-top: 3%;
+    padding: 0;
+    text-align: center;
+    flex-direction: column;
+    height: 20vh;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#clase-detail-futuro.active{
+    height: 30.7vh;
+}
+
 #clase-detail-general{
     grid-area:titulo;
     font-family: var(--title-text);
@@ -85,6 +116,7 @@
     padding: 0;
     flex-direction: column;
     padding-bottom: 5vh;
+    position: relative;
 }
 #clase-detail-general h2{
     color: var(--neutral-white-text);
@@ -114,6 +146,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+
 }
 
 
@@ -126,6 +159,7 @@
 #clase-detail-alumnos{
     grid-area: alumnos;
     /*width: 18vw;*/
+    margin-top: 1vh;
     margin-right: 1vw;
     display: flex;
     flex-direction: column;
@@ -265,14 +299,12 @@
 }
 
 #clase-detail-alumnos-addBTN{
-    /*height: 5vh;*/
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     border: 2px solid var(--neutral-white);
     background-color: var(--neutral-black);
     color: var(--accent-tennis-green);
     font-size: 150%;
-    /*padding: 4%;*/
     position: relative;
     width: 100%;
     cursor: pointer;
@@ -391,3 +423,75 @@
     font-family: var(--normal-text);
     text-align: center;
 }
+#clase-btn-background{
+    background-color: var(--accent-tennis-green);
+    width: 30%;
+    border-bottom-right-radius:20px ;
+    border: none;
+    color: var(--neutral-black);
+    font-size: 200%;
+    right: 0%;
+    top: 0;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    height: 100%;
+}
+
+#clase-btn-background.active{
+    width: 100%;
+    background-color: var(--accent-tennis-green);
+    border-bottom-left-radius: 20px;
+}
+
+#clase-btn-background.active #clase-detail-edit-btn{
+    width: 5vw;
+    background-color: var(--neutral-black);
+    height: 8vh;
+    color: var(--accent-tennis-green);
+    font-size: 100%;
+    border-radius: 50px;
+    right: 2vw;
+    top: 9vh;
+    position: absolute;
+}
+
+#clase-btn-background.active #clase-detail-edit-btn:hover{
+    color: var(--neutral-black);
+    background-color: var(--accent-tennis-green);
+}
+
+
+#clase-detail-edit-btn{
+    background-color: var(--accent-tennis-green);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    border-bottom-right-radius:20px ;
+    border: none;
+    color: var(--neutral-black);
+    font-size: 200%;
+    box-shadow: 0px 5px 10px var(--neutral-black);
+    
+    
+    transition: all 0.3s ease-in-out;
+}
+
+#clase-detail-futuro h2{
+    font-family: var(--title-text);
+    color: var(--neutral-white-text);
+    font-size: 250%;
+    padding: 0;
+    width: 100%;
+    border-bottom: 3px solid var(--neutral-white);
+    
+}
+
+#clase-detail-futuro p{
+    /*  font-family: var(--title-text); */
+     font-size: 150%;
+     width: 100%;
+     text-align: start;
+     padding: 0;
+     margin-left: 3vw;
+ }

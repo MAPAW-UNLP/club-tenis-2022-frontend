@@ -182,11 +182,49 @@
 
 #home-content{
     display: grid;
+    grid-template-areas: 'pagos reservas reservas'
+                        'profesores alumnos canchas' ;
     margin: 3vh 30% 0 30%;
-    grid-template-columns: auto auto;
-    width: 40vw;   
+    width: 80vw;  
+    margin: auto;  
     justify-content: space-around;
 }
+
+#logo-homecard {
+    width: 100%;
+    position: absolute;
+    top: 30%;
+    margin: auto;
+}
+
+.canchashc{
+    grid-area: canchas;
+    width: 25vw;
+    margin: 5%;
+}
+.alumnoshc{
+    grid-area: alumnos;
+    width: 25vw;
+    margin: 5%;
+}
+.reservashc{
+    grid-area: reservas;
+    width: 51.7vw;
+    margin: 2.7%;
+
+}
+.profesoreshc{
+    grid-area: profesores;
+    width: 25vw;
+    margin: 5%;
+}
+.pagoshc{
+    grid-area: pagos;
+    width: 25vw;
+    margin: 5%;
+    
+}
+
 
 /* //semanal */
 .semana{

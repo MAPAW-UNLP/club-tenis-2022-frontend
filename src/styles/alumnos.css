@@ -220,7 +220,13 @@
     border-radius: 2px;
     font-family: var(--normal-text);
     font-size: 105%;
-    transition: all 0.2s ease;
+    padding-left: 2%;
+    border-radius: 2px;
+    font-size: large;
+    background-color: var(--neutral-white);
+    border: 1px solid lightgrey;
+    color: var(--neutral-black);
+    transition: all 0.5s ease;
     cursor: pointer;
 }
 #nacimientoPicker::placeholder{
