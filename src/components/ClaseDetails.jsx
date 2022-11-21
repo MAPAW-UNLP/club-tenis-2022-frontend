@@ -12,7 +12,7 @@ import FeedbackText from './FeedbackText'
 import LoaderSpinner from './LoaderSpinner'
 import Select from 'react-select';
 import EditFechaYHoraController from './EditFechaYHoraController'
-
+import SelectorDeAlumnosDeClase from './SelectorDeAlumnosDeClase'
 
 const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, setAlumnosDeLaClase, profeClase, setProfeClase, alumnos, profesores, setActReservas}) => {
     
@@ -21,6 +21,8 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
       const [horaInicio, setHoraInicio] = useState('');
       const [horaFinal, setHoraFinal] = useState('');
       const [diaElegido, setDiaElegido] = useState('');
+
+      const [alumnosBtnActive, setAlumnosBtnActive] = useState();
 
       const dias = [
         'Lunes',
@@ -41,7 +43,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
 
       const handleDeleteAlumno = (indexItem) =>{
         setAlumnosDeLaClase((prevState) =>
-        prevState.filter((alu, index) => index !== indexItem))
+          prevState.filter((alu, index) => index !== indexItem))
         //aca vamos a deletear al alumno de la clase
       }
 
@@ -56,6 +58,7 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         setAlumnosDeLaClase(e.map((i)=>i.value))
         console.log(alumnosDeLaClase)
       }
+
     
       const formateoFecha = (fecha)=>{
         const numeroDia = new Date(fecha).getDay();
@@ -78,6 +81,37 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         background.classList.add("active")
         componente.classList.add("active");
     
+      }
+
+      
+      const activeAddAlumnos = () =>{
+        setAlumnosBtnActive(true);
+        const background = document.getElementById('clase-detail-futuro');
+        const componenteSuperior = document.getElementById('clase-btn-background');
+        const componente = document.getElementById('addAlumnosDiv')
+        const father = document.getElementById('clase-detail-component')
+        const alumnosList = document.getElementById('alumnosList');
+        console.log(componente)
+        father.classList.add("activeAlumnos")
+        alumnosList.classList.add("activeAlumnos")
+        background.classList.add("activeAlumnos")
+        componenteSuperior.classList.add("activeAlumnos");
+        componente.classList.add("activeAlumnos");
+      }
+
+      const desactivateAddAlumnos = () =>{
+        setAlumnosBtnActive(false);
+        const background = document.getElementById('clase-detail-futuro');
+        const componenteSuperior = document.getElementById('clase-btn-background');
+        const componente = document.getElementById('addAlumnosDiv')
+        const father = document.getElementById('clase-detail-component')
+        const alumnosList = document.getElementById('alumnosList');
+        console.log(componente)
+        father.classList.remove("activeAlumnos")
+        alumnosList.classList.remove("activeAlumnos")
+        background.classList.remove("activeAlumnos")
+        componenteSuperior.classList.remove("activeAlumnos");
+        componente.classList.remove("activeAlumnos");
       }
       const cerrarEdicion = () =>{
 
@@ -208,15 +242,23 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
                 {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p>  </div>)}
               </div>
               :
-            <div>
-              {/* <div id='alumnosList'>
-                {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p>  </div>)}
-              </div> */}
-              <Select className='selectorAlumnos' isMulti onChange={handleEditAlumnos} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} defaultValue={alumnosDeLaClase.map((sel)=>({label:sel.nombre, value:sel.id}))} placeholder="Seleccionar alumnos"></Select>
+              <div id='alumnosList'>
+                {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p> <button id='deleteAlumnoBtn' onClick={() => handleDeleteAlumno(index)}>x</button> </div>)}
+              </div>  
+              
+            } 
+            <div id='addAlumnosDiv'> 
+              {alumnosBtnActive ? 
+                <div>
+                  <SelectorDeAlumnosDeClase  alumnos={alumnos} setAlumnosDeLaClase={setAlumnosDeLaClase} alumnosDeLaClase={alumnosDeLaClase} />
+                  <button id='clase-detail-alumnos-addBTN' onClick={desactivateAddAlumnos}><FontAwesomeIcon icon={faCheck} /></button>   
+                </div>
+                
+              :
+                <button id='clase-detail-alumnos-addBTN' onClick={activeAddAlumnos}><FontAwesomeIcon icon={faPlusCircle} /></button>    
 
-      </div>
-            
-            }        
+                }
+            </div>  
         </div>
         {clasePasada(reserva.fecha) ?
         ""
