@@ -6,13 +6,13 @@ import styled, {css} from 'styled-components'
 import '../styles/homeCard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTableTennis } from '@fortawesome/free-solid-svg-icons'
-const HomeCard = ({title, descr, Logo, color, link}) => {
+const HomeCard = ({title, descr, Logo, color, link,nombreClase }) => {
 const ImgCard = styled.div`
     height: 60%;
     background-color: ${color};
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    
+    position: relative;
 `
 
 const Card = styled.div`
@@ -22,10 +22,8 @@ const Card = styled.div`
     flex-direction: column;
     background-color: #5D5D5D;
     text-align: center;
-    width: 15vw;
     height: 35vh;
     box-shadow: 0px 5px 20px #5D5D5D;
-    margin: 5%;
     transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     &:hover {
         border-radius:20px;
@@ -41,8 +39,8 @@ const Card = styled.div`
     navigate(link)
   }
     return (
-    <Card id='home_card' onClick={handleRedirect}>
-        <ImgCard id='home_card_icon'> {Logo}</ImgCard>
+    <Card id='home_card' className={nombreClase} onClick={handleRedirect}>
+        <ImgCard id='home_card_icon'>  <p id='logo-homecard'>{Logo}</p></ImgCard>
         <h2 style={{'color': color}}>{title}</h2>
         <h3>{descr}</h3>
     </Card>
