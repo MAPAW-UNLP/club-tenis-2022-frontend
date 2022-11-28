@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
 
-const Pago = ({info}) => {
+const Pago = ({info,setActUser}) => {
+
+    
 
     const returnTipoClase = (tipoClase) =>{
         if(tipoClase== 0){
@@ -14,14 +18,23 @@ const Pago = ({info}) => {
         return 'Clase Grupal'
     }
 
+    const mostrarFechaDescentemente = () =>{
+
+        const date = (info.fecha).split('-');
+        return `${date[2]}/${date[1]}/${date[0]}`
+    }
+
+
   return (
-    
 
     <div className='pago-info'>
-        <p>{info.fecha}</p>
+        <p>{info.nombrePersona}</p>
+        <p>{mostrarFechaDescentemente()}</p>
         <p>{returnTipoClase(info.idTipoClase)}</p>
         <p>{info.cantidad}</p>
+        <button id='historial-usuario-btn' onClick={()=>setActUser({id:info.idPersona, nombre:info.nombrePersona})}><FontAwesomeIcon icon={faFileInvoiceDollar}></FontAwesomeIcon></button>
     </div>
+
   )
 }
 

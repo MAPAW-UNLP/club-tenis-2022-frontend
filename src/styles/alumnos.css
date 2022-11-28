@@ -75,7 +75,7 @@
 
 .alumno-info{
     display: grid;
-    grid-template-columns: 20% 20% 20% ;
+    grid-template-columns: 20% 20% 20% 40% ;
     margin: 0.5%;
     padding: 1%;
     border-radius: 12px;
@@ -268,4 +268,13 @@
 }
 
 
-
+/* #btn-pagos{
+    width: 50%;
+    margin: auto;
+    height: 2rem;
+    border-radius: 12px;
+    border: none;
+    background-color: #94F5C5;
+    color: var(--neutral-black);
+    font-size: 120%;
+} */

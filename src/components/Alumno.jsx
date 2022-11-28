@@ -1,3 +1,4 @@
+
 import React from 'react'
 
 const Alumnos = ({info}) => {
@@ -10,8 +11,6 @@ const Alumnos = ({info}) => {
     else{
       return " - "
     }
-    
-    
 
   }
   return (
