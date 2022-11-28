@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
+
 
 //font
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,14 +12,16 @@ import PagosList from '../components/PagosList'
 //styles
 
 import '../styles/pagos.css'
-const Pagos = ({setSesion, pagos}) => {
+const Pagos = ({pagos, actPagos, setActPagos, setPagos , alumnos, setSesion}) => {
+  const [ active, setActive] = useState(false);
+  
   return (
     <div id='pagos-Component'>
         <NavBar title={'Pagos'} setSesion={setSesion}></NavBar>
 
         <div id='pagos-component-mainContent'>
-            <button id='canchas-add-btn' >  <FontAwesomeIcon icon={faPlusCircle}/></button>
-            <AgregarPago />
+            <button id='canchas-add-btn' onClick={() => {setActive((active)=> true)}} >  <FontAwesomeIcon icon={faPlusCircle}/></button>
+            <AgregarPago  active={active} setActive={setActive} setPagos={setPagos} pagos={pagos} setActPagos={setActPagos} alumnos={alumnos} />
             { pagos.length === 0 ?
                 <div> cargando componente</div>
             :

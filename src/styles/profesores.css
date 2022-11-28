@@ -39,7 +39,6 @@
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     padding-left: 2%;
-
 }
 
 #profesores-searchbar{
@@ -82,7 +81,7 @@
     font-family: var(--normal-text);
     font-size: 110%;
 }
-
+/* Form */
 #profesor-add-component{
     background-color: var(--neutral-white);
     display: flex;
@@ -176,6 +175,7 @@
     width: 90%;
     position: relative;
 }
+/*  */
 
 #profesores-list{
     min-height: 100%;

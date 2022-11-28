@@ -59,6 +59,7 @@ const AlquilerDetails = ({reserva, setReservaDetail}) => {
     componente.classList.remove("active")
   }
 
+
   const cerrarDetalles = () =>{
     cerrarEdicion();
     setReservaDetail({})

@@ -136,7 +136,11 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         const alumnos_ID = alumnosDeLaClase.map((el) => el.id)
         const params = new URLSearchParams();
         const profeDefault = document.getElementById('idProfeSelected').value;
+
         params.append('reserva_id', reserva.reservaId);
+        params.append('hora_ini', horaInicio);
+        params.append('hora_fin', horaFinal);
+        params.append('fecha', diaElegido);
         actProfe == null ? params.append('persona_id', profeDefault):params.append('persona_id', actProfe);
         params.append('grupo_ids', alumnos_ID);
         console.log(params);
