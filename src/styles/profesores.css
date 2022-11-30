@@ -21,6 +21,7 @@
     width: 100%;
     border-radius: 20px;
     background-color: var(--neutral-white);
+    cursor: default;
 }
 
 #profesores-list-options{
@@ -38,7 +39,6 @@
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
     padding-left: 2%;
-
 }
 
 #profesores-searchbar{
@@ -81,7 +81,7 @@
     font-family: var(--normal-text);
     font-size: 110%;
 }
-
+/* Form */
 #profesor-add-component{
     background-color: var(--neutral-white);
     display: flex;
@@ -104,6 +104,7 @@
     font-size: 150%;
     color: var(--neutral-black);
     transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 #close-profesor-add-form:hover{
@@ -164,7 +165,7 @@
     border: none;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    
+    cursor: pointer;
 }
 
 #profesor-add-form-addBtn:disabled{
@@ -174,6 +175,7 @@
     width: 90%;
     position: relative;
 }
+/*  */
 
 #profesores-list{
     min-height: 100%;

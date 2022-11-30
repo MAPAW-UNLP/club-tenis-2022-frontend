@@ -125,7 +125,7 @@
     font-size: 120% ;
     margin-top: 2vh;
     margin-bottom: 5vh;
-
+    cursor: pointer;
     transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 

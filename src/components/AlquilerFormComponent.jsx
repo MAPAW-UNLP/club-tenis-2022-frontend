@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 
+
 //Components
 import InputComponent from './InputComponent';
 import SelectComponent from './SelectComponent';
@@ -40,7 +41,7 @@ const AlquilerFormComponent = ({active, canchas,setCancha,setActive, handleAddRe
         <div id='alquilerFormComponent'>
             <hr />
             <select name="" className='inputReserva' id="" onChange={handleChangeSelect} >
-              <option value="">Seleccionar Cancha</option>
+              <option value="">Canchas disponibles</option>
               {canchas.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>
             

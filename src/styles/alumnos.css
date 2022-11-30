@@ -21,7 +21,8 @@
     width: 100%;
     border-radius: 20px;
     background-color: var(--neutral-white);
-    margin-bottom: 10vh;    
+    margin-bottom: 10vh;
+    cursor: default; 
 }
 
 #alumnos-list-options{
@@ -74,7 +75,7 @@
 
 .alumno-info{
     display: grid;
-    grid-template-columns: 20% 20% 20% ;
+    grid-template-columns: 20% 20% 20% 40% ;
     margin: 0.5%;
     padding: 1%;
     border-radius: 12px;
@@ -131,7 +132,7 @@
     font-size: 150%;
     color: var(--neutral-black);
     transition: all 0.5s ease;
-
+    cursor: pointer;
 }
 
 #close-alumno-add-form:hover{
@@ -187,6 +188,7 @@
 }
 #inputDateBirth{
     width: 81%;
+    cursor: pointer;
 }
 
 #alumno-add-form-addBtn{
@@ -196,7 +198,7 @@
     border: none;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    
+    cursor: pointer;
 }
 
 #alumno-add-form-addBtn:disabled{
@@ -210,5 +212,69 @@
     font-size: 80%;
 }
 
+#nacimientoPicker{
+    height: 2rem;
+    margin: 2vh 10% 2vh 10%;
+    width: 80%;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    font-family: var(--normal-text);
+    font-size: 105%;
+    padding-left: 2%;
+    border-radius: 2px;
+    font-size: large;
+    background-color: var(--neutral-white);
+    border: 1px solid lightgrey;
+    color: var(--neutral-black);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+#nacimientoPicker::placeholder{
+    font-family: var(--normal-text);
+    font-size: large;
+    color: var(--neutral-black);
+}
+
+#nacimientoPicker:focus{
+    outline: 2px solid var(--accent-green);
+}
+
+#fecha-nacimiento{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 80%;
+    font-size: 150%;
+    font-family: var(--normal-text);
+}
+
+#fecha-nacimiento input{
+    width: 10%;
+    font-size: 70%;
+    padding-left: .2%;
+    font-family: var(--normal-text);
+    height: 2rem;
+    border-radius: 2px;
+    border: 1px solid var(--neutral-black);
+}
+
+#fecha-nacimiento input:last-child{
+    width: 20%;
+    font-size: 70%;
+    font-family: var(--normal-text);
+    height: 2rem;
+    border-radius: 2px;
+    border: 1px solid var(--neutral-black);
+}
 
 
+/* #btn-pagos{
+    width: 50%;
+    margin: auto;
+    height: 2rem;
+    border-radius: 12px;
+    border: none;
+    background-color: #94F5C5;
+    color: var(--neutral-black);
+    font-size: 120%;
+} */

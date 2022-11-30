@@ -21,7 +21,7 @@ import '../styles/home.css'
 
 
 
-const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos}) => {
+const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos, profesores, setActReservas}) => {
 
 
   //Todo esto es para manejar una fecha visible para el usuario
@@ -44,7 +44,7 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos}) => {
   //alumnos de la clase
   const [alumnosDeLaClase, setAlumnosDeLaClase] = useState([]);
 
-  
+  const [profeClase, setProfeClase] = useState('');
 
   //Details
   const [reservaDetail, setReservaDetail] = useState({});
@@ -55,15 +55,13 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos}) => {
   
 
   return (
-
-    /* Hacer un useEffect que setee en un estado los proximos eventos de las canchas y hacer un map sobre estis */
     <div id="home-component">
         <NavBar title={"Tennis app"} setSesion={setSesion} />
 {/*         <VistaSemanal canchas={canchas} reservas={reservas}/>
             
  */}  
       <AlquilerDetails reserva={reservaDetail} diaReserva={today} setReservaDetail={setReservaDetail}/>
-      <ClaseDetails reserva={claseDetail} diaReserva={today} setClaseDetail={setClaseDetail} alumnosDeLaClase={alumnosDeLaClase} setAlumnosDeLaClase={setAlumnosDeLaClase} alumnos={alumnos}/>
+      <ClaseDetails reserva={claseDetail} diaReserva={today} setClaseDetail={setClaseDetail} alumnosDeLaClase={alumnosDeLaClase} setAlumnosDeLaClase={setAlumnosDeLaClase} profeClase={profeClase} setProfeClase={setProfeClase} alumnos={alumnos} profesores={profesores} setActReservas={setActReservas}/>
       <div id='table-component'>
           <div id='table-options'>
             <button id='home-addReservaBtn' onClick={() =>  navigate('../nuevaReserva')}> <FontAwesomeIcon id='reserva-add-btn' icon={faPlusCircle} /></button>   
@@ -77,10 +75,8 @@ const Home = ({canchas, reservas, reservasLoader, setSesion, alumnos}) => {
             <div id='hora' style={{gridArea: "1/1/2/2"}}>Hora</div>
             
             {horas.map((el, i) => <div className='horas' key={i} style={{gridArea:`${i+2}/1/${i+3}/2`}}> {el} </div>)}  
-            
-
             {canchas.map((el, i) => <div className='canchas' key={el.id} style={{gridArea: `1/${i+2} / ${horas.lenght}/${i+3}`, backgroundColor: coloresCanchas[i%coloresCanchas.length]}} ><div style={{ backgroundColor:coloresCanchas[i%coloresCanchas.length], filter: 'brightness(120%)', height: '4vh'}}><p> {el.nombre} </p></div> </div>)}
-            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail}  setClaseDetail={setClaseDetail} setAlumnos={setAlumnosDeLaClase}/>  )}          
+            { reservas.map((el) => <Reserva key={el.reservaId} datos={el} canchas={canchas} today={today}  setReservaDetail={setReservaDetail}  setClaseDetail={setClaseDetail} setAlumnos={setAlumnosDeLaClase} setProfe={setProfeClase} />  )}          
           </div>
           <LoaderSpinner active={reservasLoader} containerClass={'homeLoader'} loaderClass={'homeLoaderSpinner'} />
         </div>

@@ -8,6 +8,7 @@ import Canchas from "./pages/Canchas";
 import Reservas from "./pages/Reservas" 
 import Alumnos from './pages/Alumnos'
 import Profesores from './pages/Profesores';
+import Pagos from './pages/Pagos';
 //VarianteHome
 import HomeV from './pages/HomeVariant'
 
@@ -28,10 +29,13 @@ function App() {
   //Todo esto podría ir a la store global:
   const [canchas, setCanchas] = useState([]);
   const [reservas, setReservas] = useState([]);
+  const [pagos, setPagos] = useState([]);
+
 
   const [actCanchas, setActCanchas] = useState(false);
   const [actReservas, setActReservas] = useState(false);
-
+  const [actPagos, setActPagos]  = useState(false);
+  /*  */
   /* Loaders */
   const [activedLoader, setActivedLoader] = useState(false);
   const [reservasLoader, setReservasLoader] = useState(false);
@@ -103,7 +107,7 @@ function App() {
         /* Desactivar spinner */
       }, [actAlumnos]);
 
-    //get Profewsores
+    //get Profesores
     useEffect(() =>{
       const requestOptions={
         method: 'GET'
@@ -115,6 +119,19 @@ function App() {
     
         /* Desactivar spinner */
       }, [actProfesores]);
+
+
+    //fet pagos
+    useEffect(() =>{
+      const requestOptions={
+        method: 'GET'
+        } ;
+      fetch(`${URL_BASE}pagos`, requestOptions)
+        .then(response => response.json())
+        .then(data =>  setPagos(data))
+        /* Desactivar spinner */
+      }, [actPagos]);
+
   return (
 
     <>
@@ -123,10 +140,11 @@ function App() {
           <Routes>
             <Route path='/' element={<Login setSesion={setSesion}/>} ></Route>
             <Route path='/inicio' element={<Home setSesion={setSesion}/>}></Route>
-            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader} setSesion={setSesion} alumnos={alumnos}/> }></Route>
+            <Route path='/reservas' element={<HomeV canchas={canchas} reservas={reservas} reservasLoader={reservasLoader} setSesion={setSesion} alumnos={alumnos} profesores={profesores} setActReservas={setActReservas}/> }></Route>
             <Route path='/canchas' element={<Canchas canchas={canchas} setActCanchas={setActCanchas} activedLoader={activedLoader} setActivedLoader={setActivedLoader} setSesion={setSesion}/>}></Route>
             <Route path='/alumnos' element={<Alumnos actAlumnos={actAlumnos} setActAlumnos={setActAlumnos} alumnos={alumnos} setAlumnos={setAlumnos}  setAlumnosLoader={setAlumnosLoader} alumnosLoader={alumnosLoader} setSesion={setSesion}/>}></Route>
             <Route path='/profesores' element={<Profesores actProfesores={actProfesores} setActProfesores={setActProfesores} profesores={profesores} setProfesores={setProfesores} setProfesoresLoader={setProfesoresLoader} profesoresLoader={profesoresLoader} setSesion={setSesion}/> }></Route>
+            <Route path='/pagos' element={<Pagos pagos={pagos} actPagos={actPagos} setActPagos={setActPagos} setPagos={setPagos} alumnos={alumnos} setSesion={setSesion} />} />
             //ruta oculta
             <Route path='/nuevaReserva' element={<Reservas canchas={canchas} reservas={reservas} setActReservas={setActReservas} setReservasLoader={setReservasLoader} setSesion={setSesion}  profesores={profesores} alumnos={alumnos} setProfesores={setProfesores}/>}></Route>
           </Routes>

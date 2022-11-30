@@ -6,7 +6,7 @@ import { useState } from 'react'
 //Components
 import InputComponent from './InputComponent'
 import FeedbackText from './FeedbackText'
-
+import NacimientoComponent from './NacimientoComponent'
 
 const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, setAlumnosLoader}) => {
 
@@ -19,6 +19,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, s
     const [nombreFB, setNombreFB] = useState({text: '', color: ''});
     const [telefonoFB, setTelefonoFB] = useState({text: '', color: ''});
 
+    //estos para la fecha de nacimiento personalizada
     const handleChangeName = (e) =>{
         const pattern = new RegExp('^[A-Z]+$', 'i');
         const word = (e.target.value).split(' ').join('');
@@ -76,6 +77,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, s
         }
     }
 
+
     const handlePickBirth = (e) =>{
         //cambiar fotmato fecha de nacimiento
         const fechaAdaptada = (e.target.value).split('-').join('')
@@ -119,7 +121,7 @@ const AgregarAlumno = ({active, setActive, setAlumnos, alumnos, setActAlumnos, s
                         <InputComponent type={'text'} id='telefonotinput' className={'alumno-add-form-input'} placeholder={'Telefono'} onChangeFuncion={handleChangePhone} deshabilitado={true} min={7} max={12}/>
                         <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
                     </div>
-                    <input  type="date" name="" id="inputDateBirth" className='alumno-add-form-input'  onChange={handlePickBirth} max='2015-01-01'/>
+                    <NacimientoComponent setNacimiento={setNacimiento} />
                     <button id='alumno-add-form-addBtn' type='sumbit' disabled ><FontAwesomeIcon id='canchas-add-form-btn' icon={faPlusCircle}  /></button>                
                 </form>
             </div>
