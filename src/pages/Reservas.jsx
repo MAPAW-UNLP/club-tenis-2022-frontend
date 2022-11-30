@@ -49,6 +49,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
   const [profesorSel, setProfesorSel] = useState(0); //id profesor
   const [grupoIds, setGrupoIds] = useState([]); // ids Alumnos
   const [replica, setReplica] = useState(false); 
+  const [tipoClase, setTipoClase] = useState(0);
 
   //diaFormateadopara HTML
   const mes = ("0" + (new Date().getMonth() + 1)).slice(-2)
@@ -128,8 +129,8 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
       persona_id: profesorSel,
       replica: replica,
       estado_id:0,
-      grupo_ids: grupoIds
-       
+      grupo_ids: grupoIds,
+      tipo: tipoClase 
     }
     const form_data = new FormData();
 
@@ -169,7 +170,7 @@ const Reservas = ({canchas, reservas, profesores, setActReservas, setReservasLoa
                 <AlquilerFormComponent active={alquilerOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setAlquilerOp} handleAddReserva={handleAddReserva} setNombre={setNombre} setTelefono={setTelefono}/>
                 }
                 {claseOp &&
-                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos}  profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} replica={replica} setReplica={setReplica} />
+                  <ClaseFormComponent active={claseOp} canchas={canchasDisponibles()} setCancha={setCancha} setActive={setClaseOp} handleAddReserva={handleAddReserva} profesores={profesores} setProfesores={setProfesores} alumnos={alumnos} setAlumnos={setAlumnos}  profesorSel={profesorSel} setProfesorSel={setProfesorSel} grupoIds={grupoIds} setGrupoIds={setGrupoIds} replica={replica} setReplica={setReplica} tipoClase={tipoClase} setTipoClase={setTipoClase}/>
                 }
                 { !alquilerOp && !claseOp &&
                   <button id='continue-btn' disabled> <FontAwesomeIcon id='next-icon' icon={faChevronRight}  /> </button>

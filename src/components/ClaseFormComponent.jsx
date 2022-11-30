@@ -13,7 +13,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, profesores, setProfesores, alumnos, setAlumnos, grupoIds, setGrupoIds, setProfesorSel, replica, setReplica}) => {
+const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReserva, profesores, setProfesores, alumnos, setAlumnos, grupoIds, setGrupoIds, setProfesorSel, replica, setReplica, tipoClase, setTipoClase}) => {
 
   const [tipoClaseSel, setTipoClaseSel] = useState('');
 
@@ -41,6 +41,7 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
 
   const handleChangeTipoClaseSelect = (e) => {
     setTipoClaseSel(e.target.value)
+    setTipoClase(e.target.value)
   }
 
   const handleChangeCheck = (e) => {
@@ -64,17 +65,17 @@ const ClaseFormComponent = ({active, canchas,setCancha,setActive, handleAddReser
             </select>
             <select name="" className='inputReserva' id="typeReserva" onChange={handleChangeTipoClaseSelect} disabled>
               <option value="">Tipo de Clase</option>
-              <option value="g">Grupal</option>
-              <option value="i">Individual</option>
+              <option value="2">Grupal</option>
+              <option value="1">Individual</option>
             </select>
 
-            { tipoClaseSel == 'i' && 
+            { tipoClaseSel == '1' && 
             <select name="" className='inputReserva' id="" onChange={handleChangeAlumnoSelect} >
               <option value="">Alumno</option>
               {alumnos.map((el) => <option value={el.id} key={el.id}>{el.nombre}</option>)}
             </select>
             }
-            { tipoClaseSel == 'g' &&
+            { tipoClaseSel == '2' &&
             <Select className='inputReserva' isMulti onChange={handleChangeAlumnoMultSelect} options={alumnos.map((el)=> ({label:el.nombre, value:el.id}))} placeholder="Seleccionar alumnos">
             </Select>
             }
