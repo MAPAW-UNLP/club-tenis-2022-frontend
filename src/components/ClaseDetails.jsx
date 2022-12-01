@@ -239,28 +239,27 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
         </div>
 
         <div id='clase-detail-alumnos'  className='clase-caja'>
-            <h3>Alumnos</h3>
-           
-            
+            <h3>Alumnos</h3>                        
             {clasePasada(reserva.fecha) ?
              <div id='alumnosList'>
                 {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p>  </div>)}
               </div>
               :
               <div id='alumnosList'>
+                {(reserva.tipo === 'INDIVIDUAL' && alumnosDeLaClase.length === 1) ? <small>Sólo puede haber un alumno asignado</small>:''}
                 {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p> <button id='deleteAlumnoBtn' onClick={() => handleDeleteAlumno(index)}>x</button> </div>)}
               </div>  
               
             } 
-            <div id='addAlumnosDiv'> 
+            <div id='addAlumnosDiv'>
+              
               {alumnosBtnActive ? 
                 <div>
                   <SelectorDeAlumnosDeClase  alumnos={alumnos} setAlumnosDeLaClase={setAlumnosDeLaClase} alumnosDeLaClase={alumnosDeLaClase} />
                   <button id='clase-detail-alumnos-addBTN' onClick={desactivateAddAlumnos}><FontAwesomeIcon icon={faCheck} /></button>   
                 </div>
-                
-              :
-                <button id='clase-detail-alumnos-addBTN' onClick={activeAddAlumnos}><FontAwesomeIcon icon={faPlusCircle} /></button>    
+              : (reserva.tipo === 'INDIVIDUAL' && alumnosDeLaClase.length === 1) ? <button id='clase-detail-alumnos-addBTN' disabled><FontAwesomeIcon icon={faPlusCircle} /></button>
+              : <button id='clase-detail-alumnos-addBTN' onClick={activeAddAlumnos}><FontAwesomeIcon icon={faPlusCircle} /></button>    
 
                 }
             </div>  
