@@ -308,6 +308,10 @@
     align-items: center;
 }
 
+#alumnosList small{
+    color: var(--neutral-white-text);
+}
+
 #clase-detail-alumnos-addBTN{
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -321,6 +325,23 @@
     cursor: pointer;
 }
 
+#clase-detail-alumnos-addBTN.btnDis{
+    color: var(--neutral-white-text);
+    cursor: no-drop;
+}
+#clase-detail-alumnos-addBTN.btnDis:hover{
+    opacity: 0.1;
+}
+.desvanecer small{
+    display: inline-flex;
+    text-align: center;
+    color: var(--neutral-white);
+    font-weight: bold;
+    line-height: 100%;
+}
+.desvanecer small:hover{
+    opacity: 1;
+}
 #clase-detail-futuro.activeAlumnos{
     border-bottom-left-radius: 20px;
     position: relative;

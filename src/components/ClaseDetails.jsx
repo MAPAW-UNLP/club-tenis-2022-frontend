@@ -246,7 +246,6 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
               </div>
               :
               <div id='alumnosList'>
-                {(reserva.tipo === 'INDIVIDUAL' && alumnosDeLaClase.length === 1) ? <small>Sólo puede haber un alumno asignado</small>:''}
                 {alumnosDeLaClase.map((el, index) => <div key={index} className='clase-detail-a' id='alumnosList-detail'><p>{el.nombre}</p> <button id='deleteAlumnoBtn' onClick={() => handleDeleteAlumno(index)}>x</button> </div>)}
               </div>  
               
@@ -258,7 +257,11 @@ const ClaseDetails = ({reserva, diaReserva, setClaseDetail, alumnosDeLaClase, se
                   <SelectorDeAlumnosDeClase  alumnos={alumnos} setAlumnosDeLaClase={setAlumnosDeLaClase} alumnosDeLaClase={alumnosDeLaClase} />
                   <button id='clase-detail-alumnos-addBTN' onClick={desactivateAddAlumnos}><FontAwesomeIcon icon={faCheck} /></button>   
                 </div>
-              : (reserva.tipo === 'INDIVIDUAL' && alumnosDeLaClase.length === 1) ? <button id='clase-detail-alumnos-addBTN' disabled><FontAwesomeIcon icon={faPlusCircle} /></button>
+              : (reserva.tipo === 'INDIVIDUAL' && alumnosDeLaClase.length === 1) ? 
+              <div class="desvanecer">
+                <button id='clase-detail-alumnos-addBTN' class="btnDis" title="Sólo puede haber un alumno asignado" disabled><FontAwesomeIcon icon={faPlusCircle} /></button>
+                <small>Sólo puede haber un alumno asignado</small>
+                </div>
               : <button id='clase-detail-alumnos-addBTN' onClick={activeAddAlumnos}><FontAwesomeIcon icon={faPlusCircle} /></button>    
 
                 }
