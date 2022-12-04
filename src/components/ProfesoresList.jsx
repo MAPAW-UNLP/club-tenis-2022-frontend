@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 //components
 import Profesor from './Profesor'
+import ProfesorDetail from './ProfesorDetail'
 import InputComponent from './InputComponent'
 //Font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,6 +10,10 @@ import {  faCaretDown, faMagnifyingGlass } from '@fortawesome/free-solid-svg-ico
 const ProfesoresList = ({profesores}) => {
 
   const [ profesoresFiltrados, setProfesoresFiltrados] = useState(profesores);
+  const [activeDetail, setActiveDetail] = useState(false);
+  const [actProfe, setActProfe] = useState('');
+  const [profeDetail, setProfeDetail] = useState({});
+  const URL_BASE = `http://localhost:80/api/`;
 
 
   const handleChangeSearchProfessor = (e) =>{
@@ -24,8 +29,20 @@ const ProfesoresList = ({profesores}) => {
   useEffect(() =>{
     setProfesoresFiltrados(profesores);
   }, [profesores])
+
+  useEffect(() =>{
+    if(actProfe !== ''){
+        fetch(`${URL_BASE}persona?personaId=${actProfe.id}`)
+        .then(response => response.json())
+
+        .then(data => setProfeDetail(data))
+        .then(response => setActiveDetail(true))
+    }
+},[actProfe])
+
   return (
     <div id='profesores-list-component'>
+      <ProfesorDetail activeDetail={activeDetail} setActiveDetail={setActiveDetail} profeDetail={profeDetail} setProfeDetail={setProfeDetail} actProfe={actProfe} profesores={profesores}/>
         <div id='profesores-list-options'>
             <p>Nombre</p>
             <p>Telefono</p>
@@ -35,7 +52,7 @@ const ProfesoresList = ({profesores}) => {
             </div>
         </div>
         <div id='profesores-list'>
-          {profesoresFiltrados.map((p) => <Profesor key={p.id} info={p} ></Profesor>)}
+          {profesoresFiltrados.map((p) => <Profesor key={p.id} info={p} setActProfe={setActProfe}></Profesor>)}
         </div>
     </div>
   )
