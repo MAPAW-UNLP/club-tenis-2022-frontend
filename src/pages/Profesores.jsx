@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 //font
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,6 +13,7 @@ import '../styles/profesores.css'
 const Profesores = ({actProfesores, setActProfesores, profesores, setProfesores, setProfesoresLoader, profesoresLoader, setSesion}) => {
 
     const [active, setActive] = useState(false);
+    const [profeDetail, setProfeDetail] = useState({});
 
     return (
         <div id='profesores-component'>
@@ -24,7 +25,7 @@ const Profesores = ({actProfesores, setActProfesores, profesores, setProfesores,
                 {profesores.length === 0 ?  
                 <div>...cargando</div>   
                 :
-                <ProfesoresList profesores={profesores} />
+                <ProfesoresList profesores={profesores} profeDetail={profeDetail} setProfeDetail={setProfeDetail}/>
             }
             </div>
         </div>

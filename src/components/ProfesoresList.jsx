@@ -41,7 +41,7 @@ const ProfesoresList = ({profesores}) => {
 
   return (
     <div id='profesores-list-component'>
-      <ProfesorDetail activeDetail={activeDetail} setActiveDetail={setActiveDetail} profeDetail={profeDetail} setProfeDetail={setProfeDetail} actProfe={actProfe} profesores={profesores}/>
+      <ProfesorDetail activeDetail={activeDetail} setActiveDetail={setActiveDetail} profeDetail={profeDetail} setProfeDetail={setProfeDetail} actProfe={actProfe} setActProfe={setActProfe} profesores={profesores}/>
         <div id='profesores-list-options'>
             <p>Nombre</p>
             <p>Telefono</p>

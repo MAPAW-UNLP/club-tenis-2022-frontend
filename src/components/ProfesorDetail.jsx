@@ -1,14 +1,14 @@
-import React from 'react'
-import {useNavigate} from 'react-router-dom'
+import React, {useState}  from 'react'
+
 //Fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+
 //Components
 import FeedbackText from './FeedbackText'
 import InputComponent from './InputComponent'
 
-const ProfesorDetail = ({activeDetail, setActiveDetail, profeDetail, setProfeDetail, actProfe, profesores}) => {
+const ProfesorDetail = ({activeDetail, setActiveDetail, profeDetail, setProfeDetail, actProfe, setActProfe, profesores}) => {
   
     const [nombre, setNombre] = useState('');
     const [telefono, setTelefono] = useState('');
@@ -16,8 +16,6 @@ const ProfesorDetail = ({activeDetail, setActiveDetail, profeDetail, setProfeDet
     //feedbackinline
     const [nombreFB, setNombreFB] = useState({text: '', color: ''});
     const [telefonoFB, setTelefonoFB] = useState({text: '', color: ''});
-
-    const navigate = useNavigate();
 
     const handleCloseForm = () =>{
         /*setNombreFB({...nombreFB, 'text': '', color: ''});
@@ -70,10 +68,8 @@ const ProfesorDetail = ({activeDetail, setActiveDetail, profeDetail, setProfeDet
         }
     }
 
-    const actualizarProfesor = (e) =>{
-        //Aca agarrar todos los datos que tiene detalles y hacer un POST a la API
+    const actualizarProfesor = () =>{
         
-        e.preventDefault();
         const URL_BASE="http://localhost:80/api/";
         const nombreProfe = document.getElementById('nombreProfesor').value;
         const telProfe = document.getElementById('telefonoProfesor').value;
@@ -94,14 +90,13 @@ const ProfesorDetail = ({activeDetail, setActiveDetail, profeDetail, setProfeDet
         fetch(`${URL_BASE}persona`, requestOptions)
             .then(response => response.json())
             .then(response => setProfeDetail(v => !v))
-            .finally(navigate('/profesores'));
       }
 
     return (
         <>
             {activeDetail &&
 
-                <div id='profesor-add-component'>
+                <div id='profesor-edit-component'>
                     <button id='close-profesor-add-form' onClick={handleCloseForm}>x</button>
                     <h2>Editar Profesor</h2>
                     {console.log(actProfe)}     
