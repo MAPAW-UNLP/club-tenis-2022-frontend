@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 //font
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,12 +13,8 @@ import '../styles/alumnos.css'
 
 const Users = ({actAlumnos, setActAlumnos, alumnos, setAlumnos, setAlumnosLoader, alumnosLoader, setSesion}) => {
 
-  
-  
-
   const [active, setActive] = useState(false);
-
-  const URL_BASE = `http://localhost/api/`;
+  const [aluDetail, setAluDetail] = useState({});
 
 
   return (
@@ -31,10 +27,8 @@ const Users = ({actAlumnos, setActAlumnos, alumnos, setAlumnos, setAlumnosLoader
         { alumnos.length === 0 ?
           <div>...cargando</div>          
           :
-          <AlumnosList alumnos={alumnos}/>
+          <AlumnosList alumnos={alumnos} aluDetail={aluDetail} setAluDetail={setAluDetail}/>
         }
-        
-
       </div>
     </div>
   ) 
