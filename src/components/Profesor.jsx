@@ -8,7 +8,7 @@ const Profesor = ({info, setActProfe}) => {
     <div className='profesor-info'>
         <p>{info.nombre}</p>
         <p>{info.telefono}</p>
-        <button id='edit-profesor-btn' onClick={()=>setActProfe({id:info.id, nombre:info.nombre})}><FontAwesomeIcon icon={faFileInvoiceDollar}></FontAwesomeIcon></button>
+        <button id='edit-profesor-btn' onClick={()=>setActProfe({id:info.id, nombre:info.nombre, telefono:info.telefono})}><FontAwesomeIcon icon={faFileInvoiceDollar}></FontAwesomeIcon></button>
     </div>
   )
 }

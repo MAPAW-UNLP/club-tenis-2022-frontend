@@ -34,7 +34,6 @@ const ProfesoresList = ({profesores}) => {
     if(actProfe !== ''){
         fetch(`${URL_BASE}persona?personaId=${actProfe.id}`)
         .then(response => response.json())
-
         .then(data => setProfeDetail(data))
         .then(response => setActiveDetail(true))
     }
