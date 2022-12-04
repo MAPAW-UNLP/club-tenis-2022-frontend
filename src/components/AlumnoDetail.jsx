@@ -19,6 +19,20 @@ const AlumnoDetail = ({activeDetail, setActiveDetail, aluDetail, setAluDetail, a
     const [nombreFB, setNombreFB] = useState({text: '', color: ''});
     const [telefonoFB, setTelefonoFB] = useState({text: '', color: ''});
 
+    const mostrarNacimientoApropiadamente = (f) =>{
+        if(f !== ''){
+          const date = (f).split('-');
+          const fechaNacFormat = `${date[2]}/${date[1]}/${date[0]}`;
+          setNacimiento(fechaNacFormat);
+          console.log(nacimiento);
+          return fechaNacFormat
+        }
+        else{
+          return " - "
+        }
+    
+    }
+
     const handleCloseForm = () =>{
         /*setNombreFB({...nombreFB, 'text': '', color: ''});
         setTelefonoFB({...telefonoFB, 'text': '', color: ''});*/
@@ -118,7 +132,7 @@ const AlumnoDetail = ({activeDetail, setActiveDetail, aluDetail, setAluDetail, a
                         <InputComponent type={'text'} id={'telefonoAlumno'} className={'profesor-add-form-input'} placeholder={actAlu.telefono} onChangeFuncion={handleChangePhone} min={7} max={12}/>
                         <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
                     </div>
-                    <NacimientoComponent placeholder={actAlu.fechanac} setNacimiento={setNacimiento} />
+                    <NacimientoComponent placeholder={mostrarNacimientoApropiadamente(actAlu.fechanac)} setNacimiento={setNacimiento} />
                     <div id='clase-detail-btns'>
                         <button id='clase-detail-guardar' onClick={actualizarAlumno}>Guardar</button>
                         <button id='clase-detail-cancelar' onClick={() => setAluDetail({})}>Cancelar</button>
