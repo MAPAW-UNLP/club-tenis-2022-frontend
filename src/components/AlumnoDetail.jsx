@@ -132,7 +132,7 @@ const AlumnoDetail = ({activeDetail, setActiveDetail, aluDetail, setAluDetail, a
                         <InputComponent type={'text'} id={'telefonoAlumno'} className={'profesor-add-form-input'} placeholder={actAlu.telefono} onChangeFuncion={handleChangePhone} min={7} max={12}/>
                         <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
                     </div>
-                    <NacimientoComponent placeholder={mostrarNacimientoApropiadamente(actAlu.fechanac)} setNacimiento={setNacimiento} />
+                    <NacimientoComponent setNacimiento={setNacimiento} />
                     <div id='clase-detail-btns'>
                         <button id='clase-detail-guardar' onClick={actualizarAlumno}>Guardar</button>
                         <button id='clase-detail-cancelar' onClick={() => setAluDetail({})}>Cancelar</button>
