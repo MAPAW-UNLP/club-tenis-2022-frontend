@@ -57,7 +57,7 @@ const AgregarPago = ({active, setActive, setPagos, pagos, setActPagos, alumnos})
             <label htmlFor="" className='pago-form-label'>Tipo</label>
             <select name="" onChange={handleChangeClassType} id="pago-form-select" placeholder='De reserva' className={'profesor-add-form-input'}>
               {/* <option value="2">Alquiler</option> */}}
-              <option value="">Seleccione tipo de clase</option>
+              <option value="">Seleccionar tipo de clase</option>
               <option value="1">Clase individual</option>
               <option value="2">Clase grupal</option>
             </select>
