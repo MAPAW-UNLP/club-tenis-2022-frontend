@@ -7,10 +7,10 @@ import range from "lodash/range";
 import moment from 'moment';
 
 
-const NacimientoComponent = ({setNacimiento}) => {
+const NacimientoComponent = ({nacimiento, setNacimiento}) => {
 
-
-    const [startDate, setStartDate] = useState(new Date());
+    console.log('interno', new Date(nacimiento));
+    const [startDate, setStartDate] = useState(nacimiento && new Date(nacimiento));
     const years = range(1970, getYear(new Date()) + 1, 1);
     const months = [
       "Enero",
