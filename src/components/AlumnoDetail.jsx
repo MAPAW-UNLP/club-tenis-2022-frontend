@@ -14,6 +14,7 @@ const AlumnoDetail = ({activeDetail, setActiveDetail, aluDetail, setAluDetail, a
     const [nombre, setNombre] = useState('');
     const [telefono, setTelefono] = useState('');
     const [nacimiento, setNacimiento] = useState(actAlu.fechanac);
+    const [nacShow, setNacShow] = useState(actAlu.fechanac);
 
     //feedbackinline
     const [nombreFB, setNombreFB] = useState({text: '', color: ''});
@@ -23,14 +24,9 @@ const AlumnoDetail = ({activeDetail, setActiveDetail, aluDetail, setAluDetail, a
         if(f !== ''){
           const date = (f).split('-');
           const fechaNacFormat = `${date[2]}/${date[1]}/${date[0]}`;
-          setNacimiento(fechaNacFormat);
+          setNacShow(fechaNacFormat);
           console.log(nacimiento);
-          return fechaNacFormat
-        }
-        else{
-          return " - "
-        }
-    
+        }    
     }
 
     const handleCloseForm = () =>{
@@ -132,11 +128,11 @@ const AlumnoDetail = ({activeDetail, setActiveDetail, aluDetail, setAluDetail, a
                         <InputComponent type={'text'} id={'telefonoAlumno'} className={'profesor-add-form-input'} placeholder={actAlu.telefono} onChangeFuncion={handleChangePhone} min={7} max={12}/>
                         <p className='feedbackInline' style={{color:telefonoFB.color}}>{telefonoFB.text}</p>
                     </div>
-                    {console.log(actAlu.fechanac)}
+                    {console.log(nacShow)}
                     <NacimientoComponent nacimiento={actAlu.fechanac} setNacimiento={setNacimiento} />
                     <div id='clase-detail-btns'>
                         <button id='clase-detail-guardar' onClick={actualizarAlumno}>Guardar</button>
-                        <button id='clase-detail-cancelar' onClick={() => setAluDetail({})}>Cancelar</button>
+                        <button id='clase-detail-cancelar' onClick={() => setActiveDetail(false)}>Cancelar</button>
                     </div>                
                 </div>
             }
