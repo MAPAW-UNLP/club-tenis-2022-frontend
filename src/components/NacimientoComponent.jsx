@@ -9,7 +9,6 @@ import moment from 'moment';
 
 const NacimientoComponent = ({nacimiento, setNacimiento}) => {
 
-    console.log('interno', new Date(nacimiento));
     const [startDate, setStartDate] = useState(nacimiento && new Date(nacimiento));
     const years = range(1970, getYear(new Date()) + 1, 1);
     const months = [

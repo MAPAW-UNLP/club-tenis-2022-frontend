@@ -91,7 +91,8 @@ const AlumnoDetail = ({activeDetail, setActiveDetail, aluDetail, setAluDetail, a
         const URL_BASE="http://localhost:80/api/";
         const nombreAlu = document.getElementById('nombreAlumno').value;
         const telAlu = document.getElementById('telefonoAlumno').value;
-        const nacAlu = document.getElementById('nacimientoPicker').value;
+        const nacAlu = nacimiento;
+        
         const data = {
             id: actAlu.id,
             esalumno: true
