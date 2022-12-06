@@ -110,7 +110,7 @@ const ProfesorDetail = ({activeDetail, setActiveDetail, profeDetail, setProfeDet
                     </div>
                     <div id='clase-detail-btns'>
                         <button id='clase-detail-guardar' onClick={actualizarProfesor}>Guardar</button>
-                        <button id='clase-detail-cancelar' onClick={() => setProfeDetail({})}>Cancelar</button>
+                        <button id='clase-detail-cancelar' onClick={() => setActiveDetail(false)}>Cancelar</button>
                     </div>                
                 </div>
             }
